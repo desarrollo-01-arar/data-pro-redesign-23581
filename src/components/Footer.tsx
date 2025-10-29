@@ -77,12 +77,16 @@ export const Footer = () => {
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <a
-                  href="https://maps.app.goo.gl/fMQrXAzVYzfcFuaW8"
+                  href="https://maps.google.com/?q=Bogotá,Colombia"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
-                  Centro Empresarial Natura Torre 1 Oficina 206 Santander, Colombia
+                  Centro Empresarial Natura
+                  <br />
+                  Torre 1 · Oficina 206
+                  <br />
+                  Santander, Colombia
                 </a>
               </li>
               <li className="flex items-center space-x-2 mt-10">
