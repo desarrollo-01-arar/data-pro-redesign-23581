@@ -82,7 +82,11 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
-                  Centro Empresarial Natura Torre 1 Oficina 206 Santander, Colombia
+                  Centro Empresarial Natura
+                  <br />
+                  Torre 1 · Oficina 206
+                  <br />
+                  Santander, Colombia
                 </a>
               </li>
               <li className="flex items-center space-x-2 mt-6">
