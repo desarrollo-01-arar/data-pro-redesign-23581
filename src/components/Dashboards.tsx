@@ -1,29 +1,35 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { CheckCircle2, Crown } from "lucide-react";
+import comercialesImg from "@/assets/dashboards/comerciales.png";
+import financierosImg from "@/assets/dashboards/financieros.png";
+import hcmImg from "@/assets/dashboards/hcm.png";
+import seguimientoComercialImg from "@/assets/dashboards/seguimiento-comercial.png";
+import ventasImg from "@/assets/dashboards/ventas.png";
+
 const dashboards = [{
   title: "Indicadores Comerciales",
-  image: "https://datapro.com.co/imagen/comercial.png",
+  image: comercialesImg,
   description: "Está diseñado para ofrecer una visión integral y dinámica del desempeño de ventas.",
   features: ["Ventas Totales", "Comparación de Ventas Año sobre Año", "Ingresos por Cliente", "Desglose de Productos y Servicios", "KPIs de Efectividad de Ventas", "Costos de Adquisición de Cliente (CAC)", "Rentabilidad", "Mapa de Calor por Ubicación", "Indicadores de Satisfacción del Cliente", "Tendencias de Mercado", "Alertas e Indicadores de Performance"]
 }, {
   title: "Indicadores Financieros",
-  image: "https://datapro.com.co/imagen/financiero.jpeg",
+  image: financierosImg,
   description: "Proporciona una perspectiva completa y actualizada del desempeño financiero.",
   features: ["Resumen Financiero General", "Ingresos y Ventas", "Ingresos por Cliente", "Costos y Gastos", "Rentabilidad y Margen", "Flujo de Caja", "Análisis de Inversión", "Mapa de Calor por Ubicación", "Indicadores de Endeudamiento", "Rendimiento de Activos", "Comparativos de Presupuesto", "Análisis de Tendencias"]
 }, {
   title: "Administración de Talento Humano",
-  image: "https://datapro.com.co/imagen/hcm.png",
+  image: hcmImg,
   description: "Ofrece una visión general de la administración del talento humano.",
   features: ["Rotación de empleados", "Tasa de absentismo", "Costo promedio de contratación", "Duración media de la empleabilidad", "Diversidad y distribución de género", "Rendimiento por departamento", "Tiempo promedio en posiciones", "Retención de talento", "Indicadores de Satisfacción del Cliente", "Satisfacción y compromiso de empleados", "Análisis de desarrollo y capacitación"]
 }, {
   title: "Indicadores Seguimiento Comercial",
-  image: "https://datapro.com.co/imagen/bi3.png",
+  image: seguimientoComercialImg,
   description: "Análisis detallado de todos los factores que influyen en el proceso comercial.",
   features: ["Ventas Totales", "Ventas por Asesor Comercial", "Ventas por Producto", "Ventas por Región", "Top de Clientes", "Tasa de Crecimiento", "Objetivos de Ventas", "Ventas por Canal de Distribución", "Devoluciones y Cancelaciones", "Rentabilidad por Producto"]
 }, {
   title: "Indicadores de Planta de Producción",
-  image: "https://datapro.com.co/imagen/IMG_3.jpg",
+  image: ventasImg,
   description: "Análisis del detalle de cada factor en los procesos del área de producción.",
   features: ["Resumen de Producción", "Eficiencia Operativa", "Cumplimiento de Metas de Producción", "Análisis de Tiempos de Parada", "Costos de Producción", "Análisis de Calidad del Producto", "Desempeño por Turno", "Consumo de Materiales", "Comparativa de Producción por Líneas", "Indicadores Clave de Rendimiento (KPIs)"]
 }];

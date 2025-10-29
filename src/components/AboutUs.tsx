@@ -138,7 +138,7 @@ export const AboutUs = () => {
                     <div className="grid md:grid-cols-2 gap-8 items-center">
                       {/* Image side */}
                       <div className="relative group">
-                        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border-4 border-primary/20 shadow-elegant">
+                        <div className="relative aspect-[3/4] max-w-sm mx-auto overflow-hidden rounded-2xl border-4 border-primary/20 shadow-elegant">
                           <img
                             src={member.image}
                             alt={member.role}
