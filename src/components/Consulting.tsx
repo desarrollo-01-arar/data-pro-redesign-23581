@@ -162,17 +162,7 @@ export const Consulting = () => {
               </Card>)}
           </div>
         </div>
-
-        {/* CTA Button */}
-        <div className="text-center mt-16 animate-fade-in-up">
-          <a 
-            href="#casos-exito" 
-            className="group inline-flex items-center space-x-3 px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold text-lg shadow-elegant hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            <span>Ver Soluciones</span>
-            <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
-          </a>
-        </div>
+        
       </div>
     </section>;
 };

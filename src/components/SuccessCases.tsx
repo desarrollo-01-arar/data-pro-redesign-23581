@@ -30,7 +30,7 @@ const cases = [{
 }, {
   name: "Italo Colombiana de Baterías (ICB)",
   logo: "https://datapro.com.co/CasosExito/Italo%20Colombiana%20de%20Bater%C3%ADas.png",
-  industry: "Automotriz y Servicios"
+  industry: "Automotriz"
 }, {
   name: "Promotores del Oriente",
   logo: "https://datapro.com.co/CasosExito/Promotores%20del%20Oriente.png",
@@ -79,7 +79,7 @@ export const SuccessCases = () => {
 
               {/* Industry badge - shows on hover */}
               <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="inline-flex items-center font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary dark:text-primary-glow border border-primary/20 text-xs">
+                <span className="inline-flex items-center font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary dark:text-primary-glow border border-primary/20 text-xs whitespace-nowrap">
                   <Building2 className="h-3 w-3 mr-1.5" />
                   {company.industry}
                 </span>
