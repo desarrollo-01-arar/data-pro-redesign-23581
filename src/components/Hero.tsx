@@ -64,7 +64,7 @@ export const Hero = () => {
             </Button>
             <Button size="lg" variant="outline" onClick={() => document.querySelector("#tableros")?.scrollIntoView({
             behavior: "smooth"
-          })} className="text-lg px-8 border-2 hover:bg-secondary">
+          })} className="text-lg px-8 border-2 hover:border-primary hover:bg-primary/10 hover:text-primary dark:hover:text-primary-glow hover:shadow-lg transition-all duration-300">
               Ver soluciones
             </Button>
           </div>
