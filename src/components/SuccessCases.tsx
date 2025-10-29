@@ -1,44 +1,55 @@
 import { motion } from "framer-motion";
 import { Award, Building2 } from "lucide-react";
+import asekuraLogo from "@/assets/success-cases/asekura.png";
+import hecarseLogo from "@/assets/success-cases/hecarse.png";
+import ararFinancieraLogo from "@/assets/success-cases/arar-financiera.png";
+import colmotosLogo from "@/assets/success-cases/colmotos.png";
+import raycoLogo from "@/assets/success-cases/rayco.png";
+import rexLogo from "@/assets/success-cases/rex.png";
+import inversionesArarLogo from "@/assets/success-cases/inversiones-arar.png";
+import icbLogo from "@/assets/success-cases/icb.png";
+import promotoresLogo from "@/assets/success-cases/promotores.png";
+import ankalLogo from "@/assets/success-cases/ankal.png";
+
 const cases = [{
   name: "Agencia de seguros Asekura",
-  logo: "https://datapro.com.co/CasosExito/Agencia%20de%20seguros%20Asekura.png",
+  logo: asekuraLogo,
   industry: "Seguros"
 }, {
   name: "Agroinversiones Hecarse",
-  logo: "https://datapro.com.co/CasosExito/Agroinversiones%20Hecarse.png",
+  logo: hecarseLogo,
   industry: "Agroindustria"
 }, {
   name: "Arar Financiera",
-  logo: "https://datapro.com.co/CasosExito/Arar%20Financiera.png",
+  logo: ararFinancieraLogo,
   industry: "Financiero"
 }, {
   name: "ColMotos",
-  logo: "https://datapro.com.co/CasosExito/ColMotos.png",
+  logo: colmotosLogo,
   industry: "Automotriz"
 }, {
   name: "Distribuidora Rayco",
-  logo: "https://datapro.com.co/CasosExito/Distribuidora%20Rayco.png",
+  logo: raycoLogo,
   industry: "Distribución"
 }, {
   name: "Distribuidora Rex",
-  logo: "https://datapro.com.co/CasosExito/Distribuidora%20Rex.png",
+  logo: rexLogo,
   industry: "Distribución"
 }, {
   name: "Inversiones Arar",
-  logo: "https://datapro.com.co/CasosExito/Inversiones%20Arar.png",
+  logo: inversionesArarLogo,
   industry: "Financiero"
 }, {
   name: "Italo Colombiana de Baterías (ICB)",
-  logo: "https://datapro.com.co/CasosExito/Italo%20Colombiana%20de%20Bater%C3%ADas.png",
+  logo: icbLogo,
   industry: "Automotriz"
 }, {
   name: "Promotores del Oriente",
-  logo: "https://datapro.com.co/CasosExito/Promotores%20del%20Oriente.png",
+  logo: promotoresLogo,
   industry: "Automotriz"
 }, {
   name: "Representaciones An kal",
-  logo: "https://datapro.com.co/CasosExito/Repesentaciones%20An%20kal.png",
+  logo: ankalLogo,
   industry: "Comercial"
 }];
 export const SuccessCases = () => {
