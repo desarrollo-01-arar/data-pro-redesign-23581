@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 const dynamicWords = ["datos", "decisiones", "resultados"];
@@ -44,19 +44,35 @@ export const Hero = () => {
           <div className="h-20 flex items-center justify-center">
             <p className="text-2xl md:text-3xl text-muted-foreground flex items-center gap-3 font-bold">
               Transforma tus{" "}
-              <span className="relative inline-flex items-center justify-center min-w-[180px] h-12 px-4 rounded-xl bg-gradient-accent overflow-hidden uppercase text-3xl">
-                <span
-                  style={{
-                    backgroundSize: "200% 100%",
-                  }}
-                  className=""
-                />
-                <span
-                  key={currentWordIndex}
-                  className="relative z-10 text-accent-foreground font-bold animate-scale-out"
-                >
-                  {dynamicWords[currentWordIndex]}
-                </span>
+              <span className="relative inline-flex items-center justify-center min-w-[200px] h-16 px-6 rounded-xl bg-gradient-to-r from-primary/10 via-primary/20 to-accent/20 overflow-hidden backdrop-blur-sm border border-primary/20">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWordIndex}
+                    initial={{ y: 20, opacity: 0, filter: "blur(4px)" }}
+                    animate={{ 
+                      y: 0, 
+                      opacity: 1, 
+                      filter: "blur(0px)",
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                    }}
+                    exit={{ y: -20, opacity: 0, filter: "blur(4px)" }}
+                    transition={{
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1],
+                      backgroundPosition: {
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }
+                    }}
+                    className="relative z-10 uppercase text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+                    style={{
+                      backgroundSize: "200% 100%"
+                    }}
+                  >
+                    {dynamicWords[currentWordIndex]}
+                  </motion.span>
+                </AnimatePresence>
               </span>
             </p>
           </div>
