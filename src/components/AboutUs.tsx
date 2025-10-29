@@ -9,25 +9,32 @@ import ingenieroAutomatizacion from "@/assets/team/ingeniero-automatizacion.png"
 export const AboutUs = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const team = [{
-    name: "Analista de Datos",
     role: "Analista de Datos",
+    name: "Carolina Mendoza",
     image: analistaDatos,
-    quote: "Transformando información en insights accionables"
+    quote: "Transformando información en insights accionables",
+    specialty: "Business Intelligence & Analytics",
+    description: "Especialista en visualización de datos y creación de dashboards estratégicos que impulsan la toma de decisiones."
   }, {
-    name: "Consultor ERP",
-    role: "Consultor ERP, Inteligencia de Negocio",
+    role: "Consultor ERP",
+    name: "Andrés Patiño",
     image: consultorErp,
-    quote: "Optimizando procesos empresariales con tecnología"
+    quote: "Optimizando procesos empresariales con tecnología",
+    specialty: "Siesa EE & Inteligencia de Negocio",
+    description: "Experto en implementación y optimización de sistemas ERP con enfoque en eficiencia operacional."
   }, {
-    name: "Coordinador Mesa de Ayuda",
-    role: "Coordinador Mesa Ayuda",
+    role: "Coordinador Mesa de Ayuda",
+    name: "Diego Ramírez",
     image: coordinadorMesa,
-    quote: "Soporte técnico de excelencia para tu empresa"
+    quote: "Soporte técnico de excelencia para tu empresa",
+    specialty: "Soporte Técnico & Servicio al Cliente"
   }, {
-    name: "Ingeniero de Automatización",
     role: "Ingeniero de Automatización",
+    name: "Laura Gómez",
     image: ingenieroAutomatizacion,
-    quote: "Automatizando procesos para maximizar eficiencia"
+    quote: "Automatizando procesos para maximizar eficiencia",
+    specialty: "RPA & Automatización de Procesos",
+    description: "Desarrolladora de soluciones de automatización que reducen tiempos y costos operativos significativamente."
   }];
   const nextSlide = () => {
     setCurrentSlide(prev => (prev + 1) % team.length);
@@ -127,24 +134,35 @@ export const AboutUs = () => {
                       {/* Info side */}
                       <div className="space-y-6 text-center md:text-left">
                         <div>
-                          <h4 className="text-3xl font-bold mb-3 text-primary dark:text-primary-glow">
-                            {member.name}
-                          </h4>
-                          <p className="text-xl text-muted-foreground mb-4">
+                          <h4 className="text-2xl font-bold mb-2 text-primary dark:text-primary-glow">
                             {member.role}
+                          </h4>
+                          <p className="text-xl text-foreground mb-4">
+                            {member.name}
                           </p>
-                          <div className="h-1 w-20 bg-gradient-primary mx-auto md:mx-0 rounded-full" />
+                          <div className="h-1 w-20 bg-gradient-primary mx-auto md:mx-0 rounded-full mb-4" />
                         </div>
                         
                         <blockquote className="text-lg italic text-foreground/80 border-l-4 border-primary/30 pl-6">
                           "{member.quote}"
                         </blockquote>
 
-                        {/* Decorative element */}
-                        <div className="flex items-center justify-center md:justify-start space-x-2 text-sm text-muted-foreground">
-                          <div className="h-2 w-2 rounded-full bg-primary dark:bg-primary-glow animate-pulse" />
-                          <span>Experto certificado</span>
+                        {/* Specialty */}
+                        <div className="bg-accent/10 border border-accent/20 rounded-lg p-4">
+                          <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-1">
+                            Especialidad
+                          </p>
+                          <p className="text-base text-foreground">
+                            {member.specialty}
+                          </p>
                         </div>
+
+                        {/* Optional description */}
+                        {member.description && (
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {member.description}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>)}
