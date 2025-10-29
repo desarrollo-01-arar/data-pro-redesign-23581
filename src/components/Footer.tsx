@@ -8,8 +8,8 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Logo & Description */}
           <div>
-            <img src={logoLight} alt="DataPro Analítica" className="h-10 w-auto mb-4 dark:hidden" />
-            <img src={logoDark} alt="DataPro Analítica" className="h-10 w-auto mb-4 hidden dark:block" />
+            <img src={logoDark} alt="DataPro Analítica" className="h-10 w-auto mb-4 dark:hidden" />
+            <img src={logoLight} alt="DataPro Analítica" className="h-10 w-auto mb-4 hidden dark:block" />
             <p className="text-sm text-muted-foreground">
               Transformamos datos en decisiones inteligentes para empresas colombianas.
             </p>

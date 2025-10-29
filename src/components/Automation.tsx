@@ -35,10 +35,13 @@ export const Automation = () => {
   return <section id="automatizacion" className="py-20 relative overflow-hidden">
       {/* Animated background with flowing waves */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent animate-wave-slow" />
-          <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent animate-wave-medium" />
-          <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent animate-wave-fast" />
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-[10%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent animate-wave-slow" />
+          <div className="absolute top-[25%] left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-wave-medium" />
+          <div className="absolute top-[40%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent animate-wave-fast" />
+          <div className="absolute top-[55%] left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent animate-wave-slow" />
+          <div className="absolute top-[70%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-wave-medium" />
+          <div className="absolute top-[85%] left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent animate-wave-fast" />
         </div>
       </div>
       

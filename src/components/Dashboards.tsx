@@ -43,24 +43,29 @@ export const Dashboards = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 px-[70px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-[70px]">
           {dashboards.map((dashboard, index) => <Card key={dashboard.title} className="group hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 border-2 hover:border-primary/50 animate-fade-in-up overflow-hidden bg-card/50 backdrop-blur-sm" style={{
           animationDelay: `${index * 100}ms`
         }}>
               <CardHeader className="relative pb-0">
-                {/* Premium Badge */}
-                <div className="absolute top-4 right-4 z-10">
-                  <Crown className="h-6 w-6 text-accent fill-accent animate-pulse-glow" />
-                </div>
-                
                 {/* Dashboard Image with Premium Frame */}
-                <div className="relative rounded-lg overflow-hidden border-2 border-accent/30 shadow-glow mb-4 bg-background/50 p-2">
+                <div className="relative rounded-lg overflow-hidden border-2 border-accent/30 shadow-glow mb-4 bg-background/50 p-1.5">
                   <div className="relative rounded-md overflow-hidden aspect-video">
                     <img src={dashboard.image} alt={dashboard.title} loading="lazy" className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                  {/* Star Rating */}
-                  <div className="absolute bottom-4 left-20 flex gap-1 bg-background/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                    {[...Array(5)].map((_, i) => <span key={i} className="text-accent text-lg">★</span>)}
+                    {/* Professional gradient overlay from bottom to top */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+                    
+                    {/* Crown and Stars in bottom left corner */}
+                    <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                      {/* Crown */}
+                      <div className="flex items-center justify-center bg-accent/20 backdrop-blur-md border border-accent/40 rounded-lg px-2.5 py-1.5">
+                        <Crown className="h-5 w-5 text-accent fill-accent" />
+                      </div>
+                      {/* Stars */}
+                      <div className="flex gap-0.5 bg-background/20 backdrop-blur-md border border-accent/30 px-2.5 py-1.5 rounded-lg">
+                        {[...Array(5)].map((_, i) => <span key={i} className="text-accent text-sm">★</span>)}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
