@@ -163,7 +163,7 @@ export const AboutUs = () => {
                         </blockquote>
 
                         {/* Specialty */}
-                        <div className="bg-accent/10 border border-accent/20 rounded-lg p-4">
+                        <div className="bg-accent/20 dark:bg-accent/10 dark:border-accent/50 border border-accent/50 rounded-lg p-4">
                           <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-1">
                             Especialidad
                           </p>

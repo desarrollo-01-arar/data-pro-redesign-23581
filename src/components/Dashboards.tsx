@@ -95,7 +95,7 @@ export const Dashboards = () => {
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {dashboard.features.map((feature, idx) => <div key={idx} className="flex items-start space-x-2 text-sm text-foreground/80">
-                      <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-5 w-5 text-primary dark:text-accent flex-shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </div>)}
                 </div>

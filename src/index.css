@@ -9,15 +9,15 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 210 50% 98%;
-    --foreground: 215 28% 17%;
+    --foreground: 215 28% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 28% 17%;
+    --card-foreground: 215 28% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 17%;
+    --popover-foreground: 215 28% 20%;
 
-    --primary: 210 100% 45%;
+    --primary: 210 100% 30%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 200 100% 55%;
 
@@ -27,7 +27,7 @@ All colors MUST be HSL.
     --muted: 210 50% 93%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 45 100% 55%;
+    --accent: 40 100% 45%;
     --accent-foreground: 215 28% 17%;
 
     --destructive: 0 84.2% 60.2%;
@@ -39,8 +39,8 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(210 100% 50%) 0%, hsl(200 100% 60%) 50%, hsl(195 100% 65%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(45 100% 60%) 0%, hsl(48 100% 65%) 50%, hsl(50 100% 70%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 35%) 0%, hsl(195 100% 45%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(45 100% 45%) 0%, hsl(48 100% 65%) 100%);
     --gradient-wave-1: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(200 100% 65% / 0.25), hsl(210 100% 70% / 0.15), transparent);
     --gradient-wave-2: radial-gradient(ellipse 60% 40% at 80% 50%, hsl(48 100% 65% / 0.2), hsl(45 100% 70% / 0.1), transparent);
     --gradient-breathing: radial-gradient(circle at 50% 50%, hsl(200 100% 65% / 0.2), hsl(210 100% 60% / 0.12), hsl(195 100% 55% / 0.08), transparent);
