@@ -64,11 +64,11 @@ export const Automation = () => {
 
         {/* Enhanced flowing lines - more visible */}
         <div className="absolute inset-0 opacity-40">
-          <div className="absolute top-[8%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/80 to-transparent animate-wave-slow shadow-glow" />
-          <div className="absolute top-[20%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/70 to-transparent animate-wave-medium shadow-yellow-glow" />
+          <div className="absolute top-[6%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/80 to-transparent animate-wave-slow shadow-glow" />
+          <div className="absolute top-[25%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/70 to-transparent animate-wave-medium shadow-yellow-glow" />
           <div className="absolute top-[35%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/75 to-transparent animate-wave-fast shadow-glow" />
           <div className="absolute top-[50%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/80 to-transparent animate-wave-slow shadow-yellow-glow" />
-          <div className="absolute top-[65%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/70 to-transparent animate-wave-medium shadow-glow" />
+          <div className="absolute top-[68%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/70 to-transparent animate-wave-medium shadow-glow" />
           <div className="absolute top-[80%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/75 to-transparent animate-wave-fast shadow-yellow-glow" />
           <div className="absolute top-[92%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/85 to-transparent animate-wave-slow shadow-glow" />
         </div>
