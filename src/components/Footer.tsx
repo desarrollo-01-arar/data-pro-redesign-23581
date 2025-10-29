@@ -67,7 +67,7 @@ export const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="font-semibold mb-4">Contacto</h3>
-            <ul className="space-y-3">
+            <ul className="flex flex-col gap-4">
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <a href="mailto:contacto@datapro.com.co" className="hover:text-primary transition-colors">
@@ -82,14 +82,10 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
-                  Centro Empresarial Natura
-                  <br />
-                  Torre 1 · Oficina 206
-                  <br />
-                  Santander, Colombia
+                  Centro Empresarial Natura Torre 1 Oficina 206 Santander, Colombia
                 </a>
               </li>
-              <li className="flex items-center space-x-2 mt-10">
+              <li className="flex items-center space-x-2 mt-6">
                 <a
                   href="https://www.linkedin.com/company/datapro"
                   target="_blank"

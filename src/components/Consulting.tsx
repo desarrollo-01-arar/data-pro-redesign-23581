@@ -160,7 +160,7 @@ export const Consulting = () => {
                     className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                   />
 
-                  <CardHeader className="relative d-flex gap-2">
+                  <CardHeader className="relative">
                     <div className="p-3 rounded-xl bg-gradient-primary w-fit group-hover:scale-110 transition-transform duration-300">
                       <service.icon className="h-6 w-6 text-primary-foreground" />
                     </div>
