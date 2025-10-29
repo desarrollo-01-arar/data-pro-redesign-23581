@@ -21,13 +21,13 @@ export const Hero = () => {
   };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Smooth animated gradient background with color fade-in effect */}
+      {/* Premium Breathing Background */}
       <div className="absolute inset-0 bg-background">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/5 animate-color-fade-in" />
-        <div className="absolute inset-0 bg-gradient-soft-blue animate-gradient-shift opacity-60" 
-             style={{ backgroundSize: "200% 200%" }} />
-        <div className="absolute inset-0 bg-gradient-soft-yellow animate-gradient-shift opacity-40"
-             style={{ backgroundSize: "200% 200%", animationDelay: "1s" }} />
+        {/* Breathing gradient orbs */}
+        <div className="absolute top-[-20%] left-[10%] w-[600px] h-[600px] bg-gradient-breathing animate-breathing-slow opacity-60" />
+        <div className="absolute bottom-[-10%] right-[15%] w-[500px] h-[500px] bg-gradient-breathing animate-breathing opacity-50" />
+        <div className="absolute top-[40%] left-[-10%] w-[400px] h-[400px] bg-gradient-wave-1 animate-float-soft opacity-40" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[450px] h-[450px] bg-gradient-wave-2 animate-breathing-slow opacity-45" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

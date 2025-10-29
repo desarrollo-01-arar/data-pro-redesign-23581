@@ -95,10 +95,10 @@ const areas = [
 export const Consulting = () => {
   return (
     <section id="consultorias" className="py-20 bg-secondary/30 relative overflow-hidden">
-      {/* Smooth gradient background */}
+      {/* Premium breathing background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-soft-blue animate-gradient-shift opacity-40" 
-             style={{ backgroundSize: "200% 200%" }} />
+        <div className="absolute top-[25%] left-[10%] w-[450px] h-[450px] bg-gradient-breathing animate-breathing opacity-25" />
+        <div className="absolute bottom-[15%] right-[5%] w-[500px] h-[500px] bg-gradient-wave-2 animate-breathing-slow opacity-30" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -160,7 +160,7 @@ export const Consulting = () => {
                     className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                   />
 
-                  <CardHeader className="relative">
+                  <CardHeader className="relative d-flex gap-2">
                     <div className="p-3 rounded-xl bg-gradient-primary w-fit group-hover:scale-110 transition-transform duration-300">
                       <service.icon className="h-6 w-6 text-primary-foreground" />
                     </div>

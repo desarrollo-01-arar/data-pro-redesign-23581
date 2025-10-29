@@ -45,10 +45,11 @@ export const Contact = () => {
     }));
   };
   return <section id="contacto" className="py-20 relative overflow-hidden">
-      {/* Smooth gradient background */}
+      {/* Premium breathing background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-soft-yellow animate-gradient-shift opacity-35" 
-             style={{ backgroundSize: "200% 200%", animationDelay: "1.5s" }} />
+        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-gradient-breathing animate-breathing opacity-30" />
+        <div className="absolute bottom-[15%] right-[10%] w-[450px] h-[450px] bg-gradient-wave-2 animate-breathing-slow opacity-35" />
+        <div className="absolute top-[50%] left-[5%] w-[300px] h-[300px] bg-gradient-wave-1 animate-float-soft opacity-25" />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">

@@ -34,20 +34,20 @@ const automationExamples = [{
 }];
 export const Automation = () => {
   return <section id="automatizacion" className="py-20 relative overflow-hidden">
-      {/* Smooth gradient background with enhanced flowing lines */}
+      {/* Premium breathing background with flowing lines */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background">
-        <div className="absolute inset-0 bg-gradient-soft-blue animate-gradient-shift opacity-50" 
-             style={{ backgroundSize: "200% 200%" }} />
+        {/* Breathing orbs */}
+        <div className="absolute top-[15%] left-[5%] w-[400px] h-[400px] bg-gradient-breathing animate-breathing-slow opacity-40" />
+        <div className="absolute bottom-[20%] right-[10%] w-[350px] h-[350px] bg-gradient-wave-1 animate-breathing opacity-35" />
         
-        {/* Enhanced flowing lines - more visible */}
-        <div className="absolute inset-0 opacity-40">
-          <div className="absolute top-[8%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/80 to-transparent animate-wave-slow shadow-glow" />
-          <div className="absolute top-[20%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/70 to-transparent animate-wave-medium shadow-yellow-glow" />
-          <div className="absolute top-[35%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/75 to-transparent animate-wave-fast shadow-glow" />
-          <div className="absolute top-[50%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/80 to-transparent animate-wave-slow shadow-yellow-glow" />
-          <div className="absolute top-[65%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/70 to-transparent animate-wave-medium shadow-glow" />
-          <div className="absolute top-[80%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/75 to-transparent animate-wave-fast shadow-yellow-glow" />
-          <div className="absolute top-[92%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/85 to-transparent animate-wave-slow shadow-glow" />
+        {/* Flowing lines */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute top-[10%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent animate-wave-slow" />
+          <div className="absolute top-[25%] left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-wave-medium" />
+          <div className="absolute top-[40%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent animate-wave-fast" />
+          <div className="absolute top-[55%] left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent animate-wave-slow" />
+          <div className="absolute top-[70%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-wave-medium" />
+          <div className="absolute top-[85%] left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent animate-wave-fast" />
         </div>
       </div>
       

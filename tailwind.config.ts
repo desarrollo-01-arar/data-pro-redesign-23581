@@ -52,14 +52,13 @@ export default {
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-accent': 'var(--gradient-accent)',
-        'gradient-hero': 'var(--gradient-hero)',
-        'gradient-soft-yellow': 'var(--gradient-soft-yellow)',
-        'gradient-soft-blue': 'var(--gradient-soft-blue)',
+        'gradient-wave-1': 'var(--gradient-wave-1)',
+        'gradient-wave-2': 'var(--gradient-wave-2)',
+        'gradient-breathing': 'var(--gradient-breathing)',
       },
       boxShadow: {
         'elegant': 'var(--shadow-elegant)',
         'glow': 'var(--shadow-glow)',
-        'yellow-glow': 'var(--shadow-yellow-glow)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -111,22 +110,24 @@ export default {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(100%)" },
         },
-        "gradient-shift": {
+        "breathing": {
           "0%, 100%": { 
-            backgroundPosition: "0% 50%",
+            transform: "scale(1)",
+            opacity: "0.6"
           },
           "50%": { 
-            backgroundPosition: "100% 50%",
+            transform: "scale(1.1)",
+            opacity: "0.8"
           },
         },
-        "color-fade-in": {
-          "0%": { 
-            filter: "grayscale(100%) brightness(0.8)",
-            opacity: "0.5"
+        "breathing-slow": {
+          "0%, 100%": { 
+            transform: "scale(1) rotate(0deg)",
+            opacity: "0.4"
           },
-          "100%": { 
-            filter: "grayscale(0%) brightness(1)",
-            opacity: "1"
+          "50%": { 
+            transform: "scale(1.15) rotate(2deg)",
+            opacity: "0.7"
           },
         },
         "float-soft": {
@@ -153,9 +154,9 @@ export default {
         "wave-slow": "wave-slow 15s ease-in-out infinite",
         "wave-medium": "wave-medium 10s ease-in-out infinite",
         "wave-fast": "wave-fast 7s ease-in-out infinite",
+        "breathing": "breathing 8s ease-in-out infinite",
+        "breathing-slow": "breathing-slow 12s ease-in-out infinite",
         "float-soft": "float-soft 6s ease-in-out infinite",
-        "gradient-shift": "gradient-shift 8s ease-in-out infinite",
-        "color-fade-in": "color-fade-in 2s ease-out forwards",
       },
     },
   },
