@@ -1,27 +1,31 @@
 import { Card, CardContent } from "./ui/card";
 import { Target, Eye, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import analistaDatos from "@/assets/team/analista-datos.png";
+import consultorErp from "@/assets/team/consultor-erp.png";
+import coordinadorMesa from "@/assets/team/coordinador-mesa.png";
+import ingenieroAutomatizacion from "@/assets/team/ingeniero-automatizacion.png";
 export const AboutUs = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const team = [{
     name: "Analista de Datos",
     role: "Analista de Datos",
-    image: "https://datapro.com.co/Equipo/Analista%20de%20Datos.png",
+    image: analistaDatos,
     quote: "Transformando información en insights accionables"
   }, {
     name: "Consultor ERP",
     role: "Consultor ERP, Inteligencia de Negocio",
-    image: "https://datapro.com.co/Equipo/Consultor%20ERP,%20Inteligencia%20de%20Negocio.png",
+    image: consultorErp,
     quote: "Optimizando procesos empresariales con tecnología"
   }, {
     name: "Coordinador Mesa de Ayuda",
     role: "Coordinador Mesa Ayuda",
-    image: "https://datapro.com.co/Equipo/Coordinador%20Mesa%20Ayuda.png",
+    image: coordinadorMesa,
     quote: "Soporte técnico de excelencia para tu empresa"
   }, {
     name: "Ingeniero de Automatización",
     role: "Ingeniero de Automatización",
-    image: "https://datapro.com.co/Equipo/Ingeniero%20de%20Automatizac%C3%ADon.png",
+    image: ingenieroAutomatizacion,
     quote: "Automatizando procesos para maximizar eficiencia"
   }];
   const nextSlide = () => {

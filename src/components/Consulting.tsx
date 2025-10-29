@@ -116,8 +116,6 @@ export const Consulting = () => {
                     {service.description}
                   </p>
                   
-                  {/* Arrow indicator */}
-                  
                 </CardContent>
               </Card>)}
           </div>
@@ -129,34 +127,51 @@ export const Consulting = () => {
             Áreas de <span className="text-primary dark:text-primary-glow">Especialización</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {areas.map((area, index) => <Card key={area.title} className="group hover:shadow-elegant hover:-translate-y-1 transition-all duration-500 border-2 hover:border-primary/30 animate-fade-in-up" style={{
+            {areas.map((area, index) => <Card key={area.title} className="group hover:shadow-elegant transition-all duration-500 border-2 hover:border-primary/50 animate-fade-in-up overflow-hidden" style={{
             animationDelay: `${index * 100}ms`
           }}>
                 <CardContent className="p-6">
-                  <div className="flex items-start space-x-4 mb-4">
+                  <div className="flex items-center space-x-4 mb-0 group-hover:mb-4 transition-all duration-300">
                     <div className="p-3 rounded-xl bg-gradient-accent group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                       <area.icon className="h-6 w-6 text-accent-foreground" />
                     </div>
-                    <div>
-                      <h4 className="text-xl font-semibold mb-2 group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
-                        {area.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">{area.description}</p>
-                    </div>
+                    <h4 className="text-xl font-semibold group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
+                      {area.title}
+                    </h4>
                   </div>
                   
-                  {/* Features list */}
-                  <div className="space-y-2 pl-[60px]">
-                    {area.features.map((feature, featureIndex) => <div key={featureIndex} className="flex items-center space-x-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-                  transitionDelay: `${featureIndex * 50}ms`
-                }}>
-                        <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-primary-glow" />
-                        <span className="text-muted-foreground">{feature}</span>
-                      </div>)}
+                  {/* Description - only visible on hover */}
+                  <div className="max-h-0 group-hover:max-h-32 overflow-hidden transition-all duration-500">
+                    <p className="text-sm text-muted-foreground mb-4 pl-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                      {area.description}
+                    </p>
+                  </div>
+                  
+                  {/* Features list - only visible on hover */}
+                  <div className="max-h-0 group-hover:max-h-64 overflow-hidden transition-all duration-500">
+                    <div className="space-y-2 pl-[60px]">
+                      {area.features.map((feature, featureIndex) => <div key={featureIndex} className="flex items-center space-x-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+                    transitionDelay: `${200 + featureIndex * 50}ms`
+                  }}>
+                          <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-primary-glow" />
+                          <span className="text-muted-foreground">{feature}</span>
+                        </div>)}
+                    </div>
                   </div>
                 </CardContent>
               </Card>)}
           </div>
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center mt-16 animate-fade-in-up">
+          <a 
+            href="#casos-exito" 
+            className="group inline-flex items-center space-x-3 px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold text-lg shadow-elegant hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          >
+            <span>Ver Soluciones</span>
+            <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+          </a>
         </div>
       </div>
     </section>;
