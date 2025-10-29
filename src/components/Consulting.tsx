@@ -1,70 +1,100 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Briefcase, GraduationCap, Wrench, Shield, TrendingUp, Code, DollarSign, ShoppingCart, Settings, Package, Users, Monitor, CheckCircle2, ArrowRight } from "lucide-react";
-const services = [{
-  icon: Briefcase,
-  title: "Consultoría de Implementación",
-  description: "Implementación completa de Siesa EE adaptada a tus procesos de negocio",
-  gradient: "from-blue-500/10 to-blue-600/10"
-}, {
-  icon: TrendingUp,
-  title: "Optimización de Procesos",
-  description: "Reimplementación y mejora continua de módulos existentes",
-  gradient: "from-green-500/10 to-green-600/10"
-}, {
-  icon: GraduationCap,
-  title: "Capacitación Especializada",
-  description: "Formación funcional y técnica para usuarios y líderes de área",
-  gradient: "from-purple-500/10 to-purple-600/10"
-}, {
-  icon: Wrench,
-  title: "Soporte y Mesa de Ayuda",
-  description: "Acompañamiento técnico y funcional continuo postimplementación",
-  gradient: "from-orange-500/10 to-orange-600/10"
-}, {
-  icon: Code,
-  title: "Integraciones",
-  description: "Conexión de Siesa EE con BI, portales web, CRM y sistemas externos",
-  gradient: "from-pink-500/10 to-pink-600/10"
-}, {
-  icon: Shield,
-  title: "Actualización y Seguridad",
-  description: "Proyectos de actualización, respaldos y seguridad de datos",
-  gradient: "from-red-500/10 to-red-600/10"
-}];
-const areas = [{
-  icon: DollarSign,
-  title: "Financiera",
-  description: "Contabilidad, cuentas por pagar, tesorería, costos",
-  features: ["Contabilidad general", "Cuentas por pagar", "Tesorería", "Análisis de costos"]
-}, {
-  icon: ShoppingCart,
-  title: "Comercial",
-  description: "Ventas, pedidos, cartera, control de clientes",
-  features: ["Gestión de ventas", "Control de pedidos", "Cartera y CRM", "Análisis comercial"]
-}, {
-  icon: Settings,
-  title: "Manufactura",
-  description: "Planeación, control de producción, costos de órdenes",
-  features: ["Planeación productiva", "Control de órdenes", "Costos de producción", "Eficiencia operativa"]
-}, {
-  icon: Package,
-  title: "Logística",
-  description: "Inventarios, compras, control de bodegas",
-  features: ["Gestión de inventarios", "Control de compras", "Administración de bodegas", "Trazabilidad"]
-}, {
-  icon: Users,
-  title: "Nómina y Talento Humano",
-  description: "Liquidaciones, seguridad social, reportes legales",
-  features: ["Liquidación de nómina", "Seguridad social", "Reportes legales", "Gestión de personal"]
-}, {
-  icon: Monitor,
-  title: "Tecnología",
-  description: "Integraciones, bases de datos, servidores, BI",
-  features: ["Integraciones API", "Bases de datos", "Infraestructura", "Business Intelligence"]
-}];
+import {
+  Briefcase,
+  GraduationCap,
+  Wrench,
+  Shield,
+  TrendingUp,
+  Code,
+  DollarSign,
+  ShoppingCart,
+  Settings,
+  Package,
+  Users,
+  Monitor,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
+const services = [
+  {
+    icon: Briefcase,
+    title: "Consultoría de Implementación",
+    description: "Implementación completa de Siesa EE adaptada a tus procesos de negocio",
+    gradient: "from-blue-500/10 to-blue-600/10",
+  },
+  {
+    icon: TrendingUp,
+    title: "Optimización de Procesos",
+    description: "Reimplementación y mejora continua de módulos existentes",
+    gradient: "from-green-500/10 to-green-600/10",
+  },
+  {
+    icon: GraduationCap,
+    title: "Capacitación Especializada",
+    description: "Formación funcional y técnica para usuarios y líderes de área",
+    gradient: "from-purple-500/10 to-purple-600/10",
+  },
+  {
+    icon: Wrench,
+    title: "Soporte y Mesa de Ayuda",
+    description: "Acompañamiento técnico y funcional continuo postimplementación",
+    gradient: "from-orange-500/10 to-orange-600/10",
+  },
+  {
+    icon: Code,
+    title: "Integraciones",
+    description: "Conexión de Siesa EE con BI, portales web, CRM y sistemas externos",
+    gradient: "from-pink-500/10 to-pink-600/10",
+  },
+  {
+    icon: Shield,
+    title: "Actualización y Seguridad",
+    description: "Proyectos de actualización, respaldos y seguridad de datos",
+    gradient: "from-red-500/10 to-red-600/10",
+  },
+];
+const areas = [
+  {
+    icon: DollarSign,
+    title: "Financiera",
+    description: "Contabilidad, cuentas por pagar, tesorería, costos",
+    features: ["Contabilidad general", "Cuentas por pagar", "Tesorería", "Análisis de costos"],
+  },
+  {
+    icon: ShoppingCart,
+    title: "Comercial",
+    description: "Ventas, pedidos, cartera, control de clientes",
+    features: ["Gestión de ventas", "Control de pedidos", "Cartera y CRM", "Análisis comercial"],
+  },
+  {
+    icon: Settings,
+    title: "Manufactura",
+    description: "Planeación, control de producción, costos de órdenes",
+    features: ["Planeación productiva", "Control de órdenes", "Costos de producción", "Eficiencia operativa"],
+  },
+  {
+    icon: Package,
+    title: "Logística",
+    description: "Inventarios, compras, control de bodegas",
+    features: ["Gestión de inventarios", "Control de compras", "Administración de bodegas", "Trazabilidad"],
+  },
+  {
+    icon: Users,
+    title: "Nómina y Talento Humano",
+    description: "Liquidaciones, seguridad social, reportes legales",
+    features: ["Liquidación de nómina", "Seguridad social", "Reportes legales", "Gestión de personal"],
+  },
+  {
+    icon: Monitor,
+    title: "Tecnología",
+    description: "Integraciones, bases de datos, servidores, BI",
+    features: ["Integraciones API", "Bases de datos", "Infraestructura", "Business Intelligence"],
+  },
+];
 export const Consulting = () => {
-  return <section id="consultorias" className="py-20 bg-secondary/30 relative overflow-hidden">
+  return (
+    <section id="consultorias" className="py-20 bg-secondary/30 relative overflow-hidden">
       {/* Premium breathing background */}
       <div className="absolute inset-0">
         <div className="absolute top-[25%] left-[10%] w-[450px] h-[450px] bg-gradient-breathing animate-breathing opacity-25" />
@@ -72,17 +102,13 @@ export const Consulting = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div initial={{
-        opacity: 0,
-        y: 30
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} transition={{
-        duration: 0.6
-      }} className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Consultoría <span className="text-primary dark:text-primary-glow">Siesa EE</span>
           </h2>
@@ -93,12 +119,24 @@ export const Consulting = () => {
 
           {/* Key strengths */}
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-            {["Diagnóstico funcional y técnico", "Implementación a medida", "Capacitación especializada", "Integración con herramientas externas", "Soporte postimplementación"].map((strength, index) => <div key={index} className="flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 animate-fade-in-up" style={{
-            animationDelay: `${index * 100}ms`
-          }}>
+            {[
+              "Diagnóstico funcional y técnico",
+              "Implementación a medida",
+              "Capacitación especializada",
+              "Integración con herramientas externas",
+              "Soporte postimplementación",
+            ].map((strength, index) => (
+              <div
+                key={index}
+                className="flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 animate-fade-in-up"
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                }}
+              >
                 <CheckCircle2 className="h-4 w-4 text-primary dark:text-primary-glow" />
                 <span className="text-sm font-medium">{strength}</span>
-              </div>)}
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -108,27 +146,25 @@ export const Consulting = () => {
             Nuestros <span className="text-primary dark:text-primary-glow">Servicios</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => <motion.div key={service.title} initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: index * 0.1
-          }}>
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <Card className="group relative hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 hover:border-primary/50 overflow-hidden h-full">
                   {/* Gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                  />
 
                   <CardHeader className="relative d-flex gap-2">
                     <div className="p-3 rounded-xl bg-gradient-primary w-fit group-hover:scale-110 transition-transform duration-300">
                       <service.icon className="h-6 w-6 text-primary-foreground" />
                     </div>
-                    <CardTitle className="group-hover:text-primary dark:group-hover:text-primary-glow transition-colors text-xl">
+                    <CardTitle className="text-lg group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
@@ -138,7 +174,8 @@ export const Consulting = () => {
                     </p>
                   </CardContent>
                 </Card>
-              </motion.div>)}
+              </motion.div>
+            ))}
           </div>
         </div>
 
@@ -148,18 +185,14 @@ export const Consulting = () => {
             Áreas de <span className="text-primary dark:text-primary-glow">Especialización</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {areas.map((area, index) => <motion.div key={area.title} initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: index * 0.1
-          }}>
+            {areas.map((area, index) => (
+              <motion.div
+                key={area.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <Card className="group hover:shadow-elegant transition-all duration-500 border-2 hover:border-primary/50 overflow-hidden h-full">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4 mb-0 group-hover:mb-4 transition-all duration-300">
@@ -181,19 +214,27 @@ export const Consulting = () => {
                     {/* Features list - only visible on hover */}
                     <div className="max-h-0 group-hover:max-h-64 overflow-hidden transition-all duration-500">
                       <div className="space-y-2 pl-[60px]">
-                        {area.features.map((feature, featureIndex) => <div key={featureIndex} className="flex items-center space-x-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-                      transitionDelay: `${200 + featureIndex * 50}ms`
-                    }}>
+                        {area.features.map((feature, featureIndex) => (
+                          <div
+                            key={featureIndex}
+                            className="flex items-center space-x-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            style={{
+                              transitionDelay: `${200 + featureIndex * 50}ms`,
+                            }}
+                          >
                             <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-primary-glow" />
                             <span className="text-muted-foreground">{feature}</span>
-                          </div>)}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>)}
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
