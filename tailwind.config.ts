@@ -52,6 +52,9 @@ export default {
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-accent': 'var(--gradient-accent)',
+        'gradient-wave-1': 'var(--gradient-wave-1)',
+        'gradient-wave-2': 'var(--gradient-wave-2)',
+        'gradient-breathing': 'var(--gradient-breathing)',
       },
       boxShadow: {
         'elegant': 'var(--shadow-elegant)',
@@ -107,6 +110,37 @@ export default {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(100%)" },
         },
+        "breathing": {
+          "0%, 100%": { 
+            transform: "scale(1)",
+            opacity: "0.6"
+          },
+          "50%": { 
+            transform: "scale(1.1)",
+            opacity: "0.8"
+          },
+        },
+        "breathing-slow": {
+          "0%, 100%": { 
+            transform: "scale(1) rotate(0deg)",
+            opacity: "0.4"
+          },
+          "50%": { 
+            transform: "scale(1.15) rotate(2deg)",
+            opacity: "0.7"
+          },
+        },
+        "float-soft": {
+          "0%, 100%": { 
+            transform: "translateY(0px) translateX(0px)" 
+          },
+          "33%": { 
+            transform: "translateY(-10px) translateX(5px)" 
+          },
+          "66%": { 
+            transform: "translateY(-5px) translateX(-5px)" 
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -120,6 +154,9 @@ export default {
         "wave-slow": "wave-slow 15s ease-in-out infinite",
         "wave-medium": "wave-medium 10s ease-in-out infinite",
         "wave-fast": "wave-fast 7s ease-in-out infinite",
+        "breathing": "breathing 8s ease-in-out infinite",
+        "breathing-slow": "breathing-slow 12s ease-in-out infinite",
+        "float-soft": "float-soft 6s ease-in-out infinite",
       },
     },
   },

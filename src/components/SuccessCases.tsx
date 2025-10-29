@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Award, Building2 } from "lucide-react";
 const cases = [{
   name: "Agencia de seguros Asekura",
@@ -42,14 +43,20 @@ const cases = [{
 }];
 export const SuccessCases = () => {
   return <section id="casos-exito" className="py-20 bg-background relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-wave-slow" />
-        <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-wave-medium" />
+      {/* Premium breathing background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-[30%] right-[20%] w-[400px] h-[400px] bg-gradient-breathing animate-breathing-slow opacity-20" />
+        <div className="absolute bottom-[25%] left-[10%] w-[350px] h-[350px] bg-gradient-wave-1 animate-breathing opacity-25" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <div className="inline-flex items-center justify-center p-3 bg-gradient-accent rounded-full mb-6 animate-pulse-glow">
             <Award className="h-8 w-8 text-accent-foreground" />
           </div>
@@ -59,13 +66,18 @@ export const SuccessCases = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Explora cómo hemos transformado desafíos en triunfos con nuestros casos de éxito en implementación y optimización
           </p>
-        </div>
+        </motion.div>
 
         {/* Logos grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-          {cases.map((company, index) => <div key={index} style={{
-          animationDelay: `${index * 50}ms`
-        }} className="group relative bg-card border-2 border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 animate-fade-in-up flex flex-col items-center justify-center">
+          {cases.map((company, index) => <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
+            className="group relative bg-card border-2 border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-center"
+          >
               
               {/* Logo container */}
               <div className="relative w-full aspect-video flex items-center justify-center mb-4 transition-transform duration-500">
@@ -87,7 +99,7 @@ export const SuccessCases = () => {
 
               {/* Glow effect on hover */}
               <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-500 pointer-events-none" />
-            </div>)}
+            </motion.div>)}
         </div>
 
         {/* Bottom message */}

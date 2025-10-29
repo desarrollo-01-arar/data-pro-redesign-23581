@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Zap, Mail, Bell, Database, Webhook, Bot, ArrowRight, FileText, Users, TrendingUp, Calendar, Cloud } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 const automationExamples = [{
@@ -33,9 +34,14 @@ const automationExamples = [{
 }];
 export const Automation = () => {
   return <section id="automatizacion" className="py-20 relative overflow-hidden">
-      {/* Animated background with flowing waves */}
+      {/* Premium breathing background with flowing lines */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background">
-        <div className="absolute inset-0 opacity-20">
+        {/* Breathing orbs */}
+        <div className="absolute top-[15%] left-[5%] w-[400px] h-[400px] bg-gradient-breathing animate-breathing-slow opacity-40" />
+        <div className="absolute bottom-[20%] right-[10%] w-[350px] h-[350px] bg-gradient-wave-1 animate-breathing opacity-35" />
+        
+        {/* Flowing lines */}
+        <div className="absolute inset-0 opacity-15">
           <div className="absolute top-[10%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent animate-wave-slow" />
           <div className="absolute top-[25%] left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-wave-medium" />
           <div className="absolute top-[40%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent animate-wave-fast" />
@@ -46,7 +52,13 @@ export const Automation = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <div className="inline-flex items-center justify-center p-3 bg-gradient-primary rounded-full mb-6 animate-pulse-glow">
             <Zap className="h-8 w-8 text-primary-foreground" />
           </div>
@@ -56,7 +68,7 @@ export const Automation = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Ahorra tiempo y reduce errores con procesos automáticos que trabajan 24/7 por tu empresa
           </p>
-        </div>
+        </motion.div>
 
         {/* Premium automation cards with flow connections */}
         <div className="relative max-w-6xl mx-auto">
@@ -78,9 +90,14 @@ export const Automation = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {automationExamples.map((example, index) => {
             const Icon = example.icon;
-            return <Card key={index} className="group relative hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 hover:border-primary/50 animate-fade-in-up overflow-hidden" style={{
-              animationDelay: `${index * 100}ms`
-            }}>
+            return <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="group relative hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 hover:border-primary/50 overflow-hidden h-full">
                   {/* Gradient background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${example.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                   
@@ -102,7 +119,8 @@ export const Automation = () => {
                     {/* Arrow indicator */}
                     
                   </CardContent>
-                </Card>;
+                </Card>
+              </motion.div>;
           })}
           </div>
         </div>

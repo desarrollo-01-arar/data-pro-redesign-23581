@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Briefcase, GraduationCap, Wrench, Shield, TrendingUp, Code, DollarSign, ShoppingCart, Settings, Package, Users, Monitor, CheckCircle2, ArrowRight } from "lucide-react";
 const services = [{
@@ -64,14 +65,20 @@ const areas = [{
 }];
 export const Consulting = () => {
   return <section id="consultorias" className="py-20 bg-secondary/30 relative overflow-hidden">
-      {/* Animated background waves */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-wave-slow" />
-        <div className="absolute top-2/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent animate-wave-medium" />
+      {/* Premium breathing background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-[25%] left-[10%] w-[450px] h-[450px] bg-gradient-breathing animate-breathing opacity-25" />
+        <div className="absolute bottom-[15%] right-[5%] w-[500px] h-[500px] bg-gradient-wave-2 animate-breathing-slow opacity-30" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Consultoría <span className="text-primary dark:text-primary-glow">Siesa EE</span>
           </h2>
@@ -89,7 +96,7 @@ export const Consulting = () => {
                 <span className="text-sm font-medium">{strength}</span>
               </div>)}
           </div>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="mb-20">
@@ -97,9 +104,14 @@ export const Consulting = () => {
             Nuestros <span className="text-primary dark:text-primary-glow">Servicios</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => <Card key={service.title} className="group relative hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 hover:border-primary/50 animate-fade-in-up overflow-hidden" style={{
-            animationDelay: `${index * 100}ms`
-          }}>
+            {services.map((service, index) => <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="group relative hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 hover:border-primary/50 overflow-hidden h-full">
                 {/* Gradient overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
@@ -117,7 +129,8 @@ export const Consulting = () => {
                   </p>
                   
                 </CardContent>
-              </Card>)}
+              </Card>
+            </motion.div>)}
           </div>
         </div>
 
@@ -127,9 +140,14 @@ export const Consulting = () => {
             Áreas de <span className="text-primary dark:text-primary-glow">Especialización</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {areas.map((area, index) => <Card key={area.title} className="group hover:shadow-elegant transition-all duration-500 border-2 hover:border-primary/50 animate-fade-in-up overflow-hidden" style={{
-            animationDelay: `${index * 100}ms`
-          }}>
+            {areas.map((area, index) => <motion.div
+              key={area.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="group hover:shadow-elegant transition-all duration-500 border-2 hover:border-primary/50 overflow-hidden h-full">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4 mb-0 group-hover:mb-4 transition-all duration-300">
                     <div className="p-3 rounded-xl bg-gradient-accent group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
@@ -159,7 +177,8 @@ export const Consulting = () => {
                     </div>
                   </div>
                 </CardContent>
-              </Card>)}
+              </Card>
+            </motion.div>)}
           </div>
         </div>
         

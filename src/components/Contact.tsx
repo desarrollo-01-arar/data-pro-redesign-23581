@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -44,32 +45,28 @@ export const Contact = () => {
     }));
   };
   return <section id="contacto" className="py-20 relative overflow-hidden">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 animate-gradient" />
-      <style>{`
-        @keyframes gradient {
-          0%, 100% { 
-            background-position: 0% 50%;
-          }
-          50% { 
-            background-position: 100% 50%;
-          }
-        }
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 8s ease infinite;
-        }
-      `}</style>
+      {/* Premium breathing background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-gradient-breathing animate-breathing opacity-30" />
+        <div className="absolute bottom-[15%] right-[10%] w-[450px] h-[450px] bg-gradient-wave-2 animate-breathing-slow opacity-35" />
+        <div className="absolute top-[50%] left-[5%] w-[300px] h-[300px] bg-gradient-wave-1 animate-float-soft opacity-25" />
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Hablemos de tu <span className="text-primary dark:text-primary-glow">Proyecto</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Estamos listos para ayudarte a transformar tu empresa con datos e inteligencia
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Contact Info */}

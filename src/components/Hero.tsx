@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 const dynamicWords = ["datos", "decisiones", "resultados"];
@@ -19,19 +20,22 @@ export const Hero = () => {
     }
   };
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Animated Background with Waves */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary-glow/5">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/0 via-primary-glow/30 to-primary/0 animate-wave-slow" />
-            <div className="absolute top-20 left-0 w-full h-full bg-gradient-to-r from-primary-glow/0 via-primary/20 to-primary-glow/0 animate-wave-medium" />
-            <div className="absolute top-40 left-0 w-full h-full bg-gradient-to-r from-primary/0 via-primary-glow/25 to-primary/0 animate-wave-fast" />
-          </div>
-        </div>
+      {/* Premium Breathing Background */}
+      <div className="absolute inset-0 bg-background">
+        {/* Breathing gradient orbs */}
+        <div className="absolute top-[-20%] left-[10%] w-[600px] h-[600px] bg-gradient-breathing animate-breathing-slow opacity-60" />
+        <div className="absolute bottom-[-10%] right-[15%] w-[500px] h-[500px] bg-gradient-breathing animate-breathing opacity-50" />
+        <div className="absolute top-[40%] left-[-10%] w-[400px] h-[400px] bg-gradient-wave-1 animate-float-soft opacity-40" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[450px] h-[450px] bg-gradient-wave-2 animate-breathing-slow opacity-45" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl mx-auto text-center space-y-8"
+        >
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             Decisiones inteligentes con{" "}
             <span className="text-primary dark:text-primary-glow">
@@ -68,7 +72,7 @@ export const Hero = () => {
               Ver soluciones
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
 
     </section>;

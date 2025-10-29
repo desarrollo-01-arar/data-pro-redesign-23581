@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { CheckCircle2, Crown } from "lucide-react";
 const dashboards = [{
@@ -28,25 +29,37 @@ const dashboards = [{
 }];
 export const Dashboards = () => {
   return <section id="tableros" className="py-20 bg-secondary/30 relative overflow-hidden">
-      {/* Background waves for consistency */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/0 via-primary-glow/30 to-primary/0 animate-wave-slow" />
+      {/* Premium breathing background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-gradient-breathing animate-breathing opacity-30" />
+        <div className="absolute bottom-[10%] left-[15%] w-[450px] h-[450px] bg-gradient-wave-2 animate-breathing-slow opacity-25" />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Tableros de <span className="text-primary dark:text-primary-glow">Control</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Descubre los indicadores esenciales que tu compañía necesita para optimizar la producción y superar las expectativas del mercado
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-[70px]">
-          {dashboards.map((dashboard, index) => <Card key={dashboard.title} style={{
-          animationDelay: `${index * 100}ms`
-        }} className="group hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 border-2 hover:border-primary/50 animate-fade-in-up overflow-hidden bg-card/50 backdrop-blur-sm">
+          {dashboards.map((dashboard, index) => <motion.div
+            key={dashboard.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <Card className="group hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 border-2 hover:border-primary/50 overflow-hidden bg-card/50 backdrop-blur-sm h-full">
               <CardHeader className="relative pb-0 mb-4"> 
                 {/* Dashboard Image with Premium Frame */}
                 <div className="relative rounded-lg overflow-hidden border-2 border-accent/30 shadow-glow mb-4 bg-background/50 p-1.5">
@@ -81,7 +94,8 @@ export const Dashboards = () => {
                     </div>)}
                 </div>
               </CardContent>
-            </Card>)}
+            </Card>
+          </motion.div>)}
         </div>
       </div>
     </section>;

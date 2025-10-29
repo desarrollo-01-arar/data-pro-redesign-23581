@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { Target, Eye, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
@@ -35,17 +36,23 @@ export const AboutUs = () => {
     setCurrentSlide(prev => (prev - 1 + team.length) % team.length);
   };
   return <section id="nosotros" className="py-20 bg-secondary/30 relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-wave-slow" />
-        
+      {/* Premium breathing background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-[20%] left-[15%] w-[400px] h-[400px] bg-gradient-breathing animate-breathing-slow opacity-25" />
+        <div className="absolute bottom-[30%] right-[10%] w-[450px] h-[450px] bg-gradient-wave-1 animate-breathing opacity-20" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Mission & Vision */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           {/* Mission */}
-          <Card className="relative overflow-hidden border-2 hover:border-primary/50 transition-all animate-fade-in-up hover:shadow-elegant">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Card className="relative overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-elegant h-full">
             <div className="absolute inset-0 bg-gradient-primary opacity-10" />
             <CardContent className="p-8 relative z-10">
               <div className="flex items-center space-x-3 mb-4">
@@ -61,11 +68,16 @@ export const AboutUs = () => {
               </p>
             </CardContent>
           </Card>
+          </motion.div>
 
           {/* Vision */}
-          <Card className="relative overflow-hidden border-2 hover:border-accent/50 transition-all animate-fade-in-up backdrop-blur-sm hover:shadow-elegant" style={{
-          animationDelay: "100ms"
-        }}>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <Card className="relative overflow-hidden border-2 hover:border-accent/50 transition-all backdrop-blur-sm hover:shadow-elegant h-full">
             <div className="absolute inset-0 bg-gradient-accent opacity-10" />
             <CardContent className="p-8 relative z-10">
               <div className="flex items-center space-x-3 mb-4">
@@ -80,10 +92,17 @@ export const AboutUs = () => {
               </p>
             </CardContent>
           </Card>
+          </motion.div>
         </div>
 
         {/* Team Section - Carousel */}
-        <div className="mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
           <h3 className="text-3xl font-bold text-center mb-12">
             Nuestro <span className="text-primary dark:text-primary-glow">Equipo</span>
           </h3>
@@ -153,7 +172,7 @@ export const AboutUs = () => {
               Nuestro equipo está compuesto por <span className="font-semibold text-foreground">Matemáticos e Ingenieros</span> expertos en inteligencia de negocios, análisis de datos y automatización, todos certificados y dedicados a diseñar soluciones personalizadas y de última generación.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>;
 };
