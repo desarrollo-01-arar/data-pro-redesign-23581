@@ -49,12 +49,16 @@ export const Header = () => {
             <img
               src={logoDark}
               alt="DataPro Analítica"
-              className="h-10 w-auto dark:hidden transition-transform group-hover:scale-105"
+              className={`w-auto dark:hidden transition-all duration-300 group-hover:scale-105 ${
+                isScrolled ? "h-10" : "h-14"
+              }`}
             />
             <img
               src={logoLight}
               alt="DataPro Analítica"
-              className="h-10 w-auto hidden dark:block transition-transform group-hover:scale-105"
+              className={`w-auto hidden dark:block transition-all duration-300 group-hover:scale-105 ${
+                isScrolled ? "h-10" : "h-14"
+              }`}
             />
           </a>
 
@@ -102,20 +106,20 @@ export const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 space-y-2 animate-fade-in-up">
+          <div className="lg:hidden mt-4 py-4 space-y-2 animate-fade-in-up bg-background/98 backdrop-blur-md rounded-lg border border-border shadow-lg">
             {navItems.map((item) => (
               <Button
                 key={item.href}
                 variant="ghost"
                 onClick={() => scrollToSection(item.href)}
-                className="w-full justify-start text-foreground/80 hover:text-foreground"
+                className="w-full justify-start text-foreground hover:text-foreground hover:bg-secondary/80"
               >
                 {item.label}
               </Button>
             ))}
             <Button
               variant="default"
-              className="w-full bg-gradient-primary"
+              className="w-full bg-gradient-primary mx-2"
               onClick={() => window.open("https://datapro.com.co/portal", "_blank")}
             >
               Portal de Clientes
