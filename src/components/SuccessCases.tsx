@@ -28,13 +28,13 @@ const cases = [{
   logo: "https://datapro.com.co/CasosExito/Inversiones%20Arar.png",
   industry: "Financiero"
 }, {
-  name: "Italo Colombiana de Baterías",
+  name: "Italo Colombiana de Baterías (ICB)",
   logo: "https://datapro.com.co/CasosExito/Italo%20Colombiana%20de%20Bater%C3%ADas.png",
-  industry: "Manufactura"
+  industry: "Facturación y Servicios"
 }, {
   name: "Promotores del Oriente",
   logo: "https://datapro.com.co/CasosExito/Promotores%20del%20Oriente.png",
-  industry: "Construcción"
+  industry: "Automotriz"
 }, {
   name: "Representaciones An kal",
   logo: "https://datapro.com.co/CasosExito/Repesentaciones%20An%20kal.png",
@@ -65,9 +65,16 @@ export const SuccessCases = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
           {cases.map((company, index) => <div key={index} style={{
           animationDelay: `${index * 50}ms`
-        }} className="group relative bg-card border-2 border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-elegant transition-all duration-500 animate-fade-in-up flex flex-col items-center justify-center px-[20px] py-[20px]">
+        }} className="group relative bg-card border-2 border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 animate-fade-in-up flex flex-col items-center justify-center px-[20px] py-[20px]">
+              {/* Company name - shows on hover */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-card border-2 border-primary text-primary shadow-lg">
+                  {company.name}
+                </span>
+              </div>
+              
               {/* Logo container */}
-              <div className="relative w-full aspect-video flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-500">
+              <div className="relative w-full aspect-video flex items-center justify-center mb-3 transition-transform duration-500">
                 <img src={company.logo} alt={company.name} loading="lazy" className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105 " />
               </div>
 

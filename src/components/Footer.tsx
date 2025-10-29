@@ -1,4 +1,4 @@
-import { Linkedin, Mail, MapPin } from "lucide-react";
+import { Linkedin, Mail, MapPin, Facebook, Twitter, Instagram } from "lucide-react";
 import logoLight from "@/assets/logo-light.png";
 import logoDark from "@/assets/logo-dark.png";
 export const Footer = () => {
@@ -69,6 +69,15 @@ Santander, Colombia</a>
               <li className="flex items-center space-x-2">
                 <a href="https://www.linkedin.com/company/datapro" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all" aria-label="LinkedIn">
                   <Linkedin className="h-5 w-5" />
+                </a>
+                <a href="https://www.facebook.com/datapro" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Facebook">
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a href="https://twitter.com/datapro" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all" aria-label="X (Twitter)">
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a href="https://www.instagram.com/datapro" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Instagram">
+                  <Instagram className="h-5 w-5" />
                 </a>
               </li>
             </ul>
