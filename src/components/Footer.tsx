@@ -66,7 +66,7 @@ export const Footer = () => {
 Torre 1 Oficina 206
 Santander, Colombia</a>
               </li>
-              <li className="flex items-center space-x-2">
+              <li className="flex items-center space-x-2 mt-10">
                 <a href="https://www.linkedin.com/company/datapro" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all" aria-label="LinkedIn">
                   <Linkedin className="h-5 w-5" />
                 </a>
