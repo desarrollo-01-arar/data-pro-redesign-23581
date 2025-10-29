@@ -43,10 +43,10 @@ const cases = [{
 }];
 export const SuccessCases = () => {
   return <section id="casos-exito" className="py-20 bg-background relative overflow-hidden">
-      {/* Premium breathing background */}
+      {/* Smooth gradient background */}
       <div className="absolute inset-0">
-        <div className="absolute top-[30%] right-[20%] w-[400px] h-[400px] bg-gradient-breathing animate-breathing-slow opacity-20" />
-        <div className="absolute bottom-[25%] left-[10%] w-[350px] h-[350px] bg-gradient-wave-1 animate-breathing opacity-25" />
+        <div className="absolute inset-0 bg-gradient-soft-blue animate-gradient-shift opacity-35" 
+             style={{ backgroundSize: "200% 200%", animationDelay: "2s" }} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

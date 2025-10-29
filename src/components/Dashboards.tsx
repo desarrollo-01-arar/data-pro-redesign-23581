@@ -29,10 +29,10 @@ const dashboards = [{
 }];
 export const Dashboards = () => {
   return <section id="tableros" className="py-20 bg-secondary/30 relative overflow-hidden">
-      {/* Premium breathing background */}
+      {/* Smooth gradient background */}
       <div className="absolute inset-0">
-        <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-gradient-breathing animate-breathing opacity-30" />
-        <div className="absolute bottom-[10%] left-[15%] w-[450px] h-[450px] bg-gradient-wave-2 animate-breathing-slow opacity-25" />
+        <div className="absolute inset-0 bg-gradient-soft-yellow animate-gradient-shift opacity-30" 
+             style={{ backgroundSize: "200% 200%" }} />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">

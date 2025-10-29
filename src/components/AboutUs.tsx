@@ -36,10 +36,10 @@ export const AboutUs = () => {
     setCurrentSlide(prev => (prev - 1 + team.length) % team.length);
   };
   return <section id="nosotros" className="py-20 bg-secondary/30 relative overflow-hidden">
-      {/* Premium breathing background */}
+      {/* Smooth gradient background */}
       <div className="absolute inset-0">
-        <div className="absolute top-[20%] left-[15%] w-[400px] h-[400px] bg-gradient-breathing animate-breathing-slow opacity-25" />
-        <div className="absolute bottom-[30%] right-[10%] w-[450px] h-[450px] bg-gradient-wave-1 animate-breathing opacity-20" />
+        <div className="absolute inset-0 bg-gradient-soft-blue animate-gradient-shift opacity-35" 
+             style={{ backgroundSize: "200% 200%", animationDelay: "0.5s" }} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

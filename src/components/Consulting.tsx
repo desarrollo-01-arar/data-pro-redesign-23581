@@ -95,10 +95,10 @@ const areas = [
 export const Consulting = () => {
   return (
     <section id="consultorias" className="py-20 bg-secondary/30 relative overflow-hidden">
-      {/* Premium breathing background */}
+      {/* Smooth gradient background */}
       <div className="absolute inset-0">
-        <div className="absolute top-[25%] left-[10%] w-[450px] h-[450px] bg-gradient-breathing animate-breathing opacity-25" />
-        <div className="absolute bottom-[15%] right-[5%] w-[500px] h-[500px] bg-gradient-wave-2 animate-breathing-slow opacity-30" />
+        <div className="absolute inset-0 bg-gradient-soft-blue animate-gradient-shift opacity-40" 
+             style={{ backgroundSize: "200% 200%" }} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
