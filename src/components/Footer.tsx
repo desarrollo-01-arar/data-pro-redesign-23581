@@ -4,7 +4,7 @@ import logoDark from "@/assets/logo-dark.png";
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 pt-12 pb-2">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Logo & Description */}
           <div>
@@ -88,11 +88,11 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border text-center">
-          <p className="text-sm text-muted-foreground mb-3">
+          <p className="text-sm text-muted-foreground mb-1">
             © {currentYear} DataPro Analítica. Todos los derechos reservados.
           </p>
           <a 
-            href="https://github.com/inversionesarar/datapro-website" 
+            href="https://github.com/desarrollo-01-arar/data-pro-redesign-23581" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-xs text-muted-foreground/70 hover:text-primary transition-colors group"
