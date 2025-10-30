@@ -7,20 +7,66 @@ import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { Mail, Phone, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  subject: z.string()
+    .trim()
+    .min(1, "Este campo es obligatorio")
+    .max(50, "El asunto debe tener máximo 50 caracteres")
+    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/, "Solo se permiten letras"),
+  name: z.string()
+    .trim()
+    .min(1, "Este campo es obligatorio")
+    .max(30, "El nombre debe tener máximo 30 caracteres")
+    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/, "Solo se permiten letras"),
+  company: z.string().trim().max(100, "La empresa debe tener máximo 100 caracteres").optional(),
+  email: z.string()
+    .trim()
+    .min(1, "Este campo es obligatorio")
+    .email("Ingrese un correo electrónico válido")
+    .max(50, "El correo debe tener máximo 50 caracteres"),
+  phone: z.string()
+    .trim()
+    .regex(/^\+?[0-9\s]+$/, "Ingrese un número de teléfono válido (máximo 15 caracteres)")
+    .max(15, "El teléfono debe tener máximo 15 caracteres")
+    .optional()
+    .or(z.literal("")),
+  message: z.string()
+    .trim()
+    .min(1, "Este campo es obligatorio")
+    .max(300, "El mensaje debe tener máximo 300 caracteres"),
+});
 export const Contact = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
+    subject: "",
     name: "",
     company: "",
     email: "",
     phone: "",
     message: ""
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
+
+    // Validación manual con zod
+    const result = contactSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const newErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          newErrors[err.path[0].toString()] = err.message;
+        }
+      });
+      setErrors(newErrors);
+      return;
+    }
+
     setIsSubmitting(true);
 
     // Simulate form submission
@@ -30,6 +76,7 @@ export const Contact = () => {
       description: "Nos pondremos en contacto contigo pronto."
     });
     setFormData({
+      subject: "",
       name: "",
       company: "",
       email: "",
@@ -39,10 +86,19 @@ export const Contact = () => {
     setIsSubmitting(false);
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: value
     }));
+    // Limpiar error del campo cuando el usuario empiece a escribir
+    if (errors[name]) {
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
   return <section id="contacto" className="py-20 relative overflow-hidden">
       {/* Premium breathing background */}
@@ -120,32 +176,113 @@ export const Contact = () => {
           animationDelay: "100ms"
         }}>
             <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                {/* Asunto - Full width */}
+                <div className="space-y-2">
+                  <Label htmlFor="subject">
+                    Asunto <span className="text-destructive">*</span>
+                  </Label>
+                  <Input 
+                    id="subject" 
+                    name="subject" 
+                    value={formData.subject} 
+                    onChange={handleChange}
+                    placeholder="Motivo del contacto" 
+                    className={`transition-all focus:shadow-glow ${errors.subject ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                  />
+                  {errors.subject && (
+                    <p className="text-sm text-destructive mt-1">{errors.subject}</p>
+                  )}
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Nombre completo *</Label>
-                    <Input id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="Tu nombre" className="transition-all focus:shadow-glow" />
+                    <Label htmlFor="name">
+                      Nombre completo <span className="text-destructive">*</span>
+                    </Label>
+                    <Input 
+                      id="name" 
+                      name="name" 
+                      value={formData.name} 
+                      onChange={handleChange}
+                      placeholder="Ingrese su nombre" 
+                      className={`transition-all focus:shadow-glow ${errors.name ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                    />
+                    {errors.name && (
+                      <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="company">Empresa *</Label>
-                    <Input id="company" name="company" value={formData.company} onChange={handleChange} required placeholder="Nombre de tu empresa" className="transition-all focus:shadow-glow" />
+                    <Label htmlFor="email">
+                      Correo Electrónico <span className="text-destructive">*</span>
+                    </Label>
+                    <Input 
+                      id="email" 
+                      name="email" 
+                      type="email" 
+                      value={formData.email} 
+                      onChange={handleChange}
+                      placeholder="ejemplo@correo.com" 
+                      className={`transition-all focus:shadow-glow ${errors.email ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                    />
+                    {errors.email && (
+                      <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                    )}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="email">Correo electrónico *</Label>
-                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="tu@email.com" className="transition-all focus:shadow-glow" />
+                    <Label htmlFor="company">
+                      Empresa <span className="text-muted-foreground">(Opcional)</span>
+                    </Label>
+                    <Input 
+                      id="company" 
+                      name="company" 
+                      value={formData.company} 
+                      onChange={handleChange}
+                      placeholder="Nombre de su empresa" 
+                      className={`transition-all focus:shadow-glow ${errors.company ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                    />
+                    {errors.company && (
+                      <p className="text-sm text-destructive mt-1">{errors.company}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Teléfono</Label>
-                    <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+57 300 123 4567" className="transition-all focus:shadow-glow" />
+                    <Label htmlFor="phone">
+                      Teléfono <span className="text-muted-foreground">(Opcional)</span>
+                    </Label>
+                    <Input 
+                      id="phone" 
+                      name="phone" 
+                      type="tel" 
+                      value={formData.phone} 
+                      onChange={handleChange}
+                      placeholder="Ingrese su número de teléfono" 
+                      className={`transition-all focus:shadow-glow ${errors.phone ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                    />
+                    {errors.phone && (
+                      <p className="text-sm text-destructive mt-1">{errors.phone}</p>
+                    )}
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Mensaje *</Label>
-                  <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required placeholder="Cuéntanos sobre tu proyecto..." rows={5} className="transition-all focus:shadow-glow resize-none" />
+                  <Label htmlFor="message">
+                    Descripción <span className="text-destructive">*</span>
+                  </Label>
+                  <Textarea 
+                    id="message" 
+                    name="message" 
+                    value={formData.message} 
+                    onChange={handleChange}
+                    placeholder="Escriba su mensaje aquí" 
+                    rows={5} 
+                    className={`transition-all focus:shadow-glow resize-none ${errors.message ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                  />
+                  {errors.message && (
+                    <p className="text-sm text-destructive mt-1">{errors.message}</p>
+                  )}
                 </div>
 
                 <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-gradient-primary hover:shadow-glow transition-all group">
