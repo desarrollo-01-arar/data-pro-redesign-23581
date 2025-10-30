@@ -29,8 +29,7 @@ const contactSchema = z.object({
   phone: z.string()
     .trim()
     .regex(/^\+?[0-9\s]+$/, "Ingrese un número de teléfono válido (máximo 15 caracteres)")
-    .max(15, "El teléfono debe tener máximo 15 caracteres")
-    .optional()
+    .max(15, "El teléfono debe tener máximo 15 caracteres")    
     .or(z.literal("")),
   message: z.string()
     .trim()
