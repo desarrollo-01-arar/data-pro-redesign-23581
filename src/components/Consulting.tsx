@@ -143,11 +143,23 @@ export const Consulting = () => {
         </div>
 
         {/* Areas of Expertise */}
-        <div>
-          <h3 className="text-3xl font-bold text-center mb-12">
+        <div className="relative">
+          {/* Decorative background elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-10 left-[5%] w-32 h-32 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-[8%] w-40 h-40 bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl" />
+          </div>
+
+          <h3 className="text-3xl font-bold text-center mb-3 relative">
             Áreas de <span className="text-primary dark:text-primary-glow">Especialización</span>
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          {/* Decorative line */}
+          <div className="flex justify-center mb-12">
+            <div className="h-1 w-24 bg-gradient-primary rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
             {areas.map((area, index) => <motion.div key={area.title} initial={{
             opacity: 0,
             y: 30
@@ -160,10 +172,16 @@ export const Consulting = () => {
             duration: 0.5,
             delay: index * 0.1
           }}>
-                <Card className="group hover:shadow-elegant transition-all duration-500 border-2 hover:border-primary/50 overflow-hidden h-full">
-                  <CardContent className="p-6">
+                <Card className="group hover:shadow-elegant transition-all duration-500 border-2 hover:border-primary/50 overflow-hidden h-full relative bg-gradient-to-br from-card via-card to-secondary/20 dark:from-card dark:via-card dark:to-primary/5">
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Icon glow effect */}
+                  <div className="absolute top-6 left-6 w-12 h-12 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-full" />
+                  
+                  <CardContent className="p-6 relative">
                     <div className="flex items-center space-x-4 mb-0 group-hover:mb-4 transition-all duration-300">
-                      <div className="p-3 rounded-xl bg-gradient-accent group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      <div className="p-3 rounded-xl bg-gradient-accent group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0 shadow-md group-hover:shadow-lg">
                         <area.icon className="h-6 w-6 text-accent-foreground" />
                       </div>
                       <h4 className="text-xl font-semibold group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
@@ -184,7 +202,7 @@ export const Consulting = () => {
                         {area.features.map((feature, featureIndex) => <div key={featureIndex} className="flex items-center space-x-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
                       transitionDelay: `${200 + featureIndex * 50}ms`
                     }}>
-                            <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-primary-glow" />
+                            <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-primary-glow group-hover:scale-125 transition-transform" />
                             <span className="text-muted-foreground">{feature}</span>
                           </div>)}
                       </div>

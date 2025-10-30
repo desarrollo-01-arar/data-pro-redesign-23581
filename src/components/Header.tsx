@@ -8,11 +8,42 @@ import logoDark from "@/assets/logo-dark.png";
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Scroll spy logic
+      const sections = [
+        "tableros",
+        "automatizacion",
+        "consultorias",
+        "casos",
+        "nosotros",
+        "contacto",
+      ];
+
+      const scrollPosition = window.scrollY + 100;
+
+      for (const sectionId of sections) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
     };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -64,16 +95,23 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <Button
-                key={item.href}
-                variant="ghost"
-                onClick={() => scrollToSection(item.href)}
-                className="text-foreground/80 hover:text-foreground hover:bg-secondary/50 transition-all"
-              >
-                {item.label}
-              </Button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.substring(1);
+              return (
+                <Button
+                  key={item.href}
+                  variant="ghost"
+                  onClick={() => scrollToSection(item.href)}
+                  className={`relative text-foreground/80 hover:text-foreground hover:bg-secondary/50 transition-all duration-300 ${
+                    isActive
+                      ? "text-primary dark:text-primary-glow font-medium after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-0.5 after:bg-gradient-primary after:rounded-full after:animate-fade-in"
+                      : ""
+                  }`}
+                >
+                  {item.label}
+                </Button>
+              );
+            })}
             <Button
               variant="default"
               className="ml-4 bg-gradient-primary hover:shadow-glow transition-all"
@@ -107,16 +145,23 @@ export const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden mt-4 py-4 space-y-2 animate-fade-in-up bg-background/98 backdrop-blur-md rounded-lg border border-border shadow-lg">
-            {navItems.map((item) => (
-              <Button
-                key={item.href}
-                variant="ghost"
-                onClick={() => scrollToSection(item.href)}
-                className="w-full justify-start text-foreground hover:text-foreground hover:bg-secondary/80"
-              >
-                {item.label}
-              </Button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.substring(1);
+              return (
+                <Button
+                  key={item.href}
+                  variant="ghost"
+                  onClick={() => scrollToSection(item.href)}
+                  className={`w-full justify-start text-foreground hover:text-foreground hover:bg-secondary/80 transition-all duration-300 ${
+                    isActive
+                      ? "bg-secondary/50 text-primary dark:text-primary-glow font-medium border-l-4 border-primary dark:border-primary-glow"
+                      : ""
+                  }`}
+                >
+                  {item.label}
+                </Button>
+              );
+            })}
             <Button
               variant="default"
               className="w-full bg-gradient-primary mx-2"
