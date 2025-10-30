@@ -29,6 +29,7 @@ export const Header = () => {
 
       if (window.scrollY < 100) {
         setActiveSection("");
+        setIndicatorStyle({ left: 0, width: 0 });
         return;
       }
 
