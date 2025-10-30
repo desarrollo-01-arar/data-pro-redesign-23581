@@ -71,18 +71,18 @@ export const Dashboards = () => {
                 <div className="relative rounded-lg overflow-hidden border-2 border-accent/30 shadow-glow mb-4 bg-background/50 p-1.5">
                   <div className="relative rounded-md overflow-hidden aspect-video">
                     <img src={dashboard.image} alt={dashboard.title} loading="lazy" className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-500" />
-                    {/* Professional gradient overlay from bottom to top */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+                    {/* Professional gradient overlay - lighter in light mode, darker in dark mode */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-primary/15 to-transparent dark:from-black/60 dark:via-black/15 dark:to-transparent pointer-events-none" />
                     
                     {/* Crown and Stars in bottom left corner */}
                     <div className="absolute bottom-3 left-3 flex items-center gap-2">
                       {/* Crown */}
-                      <div className="flex items-center justify-center bg-accent/20 backdrop-blur-md border border-accent/40 rounded-lg px-2.5 py-1.5">
-                        <Crown className="h-5 w-5 text-accent fill-accent" />
+                      <div className="flex items-center justify-center bg-background/80 dark:bg-accent/20 backdrop-blur-md border border-primary/40 dark:border-accent/40 rounded-lg px-2.5 py-1.5">
+                        <Crown className="h-5 w-5 text-primary dark:text-accent fill-primary dark:fill-accent" />
                       </div>
                       {/* Stars */}
-                      <div className="flex gap-0.5 bg-background/20 backdrop-blur-md border border-accent/30 px-2.5 py-1.5 rounded-lg">
-                        {[...Array(5)].map((_, i) => <span key={i} className="text-accent text-sm">★</span>)}
+                      <div className="flex gap-0.5 bg-background/80 dark:bg-background/20 backdrop-blur-md border border-primary/40 dark:border-accent/30 px-2.5 py-1.5 rounded-lg">
+                        {[...Array(5)].map((_, i) => <span key={i} className="text-primary dark:text-accent text-sm">★</span>)}
                       </div>
                     </div>
                   </div>
