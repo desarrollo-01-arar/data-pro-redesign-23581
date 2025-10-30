@@ -154,30 +154,32 @@ export const AboutUs = () => {
               >
                 {team.map((member, index) => (
                   <div key={index} className="min-w-full px-4">
-                    <div className="grid md:grid-cols-2 gap-8 items-center">
-                      {/* Image side */}
-                      <div className="relative group">
-                        <div className="relative aspect-[3/4] max-w-sm mx-auto overflow-hidden rounded-2xl border-4 border-primary/20 shadow-elegant">
+                    <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+                      {/* Avatar side */}
+                      <div className="relative group flex-shrink-0">
+                        <div className="relative w-56 h-56 overflow-hidden rounded-full border-4 border-primary/30 shadow-elegant bg-card">
                           <img
                             src={member.image}
                             alt={member.role}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             loading="lazy"
                           />
-                          {/* Gradient overlay on hover */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          {/* Subtle gradient overlay on hover */}
+                          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
+                        {/* Glow effect on hover */}
+                        <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300 -z-10" />
                       </div>
 
                       {/* Info side */}
-                      <div className="space-y-6 text-center md:text-left w-11/12">
+                      <div className="space-y-5 text-center md:text-left max-w-xl flex-1">
                         <div>
                           <h4 className="text-2xl font-bold mb-2 text-primary dark:text-primary-glow">{member.role}</h4>
                           <p className="text-xl text-foreground mb-2">{member.name}</p>
                           <div className="h-1 w-20 bg-gradient-primary mx-auto md:mx-0 rounded-full mb-4" />
                         </div>
 
-                        <blockquote className="text-lg italic text-foreground/80 border-l-4 border-primary/30 pl-6">
+                        <blockquote className="text-base italic text-foreground/80 border-l-4 border-primary/30 pl-6">
                           "{member.quote}"
                         </blockquote>
 
