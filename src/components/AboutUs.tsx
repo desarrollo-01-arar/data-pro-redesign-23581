@@ -133,104 +133,120 @@ export const AboutUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mt-20"
         >
-          <h3 className="text-3xl font-bold text-center mb-12">
-            Nuestro <span className="text-primary dark:text-primary-glow">Equipo</span>
-          </h3>
-
-          <div
-            className="relative max-w-5xl mx-auto"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            {/* Carousel container */}
-            <div className="relative overflow-hidden rounded-2xl">
-              <div
-                className="flex transition-transform duration-500 ease-out"
-                style={{
-                  transform: `translateX(-${currentSlide * 100}%)`,
-                }}
-              >
-                {team.map((member, index) => (
-                  <div key={index} className="min-w-full px-4">
-                    <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
-                      {/* Avatar side */}
-                      <div className="relative group flex-shrink-0">
-                        <div className="relative w-56 h-56 overflow-hidden rounded-full border-4 border-primary/30 shadow-elegant bg-card">
-                          <img
-                            src={member.image}
-                            alt={member.role}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            loading="lazy"
-                          />
-                          {/* Subtle gradient overlay on hover */}
-                          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
-                        {/* Glow effect on hover */}
-                        <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300 -z-10" />
-                      </div>
-
-                      {/* Info side */}
-                      <div className="space-y-5 text-center md:text-left max-w-xl flex-1">
-                        <div>
-                          <h4 className="text-2xl font-bold mb-2 text-primary dark:text-primary-glow">{member.role}</h4>
-                          <p className="text-xl text-foreground mb-2">{member.name}</p>
-                          <div className="h-1 w-20 bg-gradient-primary mx-auto md:mx-0 rounded-full mb-4" />
-                        </div>
-
-                        <blockquote className="text-base italic text-foreground/80 border-l-4 border-primary/30 pl-6">
-                          "{member.quote}"
-                        </blockquote>
-
-                        {/* Specialty */}
-                        <div className="bg-accent/20 dark:bg-accent/10 dark:border-accent/50 border border-accent/50 rounded-lg p-4">
-                          <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-1">
-                            Especialidad
-                          </p>
-                          <p className="text-base text-foreground">{member.specialty}</p>
-                        </div>
-
-                        {/* Optional description */}
-                        {member.description && (
-                          <p className="text-sm text-muted-foreground leading-relaxed">{member.description}</p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Navigation buttons */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group"
-              aria-label="Previous team member"
-            >
-              <ChevronLeft className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
-            </button>
-
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group"
-              aria-label="Next team member"
-            >
-              <ChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
-            </button>
-
-            {/* Dots indicator */}
-            <div className="flex justify-center space-x-2 mt-8">
-              {team.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide ? "w-8 bg-primary dark:bg-primary-glow" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`}
-                  aria-label={`Go to team member ${index + 1}`}
-                />
-              ))}
+          {/* Title with decorative line */}
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold mb-4">
+              Nuestro <span className="text-primary dark:text-primary-glow">Equipo</span>
+            </h3>
+            <div className="flex items-center justify-center gap-3">
+              <div className="h-0.5 w-16 bg-gradient-primary rounded-full" />
+              <div className="h-1 w-8 bg-gradient-primary rounded-full" />
+              <div className="h-0.5 w-16 bg-gradient-primary rounded-full" />
             </div>
           </div>
+
+          {/* Elegant card container for carousel */}
+          <Card className="relative max-w-5xl mx-auto bg-secondary/50 dark:bg-secondary/30 border-2 border-border/50 shadow-elegant backdrop-blur-sm overflow-hidden">
+            {/* Subtle gradient background */}
+            <div className="absolute inset-0 bg-gradient-subtle opacity-30 pointer-events-none" />
+            
+            <CardContent className="p-8 md:p-12 relative z-10">
+              <div
+                className="relative"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+              >
+                {/* Carousel container */}
+                <div className="relative overflow-hidden rounded-2xl">
+                  <div
+                    className="flex transition-transform duration-500 ease-out"
+                    style={{
+                      transform: `translateX(-${currentSlide * 100}%)`,
+                    }}
+                  >
+                    {team.map((member, index) => (
+                      <div key={index} className="min-w-full px-4">
+                        <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+                          {/* Avatar side */}
+                          <div className="relative group flex-shrink-0">
+                            <div className="relative w-56 h-56 overflow-hidden rounded-full border-4 border-primary/30 shadow-elegant bg-card">
+                              <img
+                                src={member.image}
+                                alt={member.role}
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                loading="lazy"
+                              />
+                              {/* Subtle gradient overlay on hover */}
+                              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            </div>
+                            {/* Glow effect on hover */}
+                            <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300 -z-10" />
+                          </div>
+
+                          {/* Info side */}
+                          <div className="space-y-5 text-center md:text-left max-w-xl flex-1">
+                            <div>
+                              <h4 className="text-2xl font-bold mb-2 text-primary dark:text-primary-glow">{member.role}</h4>
+                              <p className="text-xl text-foreground mb-2">{member.name}</p>
+                              <div className="h-1 w-20 bg-gradient-primary mx-auto md:mx-0 rounded-full mb-4" />
+                            </div>
+
+                            <blockquote className="text-base italic text-foreground/80 border-l-4 border-primary/30 pl-6">
+                              "{member.quote}"
+                            </blockquote>
+
+                            {/* Specialty */}
+                            <div className="bg-accent/20 dark:bg-accent/10 dark:border-accent/50 border border-accent/50 rounded-lg p-4">
+                              <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-1">
+                                Especialidad
+                              </p>
+                              <p className="text-base text-foreground">{member.specialty}</p>
+                            </div>
+
+                            {/* Optional description */}
+                            {member.description && (
+                              <p className="text-sm text-muted-foreground leading-relaxed">{member.description}</p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Navigation buttons */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
+                  aria-label="Previous team member"
+                >
+                  <ChevronLeft className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                </button>
+
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
+                  aria-label="Next team member"
+                >
+                  <ChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                </button>
+
+                {/* Dots indicator */}
+                <div className="flex justify-center space-x-2 mt-8">
+                  {team.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide ? "w-8 bg-primary dark:bg-primary-glow" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`}
+                      aria-label={`Go to team member ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Team description */}
           <div className="text-center mt-12 max-w-3xl mx-auto">
