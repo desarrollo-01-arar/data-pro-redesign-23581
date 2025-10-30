@@ -15,19 +15,20 @@ export const AboutUs = () => {
       role: "Gerencia Comercial",
       name: "Ernesto Velandia Sanchez",
       image: consultorErp,
-      quote: "Transformando organizaciones a través de la tecnología, la auditoría y la gestión estratégica de sistemas",
+      quote:
+        "Transformando organizaciones a través de la tecnología, la auditoría y la gestión estratégica de sistemas",
       specialty: "Especialista en Auditoría, TI y ERP Siesa EE",
       description:
         "Ingeniero de Sistemas con formación de posgrado en Auditoría y Consultoría en Sistemas de Comunicación, experto en liderazgo tecnológico, transformación digital y consultoría en ERP Siesa EE, con más de 20 años de experiencia impulsando la eficiencia y la innovación empresarial.",
     },
     {
-      role: "Ingeniero de Automatización",
+      role: "Analista de automatizacion",
       name: "Nicolas Stiven Jaimes Duarte",
       image: ingenieroAutomatizacion,
-      quote: "Automatizando procesos para maximizar eficiencia",
-      specialty: "RPA & Automatización de Procesos",
+      quote: "Transformando lo manual en automático, y lo complejo en simple.",
+      specialty: "Automatización de procesos y Bases de datos",
       description:
-        "Desarrolladora de soluciones de automatización que reducen tiempos y costos operativos significativamente.",
+        "Ingeniero de sistemas certificado en Power BI, especializado en la automatización de procesos mediante herramientas y desarrollo a medida. Con experiencia en bases de datos y creación de aplicaciones que optimizan la eficiencia y la toma de decisiones.",
     },
     {
       role: "Coordinador Mesa de Ayuda",
@@ -151,13 +152,9 @@ export const AboutUs = () => {
           <Card className="relative max-w-5xl mx-auto bg-secondary/50 dark:bg-secondary/30 border-2 border-border/50 shadow-elegant backdrop-blur-sm overflow-hidden">
             {/* Subtle gradient background */}
             <div className="absolute inset-0 bg-gradient-subtle opacity-30 pointer-events-none" />
-            
+
             <CardContent className="p-8 md:p-12 relative z-10">
-              <div
-                className="relative"
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-              >
+              <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
                 {/* Carousel container */}
                 <div className="relative overflow-hidden rounded-2xl">
                   <div
@@ -188,7 +185,9 @@ export const AboutUs = () => {
                           {/* Info side */}
                           <div className="space-y-5 text-center md:text-left max-w-xl flex-1">
                             <div>
-                              <h4 className="text-2xl font-bold mb-2 text-primary dark:text-primary-glow">{member.role}</h4>
+                              <h4 className="text-2xl font-bold mb-2 text-primary dark:text-primary-glow">
+                                {member.role}
+                              </h4>
                               <p className="text-xl text-foreground mb-2">{member.name}</p>
                               <div className="h-1 w-20 bg-gradient-primary mx-auto md:mx-0 rounded-full mb-4" />
                             </div>
