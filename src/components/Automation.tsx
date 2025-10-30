@@ -24,7 +24,7 @@ const automationExamples = [
   {
     icon: Bell,
     title: "Alertas Inteligentes",
-    description: "Notificaciones de respaldos, pagos vencidos y umbrales de indicadores",
+    description: "Mantente informado con notificaciones automáticas sobre respaldos, pagos vencidos y variaciones en los indicadores clave de tu negocio",
     color: "from-yellow-500/20 to-yellow-600/20",
   },
   {
