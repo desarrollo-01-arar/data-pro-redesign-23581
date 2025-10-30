@@ -22,7 +22,7 @@ export const AboutUs = () => {
     },
     {
       role: "Ingeniero de Automatización",
-      name: "Laura Gómez",
+      name: "Nicolas Stiven Jaimes Duarte",
       image: ingenieroAutomatizacion,
       quote: "Automatizando procesos para maximizar eficiencia",
       specialty: "RPA & Automatización de Procesos",
@@ -31,10 +31,10 @@ export const AboutUs = () => {
     },
     {
       role: "Coordinador Mesa de Ayuda",
-      name: "Diego Ramírez",
+      name: "Liliana Barragán Pineda",
       image: coordinadorMesa,
-      quote: "Soporte técnico de excelencia para tu empresa",
-      specialty: "Soporte Técnico & Servicio al Cliente",
+      quote: "Comprometida con optimizar procesos y garantizar un soporte técnico cercano, humano y confiable.",
+      specialty: "Contabilidad",
     },
     {
       role: "Analista de Datos",

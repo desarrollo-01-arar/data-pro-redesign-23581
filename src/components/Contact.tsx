@@ -36,6 +36,7 @@ const contactSchema = z.object({
     .min(1, "Este campo es obligatorio")
     .max(300, "El mensaje debe tener máximo 300 caracteres"),
 });
+
 export const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -48,6 +49,7 @@ export const Contact = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
@@ -63,27 +65,68 @@ export const Contact = () => {
         }
       });
       setErrors(newErrors);
+      toast({
+        title: "Error de validación",
+        description: "Por favor, revisa los campos marcados en rojo.",
+        variant: "destructive"
+      });
       return;
     }
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    toast({
-      title: "¡Mensaje enviado!",
-      description: "Nos pondremos en contacto contigo pronto."
-    });
-    setFormData({
-      subject: "",
-      name: "",
-      company: "",
-      email: "",
-      phone: "",
-      message: ""
-    });
-    setIsSubmitting(false);
+    try {      
+      const response = await fetch('https://datapro.com.co/api/contact.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // Éxito
+        toast({
+          title: "¡Mensaje enviado!",
+          description: data.message || "Nos pondremos en contacto contigo pronto.",
+          variant: "success"
+        });
+        
+        // Limpiar formulario
+        setFormData({
+          subject: "",
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          message: ""
+        });
+      } else {
+        // Error del servidor con validaciones
+        if (data.errors) {
+          setErrors(data.errors);
+        }
+        toast({
+          title: "Error al enviar",
+          description: data.message || "Hubo un problema al enviar tu mensaje. Intenta nuevamente.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      // Error de red o del servidor
+      console.error('Error:', error);
+      toast({
+        title: "Error de conexión",
+        description: "No se pudo conectar con el servidor. Por favor, verifica tu conexión e intenta nuevamente.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -99,7 +142,9 @@ export const Contact = () => {
       });
     }
   };
-  return <section id="contacto" className="py-20 relative overflow-hidden">
+
+  return (
+    <section id="contacto" className="py-20 relative overflow-hidden">
       {/* Premium breathing background */}
       <div className="absolute inset-0">
         <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-gradient-breathing animate-breathing opacity-30" />
@@ -108,17 +153,13 @@ export const Contact = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div initial={{
-        opacity: 0,
-        y: 30
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} transition={{
-        duration: 0.6
-      }} className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Hablemos de tu <span className="text-primary dark:text-primary-glow">Proyecto</span>
           </h2>
@@ -138,7 +179,12 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Correo Electrónico</h3>
-                    <a href="mailto:contacto@datapro.com.co" className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">gerencia@datapro.com.co</a>
+                    <a
+                      href="mailto:gerencia@datapro.com.co"
+                      className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      gerencia@datapro.com.co
+                    </a>
                   </div>
                 </div>
               </CardContent>
@@ -152,7 +198,12 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Teléfono</h3>
-                    <a href="tel:+573001234567" className="text-sm font-semibold text-muted-foreground hover:text-accent transition-colors">+57 317 430 7397</a>
+                    <a
+                      href="tel:+573174307397"
+                      className="text-sm font-semibold text-muted-foreground hover:text-accent transition-colors"
+                    >
+                      +57 317 430 7397
+                    </a>
                   </div>
                 </div>
               </CardContent>
@@ -171,9 +222,10 @@ export const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="lg:col-span-2 border-2 hover:border-primary/30 transition-all animate-fade-in-up" style={{
-          animationDelay: "100ms"
-        }}>
+          <Card
+            className="lg:col-span-2 border-2 hover:border-primary/30 transition-all animate-fade-in-up"
+            style={{ animationDelay: "100ms" }}
+          >
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} noValidate className="space-y-6">
                 {/* Asunto - Full width */}
@@ -181,13 +233,15 @@ export const Contact = () => {
                   <Label htmlFor="subject">
                     Asunto <span className="text-destructive">*</span>
                   </Label>
-                  <Input 
-                    id="subject" 
-                    name="subject" 
-                    value={formData.subject} 
+                  <Input
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
                     onChange={handleChange}
-                    placeholder="Motivo del contacto" 
-                    className={`transition-all focus:shadow-glow ${errors.subject ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                    placeholder="Motivo del contacto"
+                    className={`transition-all focus:shadow-glow ${
+                      errors.subject ? "border-destructive focus-visible:ring-destructive" : ""
+                    }`}
                   />
                   {errors.subject && (
                     <p className="text-sm font-semibold text-destructive mt-1">{errors.subject}</p>
@@ -199,13 +253,15 @@ export const Contact = () => {
                     <Label htmlFor="name">
                       Nombre completo <span className="text-destructive">*</span>
                     </Label>
-                    <Input 
-                      id="name" 
-                      name="name" 
-                      value={formData.name} 
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
-                      placeholder="Ingrese su nombre" 
-                      className={`transition-all focus:shadow-glow ${errors.name ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                      placeholder="Ingrese su nombre"
+                      className={`transition-all focus:shadow-glow ${
+                        errors.name ? "border-destructive focus-visible:ring-destructive" : ""
+                      }`}
                     />
                     {errors.name && (
                       <p className="text-sm font-semibold text-destructive mt-1">{errors.name}</p>
@@ -215,14 +271,16 @@ export const Contact = () => {
                     <Label htmlFor="email">
                       Correo Electrónico <span className="text-destructive">*</span>
                     </Label>
-                    <Input 
-                      id="email" 
-                      name="email" 
-                      type="email" 
-                      value={formData.email} 
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
                       onChange={handleChange}
-                      placeholder="ejemplo@correo.com" 
-                      className={`transition-all focus:shadow-glow ${errors.email ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                      placeholder="ejemplo@correo.com"
+                      className={`transition-all focus:shadow-glow ${
+                        errors.email ? "border-destructive focus-visible:ring-destructive" : ""
+                      }`}
                     />
                     {errors.email && (
                       <p className="text-sm font-semibold text-destructive mt-1">{errors.email}</p>
@@ -235,13 +293,15 @@ export const Contact = () => {
                     <Label htmlFor="company">
                       Empresa <span className="text-muted-foreground">(Opcional)</span>
                     </Label>
-                    <Input 
-                      id="company" 
-                      name="company" 
-                      value={formData.company} 
+                    <Input
+                      id="company"
+                      name="company"
+                      value={formData.company}
                       onChange={handleChange}
-                      placeholder="Nombre de su empresa" 
-                      className={`transition-all focus:shadow-glow ${errors.company ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                      placeholder="Nombre de su empresa"
+                      className={`transition-all focus:shadow-glow ${
+                        errors.company ? "border-destructive focus-visible:ring-destructive" : ""
+                      }`}
                     />
                     {errors.company && (
                       <p className="text-sm font-semibold text-destructive mt-1">{errors.company}</p>
@@ -251,14 +311,16 @@ export const Contact = () => {
                     <Label htmlFor="phone">
                       Teléfono <span className="text-destructive">*</span>
                     </Label>
-                    <Input 
-                      id="phone" 
-                      name="phone" 
-                      type="tel" 
-                      value={formData.phone} 
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
                       onChange={handleChange}
-                      placeholder="Ingrese su número de teléfono" 
-                      className={`transition-all focus:shadow-glow ${errors.phone ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                      placeholder="Ingrese su número de teléfono"
+                      className={`transition-all focus:shadow-glow ${
+                        errors.phone ? "border-destructive focus-visible:ring-destructive" : ""
+                      }`}
                     />
                     {errors.phone && (
                       <p className="text-sm font-semibold text-destructive mt-1">{errors.phone}</p>
@@ -270,30 +332,42 @@ export const Contact = () => {
                   <Label htmlFor="message">
                     Descripción <span className="text-destructive">*</span>
                   </Label>
-                  <Textarea 
-                    id="message" 
-                    name="message" 
-                    value={formData.message} 
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
                     onChange={handleChange}
-                    placeholder="Escriba su mensaje aquí" 
-                    rows={5} 
-                    className={`transition-all focus:shadow-glow resize-none ${errors.message ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                    placeholder="Escriba su mensaje aquí"
+                    rows={5}
+                    className={`transition-all focus:shadow-glow resize-none ${
+                      errors.message ? "border-destructive focus-visible:ring-destructive" : ""
+                    }`}
                   />
                   {errors.message && (
                     <p className="text-sm font-semibold text-destructive mt-1">{errors.message}</p>
                   )}
                 </div>
 
-                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-gradient-primary hover:shadow-glow transition-all group">
-                  {isSubmitting ? "Enviando..." : <>
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-primary hover:shadow-glow transition-all group"
+                >
+                  {isSubmitting ? (
+                    "Enviando..."
+                  ) : (
+                    <>
                       Enviar mensaje
                       <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </>}
+                    </>
+                  )}
                 </Button>
               </form>
             </CardContent>
           </Card>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
