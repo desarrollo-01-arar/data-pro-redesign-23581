@@ -53,13 +53,17 @@ export const Contact = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 30
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.6
+      }} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Hablemos de tu <span className="text-primary dark:text-primary-glow">Proyecto</span>
           </h2>
@@ -79,9 +83,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Correo Electrónico</h3>
-                    <a href="mailto:contacto@datapro.com.co" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                      contacto@datapro.com.co
-                    </a>
+                    <a href="mailto:contacto@datapro.com.co" className="text-sm text-muted-foreground hover:text-primary transition-colors">gerencia@datapro.com.co</a>
                   </div>
                 </div>
               </CardContent>
