@@ -1,4 +1,4 @@
-import { Linkedin, Mail, MapPin, Facebook, Twitter, Instagram } from "lucide-react";
+import { Linkedin, Mail, MapPin, Facebook, Twitter, Instagram, Github } from "lucide-react";
 import logoLight from "@/assets/logo-light.png";
 import logoDark from "@/assets/logo-dark.png";
 export const Footer = () => {
@@ -87,8 +87,19 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© {currentYear} DataPro Analítica. Todos los derechos reservados.</p>
+        <div className="pt-8 border-t border-border text-center">
+          <p className="text-sm text-muted-foreground mb-3">
+            © {currentYear} DataPro Analítica. Todos los derechos reservados.
+          </p>
+          <a 
+            href="https://github.com/inversionesarar/datapro-website" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-xs text-muted-foreground/70 hover:text-primary transition-colors group"
+          >
+            <Github className="h-3.5 w-3.5 group-hover:scale-110 transition-transform" />
+            <span>Ver código fuente y editar este sitio en GitHub</span>
+          </a>
         </div>
       </div>
     </footer>;
