@@ -9,6 +9,7 @@ export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +26,11 @@ export const Header = () => {
       ];
 
       const scrollPosition = window.scrollY + 100;
+
+      if (window.scrollY < 100) {
+        setActiveSection("");
+        return;
+      }
 
       for (const sectionId of sections) {
         const section = document.getElementById(sectionId);
@@ -47,6 +53,23 @@ export const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (activeSection) {
+      const activeButton = document.querySelector(`[data-section="${activeSection}"]`);
+      if (activeButton) {
+        const rect = activeButton.getBoundingClientRect();
+        const container = activeButton.parentElement;
+        if (container) {
+          const containerRect = container.getBoundingClientRect();
+          setIndicatorStyle({
+            left: rect.left - containerRect.left,
+            width: rect.width,
+          });
+        }
+      }
+    }
+  }, [activeSection]);
 
   const navItems = [
     { label: "Tableros", href: "#tableros" },
@@ -94,17 +117,26 @@ export const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center gap-2 relative">
+            <div
+              className="absolute bottom-0 h-0.5 bg-gradient-primary rounded-full transition-all duration-500 ease-out"
+              style={{
+                left: `${indicatorStyle.left}px`,
+                width: `${indicatorStyle.width}px`,
+                opacity: activeSection ? 1 : 0,
+              }}
+            />
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
               return (
                 <Button
                   key={item.href}
                   variant="ghost"
+                  data-section={item.href.substring(1)}
                   onClick={() => scrollToSection(item.href)}
-                  className={`relative text-foreground/80 hover:text-foreground hover:bg-secondary/50 transition-all duration-300 ${
+                  className={`relative text-foreground/80 hover:text-foreground hover:bg-secondary/50 transition-all duration-300 text-base ${
                     isActive
-                      ? "text-primary dark:text-primary-glow font-medium after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-3/4 after:h-0.5 after:bg-gradient-primary after:rounded-full after:animate-fade-in"
+                      ? "text-primary dark:text-primary-glow"
                       : ""
                   }`}
                 >

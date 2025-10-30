@@ -48,7 +48,7 @@ const cases = [{
   logo: promotoresLogo,
   industry: "Automotriz"
 }, {
-  name: "Representaciones An kal",
+  name: "Representaciones Ankal",
   logo: ankalLogo,
   industry: "Comercial"
 }];
