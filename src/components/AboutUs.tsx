@@ -9,17 +9,8 @@ import ingenieroAutomatizacion from "@/assets/team/ingeniero-automatizacion.png"
 export const AboutUs = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  
+
   const team = [
-    {
-      role: "Analista de Datos",
-      name: "Carolina Mendoza",
-      image: analistaDatos,
-      quote: "Transformando información en insights accionables",
-      specialty: "Business Intelligence & Analytics",
-      description:
-        "Especialista en visualización de datos y creación de dashboards estratégicos que impulsan la toma de decisiones.",
-    },
     {
       role: "Consultor ERP",
       name: "Andrés Patiño",
@@ -29,13 +20,6 @@ export const AboutUs = () => {
       description: "Experto en implementación y optimización de sistemas ERP con enfoque en eficiencia operacional.",
     },
     {
-      role: "Coordinador Mesa de Ayuda",
-      name: "Diego Ramírez",
-      image: coordinadorMesa,
-      quote: "Soporte técnico de excelencia para tu empresa",
-      specialty: "Soporte Técnico & Servicio al Cliente",
-    },
-    {
       role: "Ingeniero de Automatización",
       name: "Laura Gómez",
       image: ingenieroAutomatizacion,
@@ -43,6 +27,22 @@ export const AboutUs = () => {
       specialty: "RPA & Automatización de Procesos",
       description:
         "Desarrolladora de soluciones de automatización que reducen tiempos y costos operativos significativamente.",
+    },
+    {
+      role: "Coordinador Mesa de Ayuda",
+      name: "Diego Ramírez",
+      image: coordinadorMesa,
+      quote: "Soporte técnico de excelencia para tu empresa",
+      specialty: "Soporte Técnico & Servicio al Cliente",
+    },
+    {
+      role: "Analista de Datos",
+      name: "Carolina Mendoza",
+      image: analistaDatos,
+      quote: "Transformando información en insights accionables",
+      specialty: "Business Intelligence & Analytics",
+      description:
+        "Especialista en visualización de datos y creación de dashboards estratégicos que impulsan la toma de decisiones.",
     },
   ];
   const nextSlide = () => {
@@ -55,7 +55,7 @@ export const AboutUs = () => {
   // Auto-scroll effect
   useEffect(() => {
     if (isPaused) return;
-    
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % team.length);
     }, 4000); // Cambiar cada 4 segundos
@@ -138,7 +138,7 @@ export const AboutUs = () => {
             Nuestro <span className="text-primary dark:text-primary-glow">Equipo</span>
           </h3>
 
-          <div 
+          <div
             className="relative max-w-5xl mx-auto"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
