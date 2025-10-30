@@ -6,7 +6,6 @@ import financierosImg from "@/assets/dashboards/financieros.png";
 import hcmImg from "@/assets/dashboards/hcm.png";
 import seguimientoComercialImg from "@/assets/dashboards/seguimiento-comercial.png";
 import ventasImg from "@/assets/dashboards/ventas.png";
-
 const dashboards = [{
   title: "Indicadores Comerciales",
   image: comercialesImg,
@@ -42,13 +41,17 @@ export const Dashboards = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 30
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.6
+      }} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Tableros de <span className="text-primary dark:text-primary-glow">Control</span>
           </h2>
@@ -58,13 +61,18 @@ export const Dashboards = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-[70px]">
-          {dashboards.map((dashboard, index) => <motion.div
-            key={dashboard.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
+          {dashboards.map((dashboard, index) => <motion.div key={dashboard.title} initial={{
+          opacity: 0,
+          y: 30
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.5,
+          delay: index * 0.1
+        }}>
             <Card className="group hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 border-2 hover:border-primary/50 overflow-hidden bg-card/50 backdrop-blur-sm h-full">
               <CardHeader className="relative pb-0 mb-4"> 
                 {/* Dashboard Image with Premium Frame */}
@@ -94,9 +102,9 @@ export const Dashboards = () => {
               
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {dashboard.features.map((feature, idx) => <div key={idx} className="flex items-start space-x-2 text-sm text-foreground/80">
+                  {dashboard.features.map((feature, idx) => <div key={idx} className="flex items-start text-sm text-foreground/80">
                       <CheckCircle2 className="h-5 w-5 text-primary dark:text-accent flex-shrink-0 mt-0.5" />
-                      <span>{feature}</span>
+                      <span className="leading-4">{feature}</span>
                     </div>)}
                 </div>
               </CardContent>
