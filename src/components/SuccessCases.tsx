@@ -53,7 +53,7 @@ const cases = [{
   industry: "Comercial"
 }];
 export const SuccessCases = () => {
-  return <section id="casos-exito" className="py-20 bg-background relative overflow-hidden">
+  return <section id="casos" className="py-20 bg-background relative overflow-hidden">
       {/* Premium breathing background */}
       <div className="absolute inset-0">
         <div className="absolute top-[30%] right-[20%] w-[400px] h-[400px] bg-gradient-breathing animate-breathing-slow opacity-20" />
