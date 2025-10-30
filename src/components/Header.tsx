@@ -148,7 +148,7 @@ export const Header = () => {
             <Button
               variant="default"
               className="ml-4 bg-gradient-primary hover:shadow-glow transition-all"
-              onClick={() => window.open("https://datapro.com.co/portal", "_blank")}
+              onClick={() => window.open("https://datapro.com.co/app", "_blank")}
             >
               Portal de Clientes
             </Button>
