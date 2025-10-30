@@ -138,7 +138,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Correo Electrónico</h3>
-                    <a href="mailto:contacto@datapro.com.co" className="text-sm text-muted-foreground hover:text-primary transition-colors">gerencia@datapro.com.co</a>
+                    <a href="mailto:contacto@datapro.com.co" className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">gerencia@datapro.com.co</a>
                   </div>
                 </div>
               </CardContent>
@@ -152,7 +152,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Teléfono</h3>
-                    <a href="tel:+573001234567" className="text-sm text-muted-foreground hover:text-accent transition-colors">+57 317 430 7397</a>
+                    <a href="tel:+573001234567" className="text-sm font-semibold text-muted-foreground hover:text-accent transition-colors">+57 317 430 7397</a>
                   </div>
                 </div>
               </CardContent>
@@ -161,7 +161,7 @@ export const Contact = () => {
             <Card className="border-2 hover:border-primary/50 transition-all hover:shadow-elegant">
               <CardContent className="p-6">
                 <h3 className="font-semibold mb-3">Horario de Atención</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm font-semibold text-muted-foreground">
                   Lunes a Viernes<br />
                   8:00 AM - 6:00 PM<br />
                   Zona horaria: Colombia (GMT-5)
@@ -190,7 +190,7 @@ export const Contact = () => {
                     className={`transition-all focus:shadow-glow ${errors.subject ? 'border-destructive focus-visible:ring-destructive' : ''}`}
                   />
                   {errors.subject && (
-                    <p className="text-sm text-destructive mt-1">{errors.subject}</p>
+                    <p className="text-sm font-semibold text-destructive mt-1">{errors.subject}</p>
                   )}
                 </div>
 
@@ -208,7 +208,7 @@ export const Contact = () => {
                       className={`transition-all focus:shadow-glow ${errors.name ? 'border-destructive focus-visible:ring-destructive' : ''}`}
                     />
                     {errors.name && (
-                      <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                      <p className="text-sm font-semibold text-destructive mt-1">{errors.name}</p>
                     )}
                   </div>
                   <div className="space-y-2">
@@ -225,7 +225,7 @@ export const Contact = () => {
                       className={`transition-all focus:shadow-glow ${errors.email ? 'border-destructive focus-visible:ring-destructive' : ''}`}
                     />
                     {errors.email && (
-                      <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                      <p className="text-sm font-semibold text-destructive mt-1">{errors.email}</p>
                     )}
                   </div>
                 </div>
@@ -244,12 +244,12 @@ export const Contact = () => {
                       className={`transition-all focus:shadow-glow ${errors.company ? 'border-destructive focus-visible:ring-destructive' : ''}`}
                     />
                     {errors.company && (
-                      <p className="text-sm text-destructive mt-1">{errors.company}</p>
+                      <p className="text-sm font-semibold text-destructive mt-1">{errors.company}</p>
                     )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone">
-                      Teléfono <span className="text-muted-foreground">(Opcional)</span>
+                      Teléfono <span className="text-destructive">*</span>
                     </Label>
                     <Input 
                       id="phone" 
@@ -261,7 +261,7 @@ export const Contact = () => {
                       className={`transition-all focus:shadow-glow ${errors.phone ? 'border-destructive focus-visible:ring-destructive' : ''}`}
                     />
                     {errors.phone && (
-                      <p className="text-sm text-destructive mt-1">{errors.phone}</p>
+                      <p className="text-sm font-semibold text-destructive mt-1">{errors.phone}</p>
                     )}
                   </div>
                 </div>
@@ -280,7 +280,7 @@ export const Contact = () => {
                     className={`transition-all focus:shadow-glow resize-none ${errors.message ? 'border-destructive focus-visible:ring-destructive' : ''}`}
                   />
                   {errors.message && (
-                    <p className="text-sm text-destructive mt-1">{errors.message}</p>
+                    <p className="text-sm font-semibold text-destructive mt-1">{errors.message}</p>
                   )}
                 </div>
 
