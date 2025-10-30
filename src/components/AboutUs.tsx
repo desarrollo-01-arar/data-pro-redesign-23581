@@ -15,8 +15,8 @@ export const AboutUs = () => {
       role: "Gerencia Comercial",
       name: "Ernesto Velandia Sanchez",
       image: consultorErp,
-      quote: "Optimizando procesos empresariales con tecnología",
-      specialty: "Magister Auditoria y Consultoría en TIC",
+      quote: "Transformando organizaciones a través de la tecnología, la auditoría y la gestión estratégica de sistemas",
+      specialty: "Especialista en Auditoría, TI y ERP Siesa EE",
       description:
         "Ingeniero de Sistemas con formación de posgrado en Auditoría y Consultoría en Sistemas de Comunicación, experto en liderazgo tecnológico, transformación digital y consultoría en ERP Siesa EE, con más de 20 años de experiencia impulsando la eficiencia y la innovación empresarial.",
     },
@@ -38,12 +38,12 @@ export const AboutUs = () => {
     },
     {
       role: "Analista de Datos",
-      name: "Carolina Mendoza",
+      name: "Carlos Alberto Lopez Duran",
       image: analistaDatos,
-      quote: "Transformando información en insights accionables",
-      specialty: "Business Intelligence & Analytics",
+      quote: "Transformo la complejidad de los datos en conocimiento estratégico que impulsa decisiones inteligentes",
+      specialty: "Inteligencia de Negocios",
       description:
-        "Especialista en visualización de datos y creación de dashboards estratégicos que impulsan la toma de decisiones.",
+        "Certificados en herramientas como SQL, Power BI y Excel para generar indicadores clave (KPIs), detectar tendencias y respaldar decisiones empresariales basadas en evidencia, optimizando procesos y mejorando la eficiencia organizacional.",
     },
   ];
   const nextSlide = () => {
@@ -167,15 +167,15 @@ export const AboutUs = () => {
                     }}
                   >
                     {team.map((member, index) => (
-                      <div key={index} className="min-w-full px-4">
+                      <div key={index} className="min-w-full px-4 flex items-center justify-center">
                         <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
                           {/* Avatar side */}
                           <div className="relative group flex-shrink-0">
-                            <div className="relative w-56 h-56 overflow-hidden rounded-full border-4 border-primary/30 shadow-elegant bg-card">
+                            <div className="relative w-60 h-60 overflow-hidden rounded-full border-4 border-primary/30 shadow-elegant bg-card">
                               <img
                                 src={member.image}
                                 alt={member.role}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
                                 loading="lazy"
                               />
                               {/* Subtle gradient overlay on hover */}

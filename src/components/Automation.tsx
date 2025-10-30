@@ -19,7 +19,7 @@ const automationExamples = [
   {
     icon: Mail,
     title: "Facturación Automática",
-    description: "Envío automático de facturas del ERP por correo a clientes",
+    description: "Envío automático de facturas del ERP o DMS por correo a clientes",
     color: "from-blue-500/20 to-blue-600/20",
   },
   {
