@@ -72,12 +72,12 @@ Esto creará una carpeta `dist/` con todos los archivos optimizados para producc
 
 #### Opción A: Via FTP/cPanel
 1. Conecta a tu servidor via FTP o cPanel File Manager
-2. Navega a `/public_html/main/`
+2. Navega a `/main/`
 3. **Elimina** todo el contenido actual de la carpeta `main/`
 4. **Sube** el contenido de la carpeta `dist/` (los archivos dentro, no la carpeta)
 5. Estructura final:
    ```
-   /public_html/main/
+   /main/
    ├── index.html
    ├── assets/
    │   ├── index-xxx.js
@@ -91,13 +91,13 @@ Esto creará una carpeta `dist/` con todos los archivos optimizados para producc
 ssh usuario@datapro.com.co
 
 # Navegar a la carpeta
-cd /public_html/main/
+cd /main/
 
 # Eliminar contenido anterior
 rm -rf *
 
 # Subir nuevos archivos (desde tu máquina local)
-scp -r dist/* usuario@datapro.com.co:/public_html/main/
+scp -r dist/* usuario@datapro.com.co:/main/
 ```
 
 ### 3. Verificar en producción
@@ -176,17 +176,18 @@ Si necesitas cambiar la ruta de despliegue, modifica ambos archivos.
 El formulario de contacto está conectado a un backend PHP ubicado en:
 
 ```
-/public_html/api/contact.php
+/api/contact.php
 ```
 
 **Estructura del backend:**
 ```
-/public_html/api/
+/api/
 ├── contact.php          # Manejador principal
-└── PHPMailer/          # Librería para envío de correos
-    ├── PHPMailer.php
-    ├── SMTP.php
-    └── Exception.php
+└── PHPMailer/           # Librería para envío de correos
+    └── src/
+        ├── PHPMailer.php
+        ├── SMTP.php
+        └── Exception.php
 ```
 
 **Destinatarios de correos:**
@@ -203,7 +204,6 @@ El formulario de contacto está conectado a un backend PHP ubicado en:
 ## 🔒 Seguridad
 
 - Las contraseñas SMTP no están en el repositorio
-- Se utilizan variables de entorno para datos sensibles
 - El backend valida y sanitiza todos los inputs del formulario
 - CORS configurado correctamente
 
