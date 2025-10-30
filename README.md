@@ -1,73 +1,239 @@
-# Welcome to your Lovable project
+# DataPro Analítica - Sitio Web Corporativo
 
-## Project info
+> Sitio web oficial de DataPro Analítica, especialistas en analítica de datos, automatización de procesos y consultoría Siesa EE.
 
-**URL**: https://lovable.dev/projects/26d6c861-ffae-4237-85aa-e91a9c727f80
+## 🌐 Sitio en Producción
 
-## How can I edit this code?
+**URL**: https://datapro.com.co/main/
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🚀 Cómo Editar Este Sitio Web
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/26d6c861-ffae-4237-85aa-e91a9c727f80) and start prompting.
+Este proyecto está conectado con **Lovable** (IA para desarrollo web) y puede ser editado de múltiples formas:
 
-Changes made via Lovable will be committed automatically to this repo.
+### Opción 1: Usar Lovable (Recomendado para cambios rápidos)
 
-**Use your preferred IDE**
+1. Visita el [Proyecto en Lovable](https://lovable.dev/projects/479e594a-a183-4cfc-bcb2-50ef2a58283e)
+2. Describe los cambios que deseas hacer mediante prompts en lenguaje natural
+3. Lovable modificará el código automáticamente
+4. Los cambios se guardarán automáticamente en este repositorio
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Ejemplo de prompts:**
+- "Cambia el color del botón de contacto a verde"
+- "Agrega una nueva sección de testimonios"
+- "Actualiza el texto del hero con..."
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+📚 [Documentación de Lovable](https://docs.lovable.dev/)
 
-Follow these steps:
+---
+
+### Opción 2: Desarrollo Local (Para desarrolladores)
+
+#### Requisitos previos
+- Node.js & npm instalados - [Instalar con nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Git instalado
+
+#### Pasos de instalación
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# 1. Clonar el repositorio
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# 2. Navegar al directorio del proyecto
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# 3. Instalar dependencias
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 4. Iniciar servidor de desarrollo
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+El sitio estará disponible en `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 📦 Desplegar Cambios al Servidor
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Una vez que hayas realizado y probado tus cambios localmente:
 
-## What technologies are used for this project?
+### 1. Generar build de producción
 
-This project is built with:
+```sh
+npm run build
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Esto creará una carpeta `dist/` con todos los archivos optimizados para producción.
 
-## How can I deploy this project?
+### 2. Subir al servidor
 
-Simply open [Lovable](https://lovable.dev/projects/26d6c861-ffae-4237-85aa-e91a9c727f80) and click on Share -> Publish.
+**Importante:** El proyecto usa la ruta base `/main/` configurada en `vite.config.ts`
 
-## Can I connect a custom domain to my Lovable project?
+#### Opción A: Via FTP/cPanel
+1. Conecta a tu servidor via FTP o cPanel File Manager
+2. Navega a `/public_html/main/`
+3. **Elimina** todo el contenido actual de la carpeta `main/`
+4. **Sube** el contenido de la carpeta `dist/` (los archivos dentro, no la carpeta)
+5. Estructura final:
+   ```
+   /public_html/main/
+   ├── index.html
+   ├── assets/
+   │   ├── index-xxx.js
+   │   └── index-xxx.css
+   └── (otros archivos)
+   ```
 
-Yes, you can!
+#### Opción B: Via SSH
+```sh
+# Conectar al servidor
+ssh usuario@datapro.com.co
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+# Navegar a la carpeta
+cd /public_html/main/
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+# Eliminar contenido anterior
+rm -rf *
+
+# Subir nuevos archivos (desde tu máquina local)
+scp -r dist/* usuario@datapro.com.co:/public_html/main/
+```
+
+### 3. Verificar en producción
+
+Visita `https://datapro.com.co/main/` y verifica que los cambios se hayan aplicado correctamente.
+
+**Nota:** Si ves contenido antiguo, limpia el caché del navegador (Ctrl + Shift + R en Chrome/Firefox).
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+Este proyecto está construido con tecnologías modernas:
+
+- **Vite** - Build tool ultrarrápido
+- **React** - Biblioteca de interfaces de usuario
+- **TypeScript** - JavaScript con tipado estático
+- **Tailwind CSS** - Framework de CSS utility-first
+- **shadcn/ui** - Componentes de UI accesibles y personalizables
+- **Framer Motion** - Animaciones fluidas
+- **React Router** - Navegación SPA
+- **Zod** - Validación de formularios
+
+### Backend
+- **PHP** - Manejador de formularios
+- **PHPMailer** - Envío de correos SMTP
+
+---
+
+## 📝 Otras Formas de Editar
+
+### Editar directamente en GitHub
+1. Navega al archivo que deseas editar en este repositorio
+2. Haz clic en el ícono de lápiz (✏️) "Edit this file"
+3. Realiza tus cambios
+4. Haz commit directamente desde GitHub
+5. Los cambios se sincronizarán automáticamente con Lovable
+
+### Usar GitHub Codespaces
+1. Ve a la página principal de este repositorio
+2. Haz clic en el botón verde "Code"
+3. Selecciona la pestaña "Codespaces"
+4. Haz clic en "New codespace"
+5. Edita los archivos en el navegador
+6. Haz commit y push cuando termines
+
+---
+
+## 🔧 Configuración Importante
+
+### Configuración de Rutas
+
+El proyecto está configurado para funcionar en la ruta `/main/`:
+
+**vite.config.ts:**
+```typescript
+export default defineConfig({
+  base: '/main/', // Ruta base del proyecto
+  // ...
+});
+```
+
+**React Router:**
+```typescript
+<BrowserRouter basename="/main">
+  {/* Rutas */}
+</BrowserRouter>
+```
+
+Si necesitas cambiar la ruta de despliegue, modifica ambos archivos.
+
+---
+
+## 📧 Backend del Formulario de Contacto
+
+El formulario de contacto está conectado a un backend PHP ubicado en:
+
+```
+/public_html/api/contact.php
+```
+
+**Estructura del backend:**
+```
+/public_html/api/
+├── contact.php          # Manejador principal
+└── PHPMailer/          # Librería para envío de correos
+    ├── PHPMailer.php
+    ├── SMTP.php
+    └── Exception.php
+```
+
+**Destinatarios de correos:**
+- GerenteTIC@inversionesarar.com
+- automatizacion@inversionesarar.com
+- Analistadatos@inversionesarar.com
+- mesadeayuda01@inversionesarar.com
+- directorinfraestructura@inversionesarar.com
+
+**Nota:** Las credenciales SMTP están configuradas para usar Outlook con el correo `desarrollo01@inversionesarar.com.co`
+
+---
+
+## 🔒 Seguridad
+
+- Las contraseñas SMTP no están en el repositorio
+- Se utilizan variables de entorno para datos sensibles
+- El backend valida y sanitiza todos los inputs del formulario
+- CORS configurado correctamente
+
+---
+
+## 📚 Recursos Útiles
+
+- [Documentación de Lovable](https://docs.lovable.dev/)
+- [Guía de Vite](https://vitejs.dev/guide/)
+- [Documentación de React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [shadcn/ui Components](https://ui.shadcn.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+
+---
+
+## 🆘 Soporte
+
+Si encuentras problemas o tienes preguntas:
+
+1. Revisa la [documentación de Lovable](https://docs.lovable.dev/)
+2. Crea un issue en este repositorio
+3. Contacta al equipo de desarrollo de DataPro Analítica
+
+---
+
+## 📄 Licencia
+
+© 2024 DataPro Analítica. Todos los derechos reservados.
+
+---
+
+**Última actualización:** Octubre 2024
