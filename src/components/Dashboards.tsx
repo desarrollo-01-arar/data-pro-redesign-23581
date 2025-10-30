@@ -78,11 +78,11 @@ export const Dashboards = () => {
                     <div className="absolute bottom-3 left-3 flex items-center gap-2">
                       {/* Crown */}
                       <div className="flex items-center justify-center bg-background/80 dark:bg-accent/20 backdrop-blur-md border border-primary/40 dark:border-accent/40 rounded-lg px-2.5 py-1.5">
-                        <Crown className="h-5 w-5 text-primary dark:text-accent fill-primary dark:fill-accent" />
+                        <Crown className="h-5 w-5 text-accent dark:text-accent fill-primary dark:fill-accent" />
                       </div>
                       {/* Stars */}
                       <div className="flex gap-0.5 bg-background/80 dark:bg-background/20 backdrop-blur-md border border-primary/40 dark:border-accent/30 px-2.5 py-1.5 rounded-lg">
-                        {[...Array(5)].map((_, i) => <span key={i} className="text-primary dark:text-accent text-sm">★</span>)}
+                        {[...Array(5)].map((_, i) => <span key={i} className="text-accent dark:text-accent text-sm">★</span>)}
                       </div>
                     </div>
                   </div>
