@@ -12,12 +12,13 @@ export const AboutUs = () => {
 
   const team = [
     {
-      role: "Consultor ERP",
-      name: "Andrés Patiño",
+      role: "Gerencia Comercial",
+      name: "Ernesto Velandia Sanchez",
       image: consultorErp,
       quote: "Optimizando procesos empresariales con tecnología",
-      specialty: "Siesa EE & Inteligencia de Negocio",
-      description: "Experto en implementación y optimización de sistemas ERP con enfoque en eficiencia operacional.",
+      specialty: "Magister Auditoria y Consultoría en TIC",
+      description:
+        "Ingeniero de Sistemas con formación de posgrado en Auditoría y Consultoría en Sistemas de Comunicación, experto en liderazgo tecnológico, transformación digital y consultoría en ERP Siesa EE, con más de 20 años de experiencia impulsando la eficiencia y la innovación empresarial.",
     },
     {
       role: "Ingeniero de Automatización",
