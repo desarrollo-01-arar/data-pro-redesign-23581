@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { Target, Eye, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import analistaDatos from "@/assets/team/analista-datos.png";
 import consultorErp from "@/assets/team/consultor-erp.png";
 import coordinadorMesa from "@/assets/team/coordinador-mesa.png";
 import ingenieroAutomatizacion from "@/assets/team/ingeniero-automatizacion.png";
 export const AboutUs = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  
   const team = [
     {
       role: "Analista de Datos",
@@ -49,6 +51,18 @@ export const AboutUs = () => {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + team.length) % team.length);
   };
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (isPaused) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % team.length);
+    }, 4000); // Cambiar cada 4 segundos
+
+    return () => clearInterval(interval);
+  }, [isPaused, team.length]);
+
   return (
     <section id="nosotros" className="py-20 bg-secondary/30 relative overflow-hidden">
       {/* Premium breathing background */}
@@ -124,7 +138,11 @@ export const AboutUs = () => {
             Nuestro <span className="text-primary dark:text-primary-glow">Equipo</span>
           </h3>
 
-          <div className="relative max-w-5xl mx-auto">
+          <div 
+            className="relative max-w-5xl mx-auto"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             {/* Carousel container */}
             <div className="relative overflow-hidden rounded-2xl">
               <div

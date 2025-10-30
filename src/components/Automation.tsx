@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Zap,
   Mail,
@@ -14,6 +14,7 @@ import {
   Cloud,
 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
+import { useState, useEffect } from "react";
 const automationExamples = [
   {
     icon: Mail,
@@ -52,7 +53,23 @@ const automationExamples = [
     color: "from-indigo-500/20 to-indigo-600/20",
   },
 ];
+const rotatingPhrases = [
+  "Aumenta la productividad y minimiza los errores mediante procesos automáticos diseñados para mantener tu negocio en movimiento todo el tiempo.",
+  "Transforma la gestión de tu empresa con automatizaciones inteligentes que garantizan precisión, continuidad operativa y ahorro de tiempo.",
+  "Impulsa la eficiencia de tu organización con procesos automatizados que operan 24/7, reducen errores y optimizan el uso de tus recursos.",
+];
+
 export const Automation = () => {
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhraseIndex((prev) => (prev + 1) % rotatingPhrases.length);
+    }, 5000); // Cambiar cada 5 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="automatizacion" className="py-20 relative overflow-hidden">
       {/* Smooth gradient background with enhanced flowing lines */}
@@ -88,9 +105,42 @@ export const Automation = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-primary dark:text-primary-glow">Automatización</span> de Procesos
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ahorra tiempo y reduce errores con procesos automáticos que trabajan 24/7 por tu empresa
-          </p>
+          
+          {/* Rotating phrases with smooth animation */}
+          <div className="relative h-32 max-w-3xl mx-auto overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={currentPhraseIndex}
+                initial={{ opacity: 0, y: 20, rotateX: -15 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                exit={{ opacity: 0, y: -20, rotateX: 15 }}
+                transition={{ 
+                  duration: 0.6,
+                  ease: [0.4, 0, 0.2, 1]
+                }}
+                className="text-xl text-muted-foreground absolute inset-0 flex items-center justify-center text-center px-4"
+                style={{ perspective: "1000px" }}
+              >
+                {rotatingPhrases[currentPhraseIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+          
+          {/* Indicator dots */}
+          <div className="flex justify-center space-x-2 mt-4">
+            {rotatingPhrases.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPhraseIndex(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentPhraseIndex 
+                    ? "w-8 bg-primary dark:bg-primary-glow" 
+                    : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+                aria-label={`Go to phrase ${index + 1}`}
+              />
+            ))}
+          </div>
         </motion.div>
 
         {/* Premium automation cards with flow connections */}
