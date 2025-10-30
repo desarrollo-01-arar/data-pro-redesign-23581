@@ -120,7 +120,7 @@ export const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-2 relative">
             <div
-              className="absolute bottom-0 h-0.5 bg-gradient-primary rounded-full transition-all duration-500 ease-out"
+              className="absolute bottom-0 h-0.5 z-10 bg-gradient-primary rounded-full transition-all duration-500 ease-out"
               style={{
                 left: `${indicatorStyle.left}px`,
                 width: `${indicatorStyle.width}px`,
