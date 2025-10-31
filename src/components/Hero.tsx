@@ -20,18 +20,33 @@ export const Hero = () => {
 
   useEffect(() => {
     let currentIndex = 0;
+    let isDeleting = false;
     setDisplayedText("");
     setIsTypingComplete(false);
 
     const typingInterval = setInterval(() => {
-      if (currentIndex < typingText.length) {
+      if (!isDeleting && currentIndex < typingText.length) {
+        // Escribiendo
         setDisplayedText(typingText.slice(0, currentIndex + 1));
         currentIndex++;
-      } else {
-        setIsTypingComplete(true);
-        clearInterval(typingInterval);
+        if (currentIndex === typingText.length) {
+          setIsTypingComplete(true);
+          setTimeout(() => {
+            isDeleting = true;
+          }, 2000); // Pausa de 2 segundos cuando termina de escribir
+        }
+      } else if (isDeleting && currentIndex > 0) {
+        // Borrando
+        setIsTypingComplete(false);
+        currentIndex--;
+        setDisplayedText(typingText.slice(0, currentIndex));
+        if (currentIndex === 0) {
+          setTimeout(() => {
+            isDeleting = false;
+          }, 500); // Pequeña pausa antes de volver a escribir
+        }
       }
-    }, 100);
+    }, isDeleting ? 50 : 100); // Borrar más rápido que escribir
 
     return () => clearInterval(typingInterval);
   }, []);
