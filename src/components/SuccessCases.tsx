@@ -89,7 +89,7 @@ export const SuccessCases = () => {
           Casos de <span className="text-primary dark:text-primary-glow">Éxito</span>
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Explora cómo hemos transformado desafíos en triunfos con nuestros casos de éxito en implementación y optimización
+          Estas son algunas de las empresas y sectores que han confiado en DataPro Analítica para optimizar sus procesos y tomar decisiones basadas en datos.
         </p>
       </motion.div>
 
