@@ -224,8 +224,8 @@ export const Dashboards = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-2" />
-            <CarouselNext className="right-2" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         </div>
 

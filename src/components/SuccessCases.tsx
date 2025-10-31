@@ -271,8 +271,8 @@ export const SuccessCases = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-0" />
-            <CarouselNext className="right-0" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         </div>
       </motion.div>
