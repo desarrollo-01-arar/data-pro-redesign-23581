@@ -108,18 +108,26 @@ export const SuccessCases = () => {
           <div className="overflow-hidden px-16">
             <motion.div 
               className="flex gap-6"
-              animate={{ x: `calc(-${currentIndex * (100 / itemsPerView)}% - ${currentIndex * 1.5}rem)` }}
+              animate={{ 
+                x: `calc(-${currentIndex * 100 / itemsPerView}% - ${currentIndex * 1.5}rem)` 
+              }}
               transition={{ 
                 type: "spring",
                 stiffness: 300,
                 damping: 30,
                 mass: 0.8
               }}
+              style={{ 
+                width: `calc(${(cases.length / itemsPerView) * 100}% + ${(cases.length - itemsPerView) * 1.5}rem)` 
+              }}
             >
               {cases.map((company, index) => (
                 <div
                   key={index}
-                  className="min-w-[calc(25%-1.125rem)] flex-shrink-0 group"
+                  className="flex-shrink-0 group"
+                  style={{ 
+                    width: `calc(${100 / cases.length}% - ${(cases.length - 1) * 1.5 / cases.length}rem)` 
+                  }}
                 >
                   <Card className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-border/50 hover:border-primary/40 bg-card h-full">
                     <CardContent className="p-6 flex flex-col items-center text-center gap-4">
