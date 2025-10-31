@@ -179,7 +179,8 @@ export const Consulting = () => {
                 delay: index * 0.1
               }}>
                 <Card 
-                  className={`cursor-pointer hover:shadow-elegant transition-all duration-700 border-2 overflow-hidden h-full relative bg-gradient-to-br from-card via-card to-secondary/20 dark:from-card dark:via-card dark:to-primary/5 ${isExpanded ? 'border-primary/50 shadow-elegant' : 'hover:border-primary/30'}`}
+                  className={`cursor-pointer hover:shadow-elegant transition-all duration-700 border-2 overflow-visible relative bg-gradient-to-br from-card via-card to-secondary/20 dark:from-card dark:via-card dark:to-primary/5 ${isExpanded ? 'border-primary/50 shadow-elegant z-10' : 'hover:border-primary/30'}`}
+                  style={{ height: isExpanded ? 'auto' : '120px' }}
                   onClick={() => setExpandedArea(isExpanded ? null : area.title)}
                 >
                   {/* Gradient overlay */}
@@ -199,28 +200,34 @@ export const Consulting = () => {
                     </div>
 
                     {/* Description */}
-                    <div className={`overflow-hidden transition-all duration-700 ${isExpanded ? 'max-h-32' : 'max-h-0'}`}>
-                      <p className={`text-sm text-muted-foreground mb-4 pl-[60px] transition-opacity duration-500 ${isExpanded ? 'opacity-100 delay-150' : 'opacity-0'}`}>
-                        {area.description}
-                      </p>
-                    </div>
+                    {isExpanded && (
+                      <div className="overflow-hidden transition-all duration-700 animate-fade-in">
+                        <p className="text-sm text-muted-foreground mb-4 pl-[60px]">
+                          {area.description}
+                        </p>
+                      </div>
+                    )}
 
                     {/* Features list */}
-                    <div className={`overflow-hidden transition-all duration-700 ${isExpanded ? 'max-h-64' : 'max-h-0'}`}>
-                      <div className="space-y-2 pl-[60px]">
-                        {area.features.map((feature, featureIndex) => <div 
-                          key={featureIndex} 
-                          className={`flex items-center space-x-2 text-sm transition-opacity duration-500`}
-                          style={{
-                            transitionDelay: isExpanded ? `${250 + featureIndex * 80}ms` : '0ms',
-                            opacity: isExpanded ? 1 : 0
-                          }}
-                        >
-                            <div className={`h-1.5 w-1.5 rounded-full bg-primary dark:bg-primary-glow transition-transform duration-300 ${isExpanded ? 'scale-125' : ''}`} />
-                            <span className="text-muted-foreground">{feature}</span>
-                          </div>)}
+                    {isExpanded && (
+                      <div className="overflow-hidden transition-all duration-700 animate-fade-in">
+                        <div className="space-y-2 pl-[60px]">
+                          {area.features.map((feature, featureIndex) => (
+                            <div 
+                              key={featureIndex} 
+                              className="flex items-center space-x-2 text-sm transition-opacity duration-500"
+                              style={{
+                                transitionDelay: `${featureIndex * 80}ms`,
+                                opacity: 1
+                              }}
+                            >
+                              <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-primary-glow scale-125" />
+                              <span className="text-muted-foreground">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>
