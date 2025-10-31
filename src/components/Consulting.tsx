@@ -127,11 +127,11 @@ export const Consulting = () => {
                   {/* Gradient overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-                  <CardHeader className="relative">
+                  <CardHeader className="relative flex-row gap-3">
                     <div className="p-3 rounded-xl bg-gradient-primary w-fit group-hover:scale-110 transition-transform duration-300">
                       <service.icon className="h-6 w-6 text-primary-foreground" />
                     </div>
-                    <CardTitle className="text-lg group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
+                    <CardTitle className="text-xl group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
