@@ -81,13 +81,7 @@ const areas = [
   },
 ];
 
-const strengths = [
-  "Diagnóstico funcional y técnico de módulos Siesa EE.",
-  "Implementación y parametrización a medida.",
-  "Capacitación por áreas: Financiera, Comercial, Manufactura, Logística, Nómina.",
-  "Integración con herramientas externas (BI, portales, CRM, etc.).",
-  "Mesa de ayuda y soporte postimplementación.",
-];
+const strengths = ["Diagnóstico funcional y técnico", "Implementación a medida", "Capacitación especializada", "Integración con herramientas externas", "Soporte postimplementación"];
 
 export const Consulting = () => {
   const [expandedArea, setExpandedArea] = useState<string | null>(null);
@@ -96,7 +90,7 @@ export const Consulting = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentStrengthIndex((prev) => (prev + 1) % strengths.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -114,7 +108,7 @@ export const Consulting = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             Consultoría <span className="text-primary dark:text-primary-glow">Siesa EE</span>
@@ -124,18 +118,18 @@ export const Consulting = () => {
           </p>
           
           {/* Animated strengths - ONLY on mobile */}
-          <div className="md:hidden max-w-4xl mx-auto h-20 mb-8 px-4 flex items-center justify-center">
+          <div className="md:hidden max-w-4xl mx-auto h-20 mb-4 px-4 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStrengthIndex}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="flex items-start gap-3 text-left"
+                transition={{ duration: 0.4 }}
+                className="flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 animate-fade-in-up"
               >
                 <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary-glow flex-shrink-0 mt-0.5" />
-                <p className="text-sm sm:text-base text-muted-foreground">
+                <p className="text-sm sm:text-base text-muted-foreground whitespace-nowrap">
                   {strengths[currentStrengthIndex]}
                 </p>
               </motion.div>

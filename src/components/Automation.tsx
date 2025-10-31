@@ -10,6 +10,7 @@ import {
   Calendar,
   MessageSquare,
   Timer,
+  TrendingUp,
   Users,
   Bell,
   Bot,
@@ -71,11 +72,38 @@ const rotatingPhrases = [
 ];
 
 const technologies = [
-  { Icon: FileSpreadsheet, name: "Excel", color: "text-[#217346]" },
-  { Icon: Share2, name: "SharePoint", color: "text-[#0078D4]" },
-  { Icon: Workflow, name: "Power Automate", color: "text-[#0066FF]" },
-  { Icon: SiMake, name: "Make", color: "text-[#6B46F2]" },
-  { Icon: SiPython, name: "Python", color: "text-[#3776AB]" },
+  {
+    name: "n8n",
+    icon: Zap,
+  },
+  {
+    name: "Power BI",
+    icon: TrendingUp,
+  },
+  {
+    name: "Slack",
+    icon: Bell,
+  },
+  {
+    name: "Siesa EE",
+    icon: Database,
+  },
+  {
+    name: "WhatsApp",
+    icon: Bot,
+  },
+  {
+    name: "Telegram",
+    icon: Bot,
+  },
+  {
+    name: "Google Drive",
+    icon: Cloud,
+  },
+  {
+    name: "APIs REST",
+    icon: Webhook,
+  },
 ];
 
 export const Automation = () => {
@@ -124,7 +152,7 @@ export const Automation = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             <span className="text-primary dark:text-primary-glow">Automatización</span> de Procesos
           </h2>
-          
+
           {/* Rotating phrases with smooth animation */}
           <div className="relative h-auto min-h-[140px] sm:min-h-[120px] md:min-h-[100px] max-w-3xl mx-auto overflow-hidden px-4">
             <AnimatePresence mode="wait">
@@ -133,7 +161,7 @@ export const Automation = () => {
                 initial={{ opacity: 0, y: 20, rotateX: -15 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 exit={{ opacity: 0, y: -20, rotateX: 15 }}
-                transition={{ 
+                transition={{
                   duration: 0.6,
                   ease: [0.4, 0, 0.2, 1]
                 }}
@@ -144,18 +172,17 @@ export const Automation = () => {
               </motion.p>
             </AnimatePresence>
           </div>
-          
+
           {/* Indicator dots */}
           <div className="flex justify-center space-x-2 mt-4">
             {rotatingPhrases.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentPhraseIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentPhraseIndex 
-                    ? "w-8 bg-primary dark:bg-primary-glow" 
-                    : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 ${index === currentPhraseIndex
+                  ? "w-8 bg-primary dark:bg-primary-glow"
+                  : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                  }`}
                 aria-label={`Go to phrase ${index + 1}`}
               />
             ))}
@@ -193,7 +220,7 @@ export const Automation = () => {
         </div>
 
         {/* Automation Examples - Mobile Carousel */}
-        <div className="md:hidden mb-16 px-4">
+        <div className="md:hidden mb-16">
           <Carousel
             opts={{
               align: "start",
@@ -247,25 +274,24 @@ export const Automation = () => {
           </h3>
 
           {/* Technologies Grid - Desktop */}
-          <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-            {technologies.map((tech, index) => (
+          <div className="hidden sm:gap-6 md:flex md:flex-wrap md:justify-center gap-3 sm:gap-4">
+            {technologies.map((tool, index) => (
               <motion.div
-                key={tech.name}
+                key={tool.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Card className="group border-2 hover:border-accent/50 transition-all duration-300 hover:shadow-elegant bg-card/50 backdrop-blur-sm">
-                  <CardContent className="p-4 flex flex-col items-center justify-center gap-3 h-full">
-                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
-                      <tech.Icon className={`h-8 w-8 ${tech.color}`} />
-                    </div>
-                    <p className="text-sm font-semibold text-center text-foreground">
-                      {tech.name}
-                    </p>
-                  </CardContent>
-                </Card>
+                <div
+                  key={tool.name}
+                  className="group px-6 py-3 rounded-xl bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 cursor-default flex items-center space-x-2"
+                >
+                  <tool.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                    {tool.name}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -275,7 +301,7 @@ export const Automation = () => {
             <motion.div
               className="flex gap-4"
               animate={{
-                x: ["0%", "-50%"],
+                x: ["0%", "-200%"],
               }}
               transition={{
                 x: {
@@ -286,20 +312,16 @@ export const Automation = () => {
                 },
               }}
             >
-              {[...technologies, ...technologies].map((tech, index) => (
-                <Card
-                  key={index}
-                  className="flex-shrink-0 w-32 group border-2 hover:border-accent/50 transition-all duration-300 hover:shadow-elegant bg-card/50 backdrop-blur-sm"
+              {[...technologies, ...technologies].map((tool) => (
+                <div
+                  key={tool.name}
+                  className="group px-6 py-3 rounded-xl bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 cursor-default flex items-center space-x-2"
                 >
-                  <CardContent className="p-4 flex flex-col items-center justify-center gap-3 h-full">
-                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
-                      <tech.Icon className={`h-8 w-8 ${tech.color}`} />
-                    </div>
-                    <p className="text-xs font-semibold text-center text-foreground">
-                      {tech.name}
-                    </p>
-                  </CardContent>
-                </Card>
+                  <tool.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
+                    {tool.name}
+                  </span>
+                </div>
               ))}
             </motion.div>
           </div>
