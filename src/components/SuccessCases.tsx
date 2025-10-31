@@ -66,6 +66,7 @@ const sectors = [
 ];
 
 export const SuccessCases = () => {
+  const [isPaused, setIsPaused] = useState(false);
 
   return <section id="casos" className="py-20 bg-background relative overflow-hidden">
     {/* Premium breathing background */}
@@ -94,20 +95,27 @@ export const SuccessCases = () => {
       </motion.div>
 
       {/* Logos Carousel */}
-      <div className="relative max-w-6xl mx-auto mb-20 overflow-hidden py-8">
+      <div 
+        className="relative max-w-6xl mx-auto mb-20 overflow-hidden py-8"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <motion.div
           className="flex gap-5"
-          animate={{ x: ["0%", "-140%"] }}          
+          animate={isPaused ? {} : { x: ["0%", "-50%"] }}
           transition={{
-            duration: 20, // velocidad del movimiento
-            delay: 1,
+            duration: 30,
             ease: "linear",
             repeat: Infinity,
+            repeatType: "loop"
           }}
         >
-          {[...cases].map((company, index) => (
-            <div className="min-w-[250px] group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-6 hover:border-primary/60 hover:shadow-elegant hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden">
-
+          {/* Duplicamos los casos para crear el efecto infinito sin cortes */}
+          {[...cases, ...cases].map((company, index) => (
+            <div 
+              key={`${company.name}-${index}`}
+              className="min-w-[250px] group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-6 hover:border-primary/60 hover:shadow-elegant hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden"
+            >
               {/* Success badge */}
               <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary-glow" strokeWidth={2.5} />
