@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Briefcase, Lightbulb, Users, TrendingUp, Database, Code, CheckCircle2, DollarSign, ShoppingCart, Factory, Package, UserCheck, Server } from "lucide-react";
+import { Briefcase, Lightbulb, Users, TrendingUp, Database, Code, CheckCircle2, DollarSign, ShoppingCart, Factory, Package, UserCheck, Server, Calendar, FileText } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { useState, useEffect } from "react";
 
@@ -123,8 +123,8 @@ export const Consulting = () => {
             En Datapro.com.co ayudamos a las empresas a maximizar el valor de su inversión en Siesa EE, mediante consultoría especializada, dirección de proyectos, capacitación y soporte continuo.
           </p>
           
-          {/* Animated strengths */}
-          <div className="max-w-4xl mx-auto h-20 mb-8 px-4 flex items-center justify-center">
+          {/* Animated strengths - ONLY on mobile */}
+          <div className="md:hidden max-w-4xl mx-auto h-20 mb-8 px-4 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStrengthIndex}
@@ -141,6 +141,56 @@ export const Consulting = () => {
               </motion.div>
             </AnimatePresence>
           </div>
+
+          {/* Static strengths - Desktop only */}
+          <div className="hidden md:flex flex-wrap justify-center gap-3 max-w-4xl mx-auto mb-8">
+            {strengths.map((strength, index) => (
+              <div key={index} className="flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 animate-fade-in-up" style={{
+                animationDelay: `${index * 100}ms`
+              }}>
+                <CheckCircle2 className="h-4 w-4 text-primary dark:text-primary-glow" />
+                <span className="text-sm font-medium">{strength}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Pricing info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-3xl mx-auto mb-12"
+        >
+          <Card className="border-2 border-accent/30 bg-card/30 backdrop-blur-sm">
+            <CardContent className="p-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-center sm:text-left">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 rounded-lg bg-accent/20">
+                    <Calendar className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-accent">Mensualidades</p>
+                    <p className="text-xs text-muted-foreground">Pago flexible mensual</p>
+                  </div>
+                </div>
+                <div className="hidden sm:block h-12 w-px bg-border" />
+                <div className="flex items-center gap-3">
+                  <div className="p-3 rounded-lg bg-primary/20">
+                    <FileText className="h-6 w-6 text-primary dark:text-primary-glow" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-primary dark:text-primary-glow">Por Proyecto</p>
+                    <p className="text-xs text-muted-foreground">Cotización personalizada</p>
+                  </div>
+                </div>
+              </div>
+              <p className="text-center text-xs text-muted-foreground mt-4">
+                Los precios se adaptan según las necesidades específicas de tu negocio
+              </p>
+            </CardContent>
+          </Card>
         </motion.div>
 
         {/* Services Section */}

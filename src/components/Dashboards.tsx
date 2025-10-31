@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BarChart3, DollarSign, Users, TrendingUp, CheckCircle2 } from "lucide-react";
+import { BarChart3, DollarSign, Users, TrendingUp, CheckCircle2, Crown } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
@@ -184,41 +184,39 @@ export const Dashboards = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <Card className="group h-full border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-elegant bg-gradient-to-br from-card via-card to-card/90">
-                      <CardHeader>
-                        <div className="flex items-start justify-between mb-4">
-                          <div className="p-3 rounded-xl bg-gradient-primary group-hover:scale-110 transition-transform duration-300">
-                            <dashboard.icon className="h-6 w-6 text-primary-foreground" />
+                    <Card className="group hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 border-2 hover:border-primary/50 overflow-hidden bg-card/50 backdrop-blur-sm h-full">
+                      <CardHeader className="relative pb-0 mb-4">
+                        {/* Dashboard Image with Premium Frame */}
+                        <div className="relative rounded-lg overflow-hidden border-2 border-accent/30 shadow-glow mb-4 bg-background/50 p-1.5">
+                          <div className="relative rounded-md overflow-hidden aspect-video">
+                            <img src={dashboard.image} alt={dashboard.title} loading="lazy" className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-500" />
+                            {/* Professional gradient overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-primary/15 to-transparent dark:from-black/60 dark:via-black/15 dark:to-transparent pointer-events-none" />
+                            
+                            {/* Crown and Stars in bottom left corner */}
+                            <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                              {/* Crown */}
+                              <div className="flex items-center justify-center bg-background/80 dark:bg-accent/20 backdrop-blur-md border border-primary/40 dark:border-accent/40 rounded-lg px-2.5 py-1.5">
+                                <Crown className="h-5 w-5 text-accent dark:text-accent fill-accent dark:fill-accent" />
+                              </div>
+                              {/* Stars */}
+                              <div className="flex gap-0.5 bg-background/80 dark:bg-background/20 backdrop-blur-md border border-primary/40 dark:border-accent/30 px-2.5 py-1.5 rounded-lg">
+                                {[...Array(5)].map((_, i) => <span key={i} className="text-accent dark:text-accent text-sm">★</span>)}
+                              </div>
+                            </div>
                           </div>
-                          <Badge variant="secondary" className="font-semibold">
-                            BI Dashboard
-                          </Badge>
-                        </div>
-                        <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                          {dashboard.title}
-                        </CardTitle>
-                        <CardDescription className="text-sm">
-                          {dashboard.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="aspect-video rounded-lg overflow-hidden mb-4 border-2 border-border group-hover:border-primary/30 transition-colors">
-                          <img
-                            src={dashboard.image}
-                            alt={dashboard.title}
-                            loading="lazy"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
                         </div>
 
-                        <ul className="space-y-2">
-                          {dashboard.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                              <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        <CardTitle className="text-xl sm:text-2xl mb-2">{dashboard.title}</CardTitle>
+                        <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">{dashboard.description}</p>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {dashboard.features.map((feature, idx) => <div key={idx} className="flex items-start text-sm text-foreground/80 items-center gap-2">
+                              <CheckCircle2 className="h-5 w-5 text-primary dark:text-accent flex-shrink-0 mt-0.5" />
+                              <span className="leading-4">{feature}</span>
+                            </div>)}
+                        </div>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -240,41 +238,39 @@ export const Dashboards = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="group h-full border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-elegant bg-gradient-to-br from-card via-card to-card/90">
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 rounded-xl bg-gradient-primary group-hover:scale-110 transition-transform duration-300">
-                      <dashboard.icon className="h-6 w-6 text-primary-foreground" />
+              <Card className="group hover:shadow-elegant hover:-translate-y-2 transition-all duration-300 border-2 hover:border-primary/50 overflow-hidden bg-card/50 backdrop-blur-sm h-full">
+                <CardHeader className="relative pb-0 mb-4">
+                  {/* Dashboard Image with Premium Frame */}
+                  <div className="relative rounded-lg overflow-hidden border-2 border-accent/30 shadow-glow mb-4 bg-background/50 p-1.5">
+                    <div className="relative rounded-md overflow-hidden aspect-video">
+                      <img src={dashboard.image} alt={dashboard.title} loading="lazy" className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-500" />
+                      {/* Professional gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-primary/15 to-transparent dark:from-black/60 dark:via-black/15 dark:to-transparent pointer-events-none" />
+                      
+                      {/* Crown and Stars in bottom left corner */}
+                      <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                        {/* Crown */}
+                        <div className="flex items-center justify-center bg-background/80 dark:bg-accent/20 backdrop-blur-md border border-primary/40 dark:border-accent/40 rounded-lg px-2.5 py-1.5">
+                          <Crown className="h-5 w-5 text-accent dark:text-accent fill-accent dark:fill-accent" />
+                        </div>
+                        {/* Stars */}
+                        <div className="flex gap-0.5 bg-background/80 dark:bg-background/20 backdrop-blur-md border border-primary/40 dark:border-accent/30 px-2.5 py-1.5 rounded-lg">
+                          {[...Array(5)].map((_, i) => <span key={i} className="text-accent dark:text-accent text-sm">★</span>)}
+                        </div>
+                      </div>
                     </div>
-                    <Badge variant="secondary" className="font-semibold">
-                      BI Dashboard
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                    {dashboard.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm">
-                    {dashboard.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="aspect-video rounded-lg overflow-hidden mb-4 border-2 border-border group-hover:border-primary/30 transition-colors">
-                    <img
-                      src={dashboard.image}
-                      alt={dashboard.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
                   </div>
 
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {dashboard.allFeatures.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <CardTitle className="text-xl sm:text-2xl mb-2">{dashboard.title}</CardTitle>
+                  <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">{dashboard.description}</p>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {dashboard.allFeatures.map((feature, idx) => <div key={idx} className="flex items-start text-sm text-foreground/80 items-center gap-2">
+                        <CheckCircle2 className="h-5 w-5 text-primary dark:text-accent flex-shrink-0 mt-0.5" />
+                        <span className="leading-4">{feature}</span>
+                      </div>)}
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>

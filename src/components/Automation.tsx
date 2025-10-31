@@ -13,14 +13,14 @@ import {
   Users,
   Bell,
   Bot,
-  Cloud
+  Cloud,
+  FileSpreadsheet,
+  Share2,
+  Workflow
 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import {
-  SiMicrosoftexcel,
-  SiMicrosoftsharepoint,
-  SiMicrosoftpowerautomate,
   SiMake,
   SiPython
 } from "react-icons/si";
@@ -71,9 +71,9 @@ const rotatingPhrases = [
 ];
 
 const technologies = [
-  { Icon: SiMicrosoftexcel, name: "Excel", color: "text-[#217346]" },
-  { Icon: SiMicrosoftsharepoint, name: "SharePoint", color: "text-[#0078D4]" },
-  { Icon: SiMicrosoftpowerautomate, name: "Power Automate", color: "text-[#0066FF]" },
+  { Icon: FileSpreadsheet, name: "Excel", color: "text-[#217346]" },
+  { Icon: Share2, name: "SharePoint", color: "text-[#0078D4]" },
+  { Icon: Workflow, name: "Power Automate", color: "text-[#0066FF]" },
   { Icon: SiMake, name: "Make", color: "text-[#6B46F2]" },
   { Icon: SiPython, name: "Python", color: "text-[#3776AB]" },
 ];
