@@ -76,7 +76,7 @@ export const Hero = () => {
           </h1>
 
           <div className="h-auto min-h-[100px] sm:min-h-[120px] flex items-center justify-center px-4">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground flex flex-wrap items-center justify-center gap-2 sm:gap-3 font-bold">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground flex max-sm:flex-col items-center justify-center gap-2 sm:gap-3 font-bold">
               <span>Transforma tus</span>
               <span className="relative inline-flex items-center justify-center min-w-[180px] sm:min-w-[200px] md:min-w-[240px] px-4 sm:px-6 py-1 rounded-xl bg-gradient-to-r from-primary/10 via-primary/20 to-accent/20 overflow-hidden backdrop-blur-sm border border-primary/20">
                 <AnimatePresence mode="wait">

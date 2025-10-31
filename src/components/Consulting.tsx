@@ -128,7 +128,7 @@ export const Consulting = () => {
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                   <CardHeader className="relative flex-row gap-3">
-                    <div className="p-3 rounded-xl bg-gradient-primary w-fit group-hover:scale-110 transition-transform duration-300">
+                    <div className="p-3 self-end rounded-xl bg-gradient-primary w-fit h-min group-hover:scale-110 transition-transform duration-300">
                       <service.icon className="h-6 w-6 text-primary-foreground" />
                     </div>
                     <CardTitle className="text-xl group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
@@ -136,7 +136,7 @@ export const Consulting = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="relative">
-                    <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors mb-3">
+                    <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors">
                       {service.description}
                     </p>
                   </CardContent>

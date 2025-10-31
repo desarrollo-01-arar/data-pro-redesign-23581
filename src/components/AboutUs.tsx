@@ -254,7 +254,7 @@ export const AboutUs = () => {
                               <div className="h-1 w-16 sm:w-20 bg-gradient-primary mx-auto md:mx-0 rounded-full mb-4" />
                             </div>
 
-                            <blockquote className="text-sm sm:text-base italic text-foreground/80 border-l-4 border-primary/30 pl-4 sm:pl-6">
+                            <blockquote className="text-sm sm:text-base italic text-foreground/80 sm:border-l-4 sm:border-primary/30 pl-4 sm:pl-6">
                               "{member.quote}"
                             </blockquote>
 
@@ -280,7 +280,7 @@ export const AboutUs = () => {
                 {/* Navigation buttons */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-0 sm:left-2 md:-left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
+                  className="absolute left-0 sm:left-2 md:-left-4 -bottom-5 sm:top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
                   aria-label="Previous team member"
                 >
                   <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -288,7 +288,7 @@ export const AboutUs = () => {
 
                 <button
                   onClick={nextSlide}
-                  className="absolute right-0 sm:right-2 md:-right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
+                  className="absolute right-0 sm:right-2 md:-right-4 -bottom-5 sm:top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
                   aria-label="Next team member"
                 >
                   <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground group-hover:text-primary transition-colors" />
