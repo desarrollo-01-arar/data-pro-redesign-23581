@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Briefcase, GraduationCap, Wrench, Shield, TrendingUp, Code, DollarSign, ShoppingCart, Settings, Package, Users, Monitor, CheckCircle2, ArrowRight } from "lucide-react";
@@ -64,6 +65,8 @@ const areas = [{
   features: ["Integraciones API", "Bases de datos", "Infraestructura", "Business Intelligence"]
 }];
 export const Consulting = () => {
+  const [expandedArea, setExpandedArea] = useState<string | null>(null);
+
   return <section id="consultorias" className="py-20 bg-secondary/30 relative overflow-hidden">
       {/* Premium breathing background */}
       <div className="absolute inset-0">
@@ -160,56 +163,68 @@ export const Consulting = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-            {areas.map((area, index) => <motion.div key={area.title} initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: index * 0.1
-          }}>
-                <Card className="group hover:shadow-elegant transition-all duration-500 border-2 hover:border-primary/50 overflow-hidden h-full relative bg-gradient-to-br from-card via-card to-secondary/20 dark:from-card dark:via-card dark:to-primary/5">
-                  {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {areas.map((area, index) => {
+              const isExpanded = expandedArea === area.title;
+              
+              return <motion.div key={area.title} initial={{
+                opacity: 0,
+                y: 30
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.5,
+                delay: index * 0.1
+              }}>
+                <Card 
+                  className={`cursor-pointer hover:shadow-elegant transition-all duration-700 border-2 overflow-hidden h-full relative bg-gradient-to-br from-card via-card to-secondary/20 dark:from-card dark:via-card dark:to-primary/5 ${isExpanded ? 'border-primary/50 shadow-elegant' : 'hover:border-primary/30'}`}
+                  onClick={() => setExpandedArea(isExpanded ? null : area.title)}
+                >
+                  {/* Gradient overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 transition-opacity duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0'}`} />
                   
                   {/* Icon glow effect */}
-                  <div className="absolute top-6 left-6 w-12 h-12 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-full" />
+                  <div className={`absolute top-6 left-6 w-12 h-12 bg-gradient-primary blur-xl transition-opacity duration-700 rounded-full ${isExpanded ? 'opacity-20' : 'opacity-0'}`} />
                   
                   <CardContent className="p-6 relative">
-                    <div className="flex items-center space-x-4 mb-0 group-hover:mb-4 transition-all duration-300">
-                      <div className="p-3 rounded-xl bg-gradient-accent group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0 shadow-md group-hover:shadow-lg">
+                    <div className={`flex items-center space-x-4 transition-all duration-500 ${isExpanded ? 'mb-4' : 'mb-0'}`}>
+                      <div className={`p-3 rounded-xl bg-gradient-accent transition-all duration-500 flex-shrink-0 shadow-md ${isExpanded ? 'scale-110 rotate-3 shadow-lg' : ''}`}>
                         <area.icon className="h-6 w-6 text-accent-foreground" />
                       </div>
-                      <h4 className="text-xl font-semibold group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
+                      <h4 className={`text-xl font-semibold transition-colors duration-500 ${isExpanded ? 'text-primary dark:text-primary-glow' : ''}`}>
                         {area.title}
                       </h4>
                     </div>
 
-                    {/* Description - only visible on hover */}
-                    <div className="max-h-0 group-hover:max-h-32 overflow-hidden transition-all duration-500">
-                      <p className="text-sm text-muted-foreground mb-4 pl-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                    {/* Description */}
+                    <div className={`overflow-hidden transition-all duration-700 ${isExpanded ? 'max-h-32' : 'max-h-0'}`}>
+                      <p className={`text-sm text-muted-foreground mb-4 pl-[60px] transition-opacity duration-500 ${isExpanded ? 'opacity-100 delay-150' : 'opacity-0'}`}>
                         {area.description}
                       </p>
                     </div>
 
-                    {/* Features list - only visible on hover */}
-                    <div className="max-h-0 group-hover:max-h-64 overflow-hidden transition-all duration-500">
+                    {/* Features list */}
+                    <div className={`overflow-hidden transition-all duration-700 ${isExpanded ? 'max-h-64' : 'max-h-0'}`}>
                       <div className="space-y-2 pl-[60px]">
-                        {area.features.map((feature, featureIndex) => <div key={featureIndex} className="flex items-center space-x-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-                      transitionDelay: `${200 + featureIndex * 50}ms`
-                    }}>
-                            <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-primary-glow group-hover:scale-125 transition-transform" />
+                        {area.features.map((feature, featureIndex) => <div 
+                          key={featureIndex} 
+                          className={`flex items-center space-x-2 text-sm transition-opacity duration-500`}
+                          style={{
+                            transitionDelay: isExpanded ? `${250 + featureIndex * 80}ms` : '0ms',
+                            opacity: isExpanded ? 1 : 0
+                          }}
+                        >
+                            <div className={`h-1.5 w-1.5 rounded-full bg-primary dark:bg-primary-glow transition-transform duration-300 ${isExpanded ? 'scale-125' : ''}`} />
                             <span className="text-muted-foreground">{feature}</span>
                           </div>)}
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>)}
+              </motion.div>
+            })}
           </div>
         </div>
       </div>
