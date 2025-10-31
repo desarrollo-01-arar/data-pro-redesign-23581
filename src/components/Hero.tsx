@@ -2,14 +2,38 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
+
 const dynamicWords = ["datos", "decisiones", "resultados"];
+const typingText = "información clara";
+
 export const Hero = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % dynamicWords.length);
     }, 3000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    let currentIndex = 0;
+    setDisplayedText("");
+    setIsTypingComplete(false);
+
+    const typingInterval = setInterval(() => {
+      if (currentIndex < typingText.length) {
+        setDisplayedText(typingText.slice(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        setIsTypingComplete(true);
+        clearInterval(typingInterval);
+      }
+    }, 100);
+
+    return () => clearInterval(typingInterval);
   }, []);
   const scrollToContact = () => {
     const element = document.querySelector("#contacto");
@@ -38,7 +62,17 @@ export const Hero = () => {
           className="max-w-4xl mx-auto text-center space-y-8"
         >
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Decisiones inteligentes con <span className="text-primary dark:text-primary-glow">información clara</span>
+            Decisiones inteligentes con{" "}
+            <span className="text-primary dark:text-primary-glow relative inline-block">
+              {displayedText}
+              {!isTypingComplete && (
+                <motion.span
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                  className="inline-block w-0.5 h-[0.9em] bg-primary dark:bg-primary-glow ml-1 align-middle"
+                />
+              )}
+            </span>
           </h1>
 
           <div className="h-20 flex items-center justify-center">
@@ -82,14 +116,37 @@ export const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button
-              size="lg"
-              onClick={scrollToContact}
-              className="bg-gradient-primary hover:shadow-glow transition-all group text-lg px-8"
+            <motion.div
+              animate={{
+                scale: [1, 1.02, 1],
+                boxShadow: [
+                  "0 0 0 0 rgba(var(--primary-rgb), 0)",
+                  "0 0 20px 8px rgba(var(--primary-rgb), 0.15)",
+                  "0 0 0 0 rgba(var(--primary-rgb), 0)"
+                ]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="rounded-md"
             >
-              Comienza ahora
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+              <Button
+                size="lg"
+                onClick={scrollToContact}
+                className="bg-gradient-primary hover:shadow-glow transition-all group text-lg px-8 relative overflow-hidden"
+              >
+                <span className="relative z-10">Comienza ahora</span>
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                <motion.div
+                  className="absolute inset-0 bg-white/10"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.5 }}
+                />
+              </Button>
+            </motion.div>
             <Button
               size="lg"
               variant="outline"
