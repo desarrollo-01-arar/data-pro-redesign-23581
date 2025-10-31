@@ -109,45 +109,43 @@ export const SuccessCases = () => {
             <motion.div 
               className="flex gap-6"
               animate={{ 
-                x: `calc(-${currentIndex * 100 / itemsPerView}% - ${currentIndex * 1.5}rem)` 
+                x: `calc(-${currentIndex * (100 / itemsPerView)}% - ${currentIndex * 1.5}rem)` 
               }}
               transition={{ 
                 type: "spring",
-                stiffness: 300,
-                damping: 30,
-                mass: 0.8
-              }}
-              style={{ 
-                width: `calc(${(cases.length / itemsPerView) * 100}% + ${(cases.length - itemsPerView) * 1.5}rem)` 
+                stiffness: 260,
+                damping: 28,
+                mass: 0.6
               }}
             >
               {cases.map((company, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 group"
-                  style={{ 
-                    width: `calc(${100 / cases.length}% - ${(cases.length - 1) * 1.5 / cases.length}rem)` 
-                  }}
+                  className="min-w-[calc(25%-1.125rem)] flex-shrink-0 group"
                 >
-                  <Card className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-border/50 hover:border-primary/40 bg-card h-full">
-                    <CardContent className="p-6 flex flex-col items-center text-center gap-4">
+                  <Card className="relative overflow-hidden hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 border-border/30 hover:border-primary/50 bg-gradient-to-br from-card via-card to-card/80 backdrop-blur-sm h-full group-hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.15)]">
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    <CardContent className="relative p-6 flex flex-col items-center text-center gap-4">
                       {/* Company name at top */}
-                      <h3 className="text-sm font-semibold text-foreground leading-tight min-h-[2.5rem] flex items-center">
+                      <h3 className="text-sm font-semibold text-foreground leading-tight min-h-[2.5rem] flex items-center group-hover:text-primary transition-colors duration-300">
                         {company.name}
                       </h3>
                       
-                      {/* Logo container */}
-                      <div className="w-full aspect-video flex items-center justify-center">
+                      {/* Logo container with glow effect */}
+                      <div className="w-full aspect-video flex items-center justify-center relative">
+                        <div className="absolute inset-0 bg-gradient-radial from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                         <img 
                           src={company.logo} 
                           alt={company.name} 
                           loading="lazy" 
-                          className="max-w-full max-h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
+                          className="relative max-w-full max-h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
                         />
                       </div>
 
-                      {/* Industry at bottom */}
-                      <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-accent/10 text-accent border border-accent/30 text-xs font-medium">
+                      {/* Industry badge with gradient */}
+                      <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-accent/20 to-primary/20 group-hover:from-accent/30 group-hover:to-primary/30 text-accent group-hover:text-primary border border-accent/30 group-hover:border-primary/50 text-xs font-medium shadow-sm transition-all duration-300">
                         {company.industry}
                       </span>
                     </CardContent>
