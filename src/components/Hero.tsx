@@ -61,7 +61,7 @@ export const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl mx-auto text-center space-y-8"
         >
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight px-4">
             Decisiones inteligentes con{" "}
             <span className="text-primary dark:text-primary-glow relative inline-block">
               {displayedText}
@@ -75,10 +75,10 @@ export const Hero = () => {
             </span>
           </h1>
 
-          <div className="h-20 flex items-center justify-center">
-            <p className="text-2xl md:text-3xl text-muted-foreground flex items-center gap-3 font-bold">
-              Transforma tus{" "}
-              <span className="relative inline-flex items-center justify-center min-w-[240px] px-6 py-1 rounded-xl bg-gradient-to-r from-primary/10 via-primary/20 to-accent/20 overflow-hidden backdrop-blur-sm border border-primary/20">
+          <div className="h-auto min-h-[100px] sm:min-h-[120px] flex items-center justify-center px-4">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground flex flex-wrap items-center justify-center gap-2 sm:gap-3 font-bold">
+              <span>Transforma tus</span>
+              <span className="relative inline-flex items-center justify-center min-w-[180px] sm:min-w-[200px] md:min-w-[240px] px-4 sm:px-6 py-1 rounded-xl bg-gradient-to-r from-primary/10 via-primary/20 to-accent/20 overflow-hidden backdrop-blur-sm border border-primary/20">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={currentWordIndex}
@@ -99,7 +99,7 @@ export const Hero = () => {
                         ease: "linear"
                       }
                     }}
-                    className="relative z-10 uppercase text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+                    className="relative z-10 uppercase text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
                     style={{
                       backgroundSize: "200% 100%"
                     }}
@@ -111,11 +111,11 @@ export const Hero = () => {
             </p>
           </div>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto font-bold">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto font-bold px-4">
             Especialistas en analítica de datos, automatización de procesos y consultoría Siesa EE
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 px-4">
             <motion.div
               animate={{
                 scale: [1, 1.02, 1],
@@ -135,7 +135,7 @@ export const Hero = () => {
               <Button
                 size="lg"
                 onClick={scrollToContact}
-                className="bg-gradient-primary hover:shadow-glow transition-all group text-lg px-8 relative overflow-hidden"
+                className="bg-gradient-primary hover:shadow-glow transition-all group text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto relative overflow-hidden"
               >
                 <span className="relative z-10">Comienza ahora</span>
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
@@ -155,7 +155,7 @@ export const Hero = () => {
                   behavior: "smooth",
                 })
               }
-              className="text-lg px-8 border-2 hover:border-primary hover:bg-primary/10 hover:text-primary dark:hover:text-primary-glow hover:shadow-lg transition-all duration-300"
+              className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto border-2 hover:border-primary hover:bg-primary/10 hover:text-primary dark:hover:text-primary-glow hover:shadow-lg transition-all duration-300"
             >
               Ver soluciones
             </Button>

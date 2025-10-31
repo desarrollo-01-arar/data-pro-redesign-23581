@@ -102,12 +102,12 @@ export const Automation = () => {
           <div className="inline-flex items-center justify-center p-3 bg-gradient-primary rounded-full mb-6 animate-pulse-glow">
             <Zap className="h-8 w-8 text-primary-foreground" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             <span className="text-primary dark:text-primary-glow">Automatización</span> de Procesos
           </h2>
           
           {/* Rotating phrases with smooth animation */}
-          <div className="relative h-32 max-w-3xl mx-auto overflow-hidden">
+          <div className="relative h-auto min-h-[140px] sm:min-h-[120px] md:min-h-[100px] max-w-3xl mx-auto overflow-hidden px-4">
             <AnimatePresence mode="wait">
               <motion.p
                 key={currentPhraseIndex}
@@ -118,7 +118,7 @@ export const Automation = () => {
                   duration: 0.6,
                   ease: [0.4, 0, 0.2, 1]
                 }}
-                className="text-xl text-muted-foreground absolute inset-0 flex items-center justify-center text-center px-4"
+                className="text-base sm:text-lg md:text-xl text-muted-foreground absolute inset-0 flex items-center justify-center text-center px-4"
                 style={{ perspective: "1000px" }}
               >
                 {rotatingPhrases[currentPhraseIndex]}
@@ -205,11 +205,11 @@ export const Automation = () => {
         </div>
 
         {/* Technologies section with enhanced design */}
-        <div className="mt-20 text-center">
-          <h3 className="text-2xl font-bold mb-6">
+        <div className="mt-12 sm:mt-16 md:mt-20 text-center px-4">
+          <h3 className="text-xl sm:text-2xl font-bold mb-6">
             Integramos con las <span className="text-primary dark:text-primary-glow">mejores herramientas</span>
           </h3>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {[
               {
                 name: "n8n",

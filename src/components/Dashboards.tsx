@@ -52,10 +52,10 @@ export const Dashboards = () => {
       }} transition={{
         duration: 0.6
       }} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             Tableros de <span className="text-primary dark:text-primary-glow">Control</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Descubre los indicadores esenciales que tu compañía necesita para optimizar la producción y superar las expectativas del mercado
           </p>
         </motion.div>
@@ -98,7 +98,7 @@ export const Dashboards = () => {
           </Card>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-[70px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
           {dashboards.map((dashboard, index) => <motion.div key={dashboard.title} initial={{
           opacity: 0,
           y: 30
@@ -134,8 +134,8 @@ export const Dashboards = () => {
                   </div>
                 </div>
 
-                <CardTitle className="text-2xl mb-2">{dashboard.title}</CardTitle>
-                <p className="text-sm text-muted-foreground mb-6 my-[15px]">{dashboard.description}</p>
+                <CardTitle className="text-xl sm:text-2xl mb-2">{dashboard.title}</CardTitle>
+                <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">{dashboard.description}</p>
               </CardHeader>
               
               <CardContent>

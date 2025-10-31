@@ -86,10 +86,10 @@ export const Consulting = () => {
       }} transition={{
         duration: 0.6
       }} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             Consultoría <span className="text-primary dark:text-primary-glow">Siesa EE</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 px-4">
             En Datapro.com.co ayudamos a las empresas a maximizar el valor de su inversión en Siesa EE, mediante
             consultoría especializada, dirección de proyectos, capacitación y soporte continuo
           </p>
@@ -106,11 +106,11 @@ export const Consulting = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center mb-12">
+        <div className="mb-12 sm:mb-16 md:mb-20 px-4">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">
             Nuestros <span className="text-primary dark:text-primary-glow">Servicios</span>
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {services.map((service, index) => <motion.div key={service.title} initial={{
             opacity: 0,
             y: 30
@@ -146,14 +146,14 @@ export const Consulting = () => {
         </div>
 
         {/* Areas of Expertise */}
-        <div className="relative">
+        <div className="relative px-4">
           {/* Decorative background elements */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-10 left-[5%] w-32 h-32 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl" />
             <div className="absolute bottom-10 right-[8%] w-40 h-40 bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl" />
           </div>
 
-          <h3 className="text-3xl font-bold text-center mb-3 relative">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-3 relative">
             Áreas de <span className="text-primary dark:text-primary-glow">Especialización</span>
           </h3>
           
@@ -162,7 +162,7 @@ export const Consulting = () => {
             <div className="h-1 w-24 bg-gradient-primary rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative">
             {areas.map((area, index) => {
               const isExpanded = expandedArea === area.title;
               

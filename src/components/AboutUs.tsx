@@ -75,7 +75,7 @@ export const AboutUs = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Mission & Vision */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-10 px-4">
           {/* Mission */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -136,14 +136,14 @@ export const AboutUs = () => {
           transition={{ duration: 0.6 }}
           className="mt-16 mb-10"
         >
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-2">
+          <div className="text-center mb-8 px-4">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">
               Nuestras <span className="text-primary dark:text-primary-glow">Buenas Prácticas</span>
             </h3>
             <div className="h-0.5 w-16 bg-gradient-primary rounded-full mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-5xl mx-auto px-4">
             {[
               {
                 icon: Shield,
@@ -199,8 +199,8 @@ export const AboutUs = () => {
           className="mt-20"
         >
           {/* Title with decorative line */}
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4">
+          <div className="text-center mb-12 px-4">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4">
               Nuestro <span className="text-primary dark:text-primary-glow">Equipo</span>
             </h3>
             <div className="flex items-center justify-center gap-3">
@@ -211,11 +211,11 @@ export const AboutUs = () => {
           </div>
 
           {/* Elegant card container for carousel */}
-          <Card className="relative max-w-5xl mx-auto bg-secondary/50 dark:bg-secondary/30 border-2 border-border/50 shadow-elegant backdrop-blur-sm overflow-hidden">
+          <Card className="relative max-w-5xl mx-4 sm:mx-auto bg-secondary/50 dark:bg-secondary/30 border-2 border-border/50 shadow-elegant backdrop-blur-sm overflow-hidden">
             {/* Subtle gradient background */}
             <div className="absolute inset-0 bg-gradient-subtle opacity-30 pointer-events-none" />
 
-            <CardContent className="p-8 md:p-12 relative z-10">
+            <CardContent className="p-4 sm:p-6 md:p-8 lg:p-12 relative z-10">
               <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
                 {/* Carousel container */}
                 <div className="relative overflow-hidden rounded-2xl">
@@ -226,11 +226,11 @@ export const AboutUs = () => {
                     }}
                   >
                     {team.map((member, index) => (
-                      <div key={index} className="min-w-full px-4 flex items-center justify-center">
-                        <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+                      <div key={index} className="min-w-full px-2 sm:px-4 flex items-center justify-center">
+                        <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-center justify-center">
                           {/* Avatar side */}
                           <div className="relative group flex-shrink-0">
-                            <div className="relative w-60 h-60 overflow-hidden rounded-full border-4 border-primary/30 shadow-elegant bg-card">
+                            <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60 overflow-hidden rounded-full border-4 border-primary/30 shadow-elegant bg-card">
                               <img
                                 src={member.image}
                                 alt={member.role}
@@ -245,16 +245,16 @@ export const AboutUs = () => {
                           </div>
 
                           {/* Info side */}
-                          <div className="space-y-5 text-center md:text-left max-w-xl flex-1">
+                          <div className="space-y-3 sm:space-y-5 text-center md:text-left max-w-xl flex-1">
                             <div>
-                              <h4 className="text-2xl font-bold mb-2 text-primary dark:text-primary-glow">
+                              <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-primary dark:text-primary-glow">
                                 {member.role}
                               </h4>
-                              <p className="text-xl text-foreground mb-2">{member.name}</p>
-                              <div className="h-1 w-20 bg-gradient-primary mx-auto md:mx-0 rounded-full mb-4" />
+                              <p className="text-base sm:text-lg md:text-xl text-foreground mb-2">{member.name}</p>
+                              <div className="h-1 w-16 sm:w-20 bg-gradient-primary mx-auto md:mx-0 rounded-full mb-4" />
                             </div>
 
-                            <blockquote className="text-base italic text-foreground/80 border-l-4 border-primary/30 pl-6">
+                            <blockquote className="text-sm sm:text-base italic text-foreground/80 border-l-4 border-primary/30 pl-4 sm:pl-6">
                               "{member.quote}"
                             </blockquote>
 
@@ -280,18 +280,18 @@ export const AboutUs = () => {
                 {/* Navigation buttons */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
+                  className="absolute left-0 sm:left-2 md:-left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
                   aria-label="Previous team member"
                 >
-                  <ChevronLeft className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground group-hover:text-primary transition-colors" />
                 </button>
 
                 <button
                   onClick={nextSlide}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
+                  className="absolute right-0 sm:right-2 md:-right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
                   aria-label="Next team member"
                 >
-                  <ChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground group-hover:text-primary transition-colors" />
                 </button>
 
                 {/* Dots indicator */}
@@ -310,8 +310,8 @@ export const AboutUs = () => {
           </Card>
 
           {/* Team description */}
-          <div className="text-center mt-12 max-w-3xl mx-auto">
-            <p className="text-muted-foreground">
+          <div className="text-center mt-12 max-w-3xl mx-auto px-4">
+            <p className="text-sm sm:text-base text-muted-foreground">
               Nuestro equipo está compuesto por{" "}
               <span className="font-semibold text-foreground">Matemáticos e Ingenieros</span> expertos en inteligencia
               de negocios, análisis de datos y automatización, todos certificados y dedicados a diseñar soluciones

@@ -160,17 +160,17 @@ export const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             Hablemos de tu <span className="text-primary dark:text-primary-glow">Proyecto</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Estamos listos para ayudarte a transformar tu empresa con datos e inteligencia
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4">
           {/* Contact Info */}
-          <div className="space-y-6 animate-fade-in-up">
+          <div className="space-y-4 sm:space-y-6 animate-fade-in-up">
             <Card className="border-2 hover:border-primary/50 transition-all hover:shadow-elegant">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
@@ -226,7 +226,7 @@ export const Contact = () => {
             className="lg:col-span-2 border-2 hover:border-primary/30 transition-all animate-fade-in-up"
             style={{ animationDelay: "100ms" }}
           >
-            <CardContent className="p-8">
+            <CardContent className="p-4 sm:p-6 md:p-8">
               <form onSubmit={handleSubmit} noValidate className="space-y-6">
                 {/* Asunto - Full width */}
                 <div className="space-y-2">
