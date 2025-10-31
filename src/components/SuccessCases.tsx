@@ -106,54 +106,54 @@ export const SuccessCases = () => {
         {/* Logos Carousel */}
         <div className="relative max-w-6xl mx-auto mb-20">
           <div className="overflow-hidden px-16">
-            <div className="flex gap-6">
-              {cases.map((company, index) => {
-                // Calculate position relative to current index
-                let position = index - currentIndex;
-                if (position < 0) position += cases.length;
-                if (position >= itemsPerView) return null;
+            <motion.div 
+              className="flex gap-6"
+              animate={{ x: `calc(-${currentIndex * (100 / itemsPerView)}% - ${currentIndex * 1.5}rem)` }}
+              transition={{ 
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+                mass: 0.8
+              }}
+            >
+              {cases.map((company, index) => (
+                <div
+                  key={index}
+                  className="min-w-[calc(25%-1.125rem)] flex-shrink-0 group"
+                >
+                  <Card className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-border/50 hover:border-primary/40 bg-card h-full">
+                    <CardContent className="p-6 flex flex-col items-center text-center gap-4">
+                      {/* Company name at top */}
+                      <h3 className="text-sm font-semibold text-foreground leading-tight min-h-[2.5rem] flex items-center">
+                        {company.name}
+                      </h3>
+                      
+                      {/* Logo container */}
+                      <div className="w-full aspect-video flex items-center justify-center">
+                        <img 
+                          src={company.logo} 
+                          alt={company.name} 
+                          loading="lazy" 
+                          className="max-w-full max-h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
+                        />
+                      </div>
 
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="min-w-[calc(25%-1.125rem)] group"
-                  >
-                    <Card className="hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-border/50 hover:border-primary/40 bg-card h-full">
-                      <CardContent className="p-6 flex flex-col items-center text-center gap-4">
-                        {/* Company name at top */}
-                        <h3 className="text-sm font-semibold text-foreground leading-tight min-h-[2.5rem] flex items-center">
-                          {company.name}
-                        </h3>
-                        
-                        {/* Logo container */}
-                        <div className="w-full aspect-video flex items-center justify-center">
-                          <img 
-                            src={company.logo} 
-                            alt={company.name} 
-                            loading="lazy" 
-                            className="max-w-full max-h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
-                          />
-                        </div>
-
-                        {/* Industry at bottom */}
-                        <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-accent/10 text-accent border border-accent/30 text-xs font-medium">
-                          {company.industry}
-                        </span>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
-            </div>
+                      {/* Industry at bottom */}
+                      <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-accent/10 text-accent border border-accent/30 text-xs font-medium">
+                        {company.industry}
+                      </span>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </motion.div>
           </div>
 
           {/* Navigation buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group z-10"
+            disabled={currentIndex === 0}
+            className="absolute left-0 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group z-10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-border disabled:hover:bg-card"
             aria-label="Previous"
           >
             <ChevronLeft className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -161,7 +161,8 @@ export const SuccessCases = () => {
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group z-10"
+            disabled={currentIndex >= cases.length - itemsPerView}
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group z-10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-border disabled:hover:bg-card"
             aria-label="Next"
           >
             <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
