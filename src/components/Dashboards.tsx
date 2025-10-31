@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { CheckCircle2, Crown } from "lucide-react";
+import { CheckCircle2, Crown, Calendar, FileText } from "lucide-react";
 import comercialesImg from "@/assets/dashboards/comerciales.png";
 import financierosImg from "@/assets/dashboards/financieros.png";
 import hcmImg from "@/assets/dashboards/hcm.png";
@@ -58,6 +58,44 @@ export const Dashboards = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Descubre los indicadores esenciales que tu compañía necesita para optimizar la producción y superar las expectativas del mercado
           </p>
+        </motion.div>
+
+        {/* Pricing info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-3xl mx-auto mb-12"
+        >
+          <Card className="border-2 border-accent/30 bg-card/30 backdrop-blur-sm">
+            <CardContent className="p-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-center sm:text-left">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 rounded-lg bg-accent/20">
+                    <Calendar className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-accent">Mensualidades</p>
+                    <p className="text-xs text-muted-foreground">Pago flexible mensual</p>
+                  </div>
+                </div>
+                <div className="hidden sm:block h-12 w-px bg-border" />
+                <div className="flex items-center gap-3">
+                  <div className="p-3 rounded-lg bg-primary/20">
+                    <FileText className="h-6 w-6 text-primary dark:text-primary-glow" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-primary dark:text-primary-glow">Por Proyecto</p>
+                    <p className="text-xs text-muted-foreground">Cotización personalizada</p>
+                  </div>
+                </div>
+              </div>
+              <p className="text-center text-xs text-muted-foreground mt-4">
+                Los precios se adaptan según las necesidades específicas de tu negocio
+              </p>
+            </CardContent>
+          </Card>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-[70px]">

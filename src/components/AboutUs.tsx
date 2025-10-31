@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
-import { Target, Eye, ChevronLeft, ChevronRight } from "lucide-react";
+import { Target, Eye, ChevronLeft, ChevronRight, Shield, Lock, Zap, TrendingUp, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 import analistaDatos from "@/assets/team/analista-datos.png";
 import consultorErp from "@/assets/team/consultor-erp.png";
@@ -127,6 +127,68 @@ export const AboutUs = () => {
             </Card>
           </motion.div>
         </div>
+
+        {/* Best Practices Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-16 mb-10"
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-2">
+              Nuestras <span className="text-primary dark:text-primary-glow">Buenas Prácticas</span>
+            </h3>
+            <div className="h-0.5 w-16 bg-gradient-primary rounded-full mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {[
+              {
+                icon: Shield,
+                text: "Desarrollo bajo estándares de calidad y seguridad",
+              },
+              {
+                icon: Lock,
+                text: "Protección y confidencialidad de la información del cliente",
+              },
+              {
+                icon: Zap,
+                text: "Uso de metodologías ágiles para optimizar procesos",
+              },
+              {
+                icon: TrendingUp,
+                text: "Mejora continua y soporte post implementación",
+              },
+              {
+                icon: MessageSquare,
+                text: "Transparencia y comunicación constante con el cliente",
+              },
+              {
+                icon: Target,
+                text: "Soluciones adaptadas a las necesidades reales del negocio",
+              },
+            ].map((practice, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <Card className="h-full border border-border/50 hover:border-primary/30 transition-all duration-300 bg-card/30 backdrop-blur-sm">
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
+                      <practice.icon className="h-5 w-5 text-primary dark:text-primary-glow" />
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{practice.text}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Team Section - Carousel */}
         <motion.div
