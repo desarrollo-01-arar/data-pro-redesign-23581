@@ -68,13 +68,14 @@ const sectors = [
 export const SuccessCases = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerView = 4;
+  const totalSlides = Math.ceil(cases.length / itemsPerView);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % cases.length);
+    setCurrentIndex((prev) => (prev + 1) % totalSlides);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + cases.length) % cases.length);
+    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
   return <section id="casos" className="py-20 bg-background relative overflow-hidden">
@@ -105,57 +106,66 @@ export const SuccessCases = () => {
 
         {/* Logos Carousel */}
         <div className="relative max-w-6xl mx-auto mb-20">
-          <div className="overflow-hidden px-16">
-            <motion.div 
-              className="flex gap-6"
-              animate={{ 
-                x: `calc(-${currentIndex * (100 / itemsPerView)}% - ${currentIndex * 1.5}rem)` 
-              }}
-              transition={{ 
-                type: "spring",
-                stiffness: 260,
-                damping: 28,
-                mass: 0.6
-              }}
-              style={{ 
-                width: `calc(${(cases.length / itemsPerView) * 100}% + ${(cases.length - itemsPerView) * 1.5}rem)` 
+          <div className="overflow-hidden px-12">
+            <motion.div
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
               }}
             >
-              {cases.map((company, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 group"
-                  style={{ 
-                    width: `calc(${100 / cases.length}% - ${(cases.length - 1) * 1.5 / cases.length}rem)` 
-                  }}
-                >
-                  <Card className="relative overflow-hidden hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 border-border/30 hover:border-primary/50 bg-gradient-to-br from-card via-card to-card/80 backdrop-blur-sm h-full group-hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.15)]">
-                    {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    <CardContent className="relative p-6 flex flex-col items-center text-center gap-4">
-                      {/* Company name at top */}
-                      <h3 className="text-sm font-semibold text-foreground leading-tight min-h-[2.5rem] flex items-center group-hover:text-primary transition-colors duration-300">
-                        {company.name}
-                      </h3>
+              {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                <div key={slideIndex} className="min-w-full grid grid-cols-4 gap-6">
+                  {cases.slice(slideIndex * itemsPerView, (slideIndex + 1) * itemsPerView).map((company, index) => (
+                    <motion.div
+                      key={slideIndex * itemsPerView + index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.05 }}
+                      className="group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-6 hover:border-primary/60 hover:shadow-elegant hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden"
+                    >
+                      {/* Subtle corner accent */}
+                      <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-primary opacity-0 group-hover:opacity-20 rounded-bl-full transition-all duration-500" />
+                      <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-accent opacity-0 group-hover:opacity-15 rounded-tr-full transition-all duration-500" />
                       
-                      {/* Logo container with glow effect */}
-                      <div className="w-full aspect-video flex items-center justify-center relative">
-                        <div className="absolute inset-0 bg-gradient-radial from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                      {/* Success badge */}
+                      <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary-glow" strokeWidth={2.5} />
+                      </div>
+
+                      {/* Decorative line */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-3/4 transition-all duration-700" />
+                      
+                      {/* Logo container */}
+                      <div className="relative w-full aspect-video flex items-center justify-center mb-4 transition-transform duration-500">
                         <img 
                           src={company.logo} 
                           alt={company.name} 
                           loading="lazy" 
-                          className="relative max-w-full max-h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
+                          className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" 
                         />
                       </div>
 
-                      {/* Industry badge with gradient */}
-                      <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-accent/20 to-primary/20 group-hover:from-accent/30 group-hover:to-primary/30 text-accent group-hover:text-primary border border-accent/30 group-hover:border-primary/50 text-xs font-medium shadow-sm transition-all duration-300">
-                        {company.industry}
-                      </span>
-                    </CardContent>
-                  </Card>
+                      {/* Company name */}
+                      <h3 className="text-center text-sm font-bold mb-2 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight min-h-[2.5rem] flex items-center justify-center tracking-tight">
+                        <span className="relative">
+                          {company.name}
+                          <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary-glow group-hover:w-full transition-all duration-500" />
+                        </span>
+                      </h3>
+
+                      {/* Industry badge */}
+                      <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                        <span className="inline-flex items-center font-semibold px-3 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 text-primary dark:text-primary-glow border border-primary/30 text-xs whitespace-nowrap backdrop-blur-sm">
+                          <Building2 className="h-3 w-3 mr-1.5" strokeWidth={2.5} />
+                          {company.industry}
+                        </span>
+                      </div>
+
+                      {/* Enhanced glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500 pointer-events-none" />
+                    </motion.div>
+                  ))}
                 </div>
               ))}
             </motion.div>
@@ -164,21 +174,31 @@ export const SuccessCases = () => {
           {/* Navigation buttons */}
           <button
             onClick={prevSlide}
-            disabled={currentIndex === 0}
-            className="absolute left-0 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group z-10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-border disabled:hover:bg-card"
-            aria-label="Previous"
+            className="absolute left-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
+            aria-label="Previous slide"
           >
-            <ChevronLeft className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+            <ChevronLeft className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
           </button>
 
           <button
             onClick={nextSlide}
-            disabled={currentIndex >= cases.length - itemsPerView}
-            className="absolute right-0 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group z-10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-border disabled:hover:bg-card"
-            aria-label="Next"
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group z-10"
+            aria-label="Next slide"
           >
-            <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+            <ChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
           </button>
+
+          {/* Dots indicator */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {Array.from({ length: totalSlides }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex ? "w-8 bg-primary dark:bg-primary-glow" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Sectors Section */}
