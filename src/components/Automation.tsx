@@ -1,62 +1,81 @@
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Zap,
-  Mail,
-  Bell,
   Database,
-  Webhook,
-  Bot,
-  ArrowRight,
+  Mail,
   FileText,
-  Users,
-  TrendingUp,
+  BarChart3,
+  Webhook,
   Calendar,
-  Cloud,
+  MessageSquare,
+  Timer,
+  Users,
+  Bell,
+  Bot,
+  Cloud
 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
-import { useState, useEffect } from "react";
+import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
+import {
+  SiMicrosoftexcel,
+  SiMicrosoftsharepoint,
+  SiMicrosoftpowerautomate,
+  SiMake,
+  SiPython
+} from "react-icons/si";
+
 const automationExamples = [
   {
     icon: Mail,
     title: "Facturación Automática",
     description: "Envío automático de facturas del ERP o DMS por correo a clientes",
-    color: "from-blue-500/20 to-blue-600/20",
+    color: "primary",
   },
   {
     icon: Bell,
     title: "Alertas Inteligentes",
     description: "Mantente informado con notificaciones automáticas sobre respaldos, pagos vencidos y variaciones en los indicadores clave de tu negocio",
-    color: "from-yellow-500/20 to-yellow-600/20",
+    color: "accent",
   },
   {
     icon: Database,
     title: "Sincronización de Datos",
     description: "Actualización automática de dashboards y bases de datos",
-    color: "from-purple-500/20 to-purple-600/20",
+    color: "primary",
   },
   {
     icon: Users,
     title: "Gestión de Leads",
     description: "Registro automático desde formularios web y correos de bienvenida",
-    color: "from-green-500/20 to-green-600/20",
+    color: "accent",
   },
   {
     icon: Webhook,
     title: "Integraciones API",
     description: "Conexión entre sistemas mediante webhooks y APIs REST",
-    color: "from-red-500/20 to-red-600/20",
+    color: "primary",
   },
   {
     icon: Bot,
     title: "Bots y Mensajería",
     description: "Integración con Telegram, WhatsApp y publicación en redes",
-    color: "from-indigo-500/20 to-indigo-600/20",
+    color: "accent",
   },
 ];
+
 const rotatingPhrases = [
   "Aumenta la productividad y minimiza los errores mediante procesos automáticos diseñados para mantener tu negocio en movimiento todo el tiempo.",
   "Transforma la gestión de tu empresa con automatizaciones inteligentes que garantizan precisión, continuidad operativa y ahorro de tiempo.",
   "Impulsa la eficiencia de tu organización con procesos automatizados que operan 24/7, reducen errores y optimizan el uso de tus recursos.",
+];
+
+const technologies = [
+  { Icon: SiMicrosoftexcel, name: "Excel", color: "text-[#217346]" },
+  { Icon: SiMicrosoftsharepoint, name: "SharePoint", color: "text-[#0078D4]" },
+  { Icon: SiMicrosoftpowerautomate, name: "Power Automate", color: "text-[#0066FF]" },
+  { Icon: SiMake, name: "Make", color: "text-[#6B46F2]" },
+  { Icon: SiPython, name: "Python", color: "text-[#3776AB]" },
 ];
 
 export const Automation = () => {
@@ -65,7 +84,7 @@ export const Automation = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPhraseIndex((prev) => (prev + 1) % rotatingPhrases.length);
-    }, 5000); // Cambiar cada 5 segundos
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -79,7 +98,7 @@ export const Automation = () => {
           style={{ backgroundSize: "200% 200%" }}
         />
 
-        {/* Enhanced flowing lines - more visible */}
+        {/* Enhanced flowing lines */}
         <div className="absolute inset-0 opacity-40">
           <div className="absolute top-[6%] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/80 to-transparent animate-wave-slow shadow-glow" />
           <div className="absolute top-[25%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/70 to-transparent animate-wave-medium shadow-yellow-glow" />
@@ -143,119 +162,148 @@ export const Automation = () => {
           </div>
         </motion.div>
 
-        {/* Premium automation cards with flow connections */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Connection lines between cards */}
-          <div className="hidden lg:block absolute inset-0 pointer-events-none">
-            <svg
-              className="w-full h-full"
-              style={{
-                position: "absolute",
-              }}
-            >
-              <defs>
-                <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-                  <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+        {/* Automation Examples - Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {automationExamples.map((example, index) => {
+            const Icon = example.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <Card className={`group cursor-pointer h-full border-2 hover:border-${example.color}/50 transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-2 bg-gradient-to-br from-card via-card to-${example.color}/5`}>
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className={`p-4 rounded-2xl bg-gradient-${example.color} mb-4 w-fit group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="h-8 w-8 text-primary-foreground" strokeWidth={1.5} />
+                    </div>
+                    <h3 className={`text-xl font-bold mb-3 group-hover:text-${example.color} transition-colors`}>
+                      {example.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
+                      {example.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {automationExamples.map((example, index) => {
-              const Icon = example.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Card className="group relative hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 hover:border-primary/50 overflow-hidden h-full">
-                    {/* Gradient background */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${example.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                    />
-
-                    <CardContent className="p-6 relative">
-                      <div className="flex items-start space-x-4">
-                        <div className="p-3 rounded-xl bg-gradient-primary group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icon className="h-6 w-6 text-primary-foreground" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold mb-2 group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
+        {/* Automation Examples - Mobile Carousel */}
+        <div className="md:hidden mb-16 px-4">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {automationExamples.map((example, index) => {
+                const Icon = example.icon;
+                return (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-[85%]">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      className="h-full"
+                    >
+                      <Card className={`group h-full border-2 hover:border-${example.color}/50 transition-all duration-300 hover:shadow-elegant bg-gradient-to-br from-card via-card to-${example.color}/5`}>
+                        <CardContent className="p-6 flex flex-col h-full">
+                          <div className={`p-4 rounded-2xl bg-gradient-${example.color} mb-4 w-fit group-hover:scale-110 transition-transform duration-300`}>
+                            <Icon className="h-8 w-8 text-primary-foreground" strokeWidth={1.5} />
+                          </div>
+                          <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-glow transition-colors">
                             {example.title}
                           </h3>
-                          <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors">
+                          <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
                             {example.description}
                           </p>
-                        </div>
-                      </div>
-
-                      {/* Arrow indicator */}
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
-          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+          </Carousel>
         </div>
 
-        {/* Technologies section with enhanced design */}
-        <div className="mt-12 sm:mt-16 md:mt-20 text-center px-4">
-          <h3 className="text-xl sm:text-2xl font-bold mb-6">
+        {/* Integrated Technologies Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <h3 className="text-2xl sm:text-3xl font-bold mb-8">
             Integramos con las <span className="text-primary dark:text-primary-glow">mejores herramientas</span>
           </h3>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            {[
-              {
-                name: "n8n",
-                icon: Zap,
-              },
-              {
-                name: "Power BI",
-                icon: TrendingUp,
-              },
-              {
-                name: "Slack",
-                icon: Bell,
-              },
-              {
-                name: "Siesa EE",
-                icon: Database,
-              },
-              {
-                name: "WhatsApp",
-                icon: Bot,
-              },
-              {
-                name: "Telegram",
-                icon: Bot,
-              },
-              {
-                name: "Google Drive",
-                icon: Cloud,
-              },
-              {
-                name: "APIs REST",
-                icon: Webhook,
-              },
-            ].map((tool) => (
-              <div
-                key={tool.name}
-                className="group px-6 py-3 rounded-xl bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 cursor-default flex items-center space-x-2"
+
+          {/* Technologies Grid - Desktop */}
+          <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+            {technologies.map((tech, index) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <tool.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                  {tool.name}
-                </span>
-              </div>
+                <Card className="group border-2 hover:border-accent/50 transition-all duration-300 hover:shadow-elegant bg-card/50 backdrop-blur-sm">
+                  <CardContent className="p-4 flex flex-col items-center justify-center gap-3 h-full">
+                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
+                      <tech.Icon className={`h-8 w-8 ${tech.color}`} />
+                    </div>
+                    <p className="text-sm font-semibold text-center text-foreground">
+                      {tech.name}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
-        </div>
+
+          {/* Technologies Infinite Carousel - Mobile */}
+          <div className="md:hidden relative overflow-hidden">
+            <motion.div
+              className="flex gap-4"
+              animate={{
+                x: ["0%", "-50%"],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 20,
+                  ease: "linear",
+                },
+              }}
+            >
+              {[...technologies, ...technologies].map((tech, index) => (
+                <Card
+                  key={index}
+                  className="flex-shrink-0 w-32 group border-2 hover:border-accent/50 transition-all duration-300 hover:shadow-elegant bg-card/50 backdrop-blur-sm"
+                >
+                  <CardContent className="p-4 flex flex-col items-center justify-center gap-3 h-full">
+                    <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
+                      <tech.Icon className={`h-8 w-8 ${tech.color}`} />
+                    </div>
+                    <p className="text-xs font-semibold text-center text-foreground">
+                      {tech.name}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

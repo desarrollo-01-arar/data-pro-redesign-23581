@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Award, Building2, CheckCircle2, ChevronLeft, ChevronRight, Sprout, Factory, ShoppingBag, Car, DollarSign, Shield, Truck } from "lucide-react";
 import { useState } from "react";
 import { Card, CardContent } from "./ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import asekuraLogo from "@/assets/success-cases/asekura.png";
 import hecarseLogo from "@/assets/success-cases/hecarse.png";
 import ararFinancieraLogo from "@/assets/success-cases/arar-financiera.png";
@@ -155,7 +156,8 @@ export const SuccessCases = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-7 gap-4">
           {sectors.map((sector, index) => (
             <motion.div
               key={sector.name}
@@ -176,6 +178,43 @@ export const SuccessCases = () => {
               </Card>
             </motion.div>
           ))}
+        </div>
+
+        {/* Mobile Carousel */}
+        <div className="md:hidden px-4">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {sectors.map((sector, index) => (
+                <CarouselItem key={index} className="basis-1/2 sm:basis-1/3">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                  >
+                    <Card className="group hover:shadow-elegant transition-all duration-300 border-2 hover:border-accent/50 bg-card/50 backdrop-blur-sm h-full">
+                      <CardContent className="p-4 flex flex-col items-center justify-center text-center gap-3">
+                        <div className="p-3 rounded-xl bg-accent/20 group-hover:bg-accent/30 transition-colors duration-300">
+                          <sector.icon className="h-6 w-6 text-accent" />
+                        </div>
+                        <p className="text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
+                          {sector.name}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0" />
+            <CarouselNext className="right-0" />
+          </Carousel>
         </div>
       </motion.div>
 

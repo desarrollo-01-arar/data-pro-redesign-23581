@@ -169,8 +169,8 @@ export const Contact = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4">
-          {/* Contact Info */}
-          <div className="space-y-4 sm:space-y-6 animate-fade-in-up">
+          {/* Contact Info - Hidden on mobile */}
+          <div className="hidden lg:block space-y-4 sm:space-y-6 animate-fade-in-up">
             <Card className="border-2 hover:border-primary/50 transition-all hover:shadow-elegant">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
@@ -223,7 +223,7 @@ export const Contact = () => {
 
           {/* Contact Form */}
           <Card
-            className="lg:col-span-2 border-2 hover:border-primary/30 transition-all animate-fade-in-up"
+            className="lg:col-span-2 col-span-1 border-2 hover:border-primary/30 transition-all animate-fade-in-up"
             style={{ animationDelay: "100ms" }}
           >
             <CardContent className="p-4 sm:p-6 md:p-8">

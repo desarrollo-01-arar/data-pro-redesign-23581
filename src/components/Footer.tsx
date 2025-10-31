@@ -56,7 +56,10 @@ export const Footer = () => {
             <ul className="flex flex-col gap-4">
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <a href="mailto:contacto@datapro.com.co" className="hover:text-primary transition-colors">gerencia@datapro.com.co</a>
+                <div className="flex flex-col gap-1">
+                  <a href="mailto:contacto@datapro.com.co" className="hover:text-primary transition-colors">gerencia@datapro.com.co</a>
+                  <a href="tel:+573174307397" className="hover:text-primary transition-colors lg:hidden">+57 317 430 7397</a>
+                </div>
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
