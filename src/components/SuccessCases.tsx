@@ -117,11 +117,17 @@ export const SuccessCases = () => {
                 damping: 28,
                 mass: 0.6
               }}
+              style={{ 
+                width: `calc(${(cases.length / itemsPerView) * 100}% + ${(cases.length - itemsPerView) * 1.5}rem)` 
+              }}
             >
               {cases.map((company, index) => (
                 <div
                   key={index}
-                  className="min-w-[calc(25%-1.125rem)] flex-shrink-0 group"
+                  className="flex-shrink-0 group"
+                  style={{ 
+                    width: `calc(${100 / cases.length}% - ${(cases.length - 1) * 1.5 / cases.length}rem)` 
+                  }}
                 >
                   <Card className="relative overflow-hidden hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 border-border/30 hover:border-primary/50 bg-gradient-to-br from-card via-card to-card/80 backdrop-blur-sm h-full group-hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.15)]">
                     {/* Gradient overlay on hover */}
