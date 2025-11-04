@@ -14,10 +14,16 @@ Este proyecto está conectado con **Lovable** (IA para desarrollo web) y puede s
 
 ### Opción 1: Usar Lovable (Recomendado para cambios rápidos)
 
-1. Visita el [Proyecto en Lovable](https://lovable.dev/projects/479e594a-a183-4cfc-bcb2-50ef2a58283e)
-2. Describe los cambios que deseas hacer mediante prompts en lenguaje natural
-3. Lovable modificará el código automáticamente
-4. Los cambios se guardarán automáticamente en este repositorio
+**⚠️ Importante:** Este proyecto está vinculado a la cuenta corporativa de DataPro Analítica en Lovable.
+
+Para realizar cambios a través de Lovable:
+
+1. Solicita acceso a la cuenta de Lovable de DataPro Analítica. (Contacta al administrador del proyecto para obtener credenciales)
+2. Inicia sesión en [Lovable](https://lovable.dev/)
+3. Accede al [Proyecto de DataPro](https://lovable.dev/projects/479e594a-a183-4cfc-bcb2-50ef2a58283e)
+4. Describe los cambios que deseas hacer mediante prompts en lenguaje natural
+5. Lovable modificará el código automáticamente
+6. Los cambios se guardarán automáticamente en este repositorio
 
 **Ejemplo de prompts:**
 - "Cambia el color del botón de contacto a verde"
