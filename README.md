@@ -238,4 +238,5 @@ Si encuentras problemas o tienes preguntas:
 
 ---
 
+**Desarrollado por:** Yariangel Aray  
 **Última actualización:** Noviembre 2025
