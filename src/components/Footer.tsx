@@ -3,7 +3,8 @@ import logoLight from "@/assets/logo-light.png";
 import logoDark from "@/assets/logo-dark.png";
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
-  return <footer className="bg-card border-t border-border">
+  return (
+    <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 pt-12 pb-2">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Logo & Description */}
@@ -19,34 +20,47 @@ export const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Enlaces Rápidos</h3>
             <ul className="space-y-2">
-              {[{
-              label: "Tableros",
-              href: "#tableros"
-            }, {
-              label: "Automatización",
-              href: "#automatizacion"
-            }, {
-              label: "Consultorías",
-              href: "#consultorias"
-            }, {
-              label: "Casos de Éxito",
-              href: "#casos"
-            }, {
-              label: "Nosotros",
-              href: "#nosotros"
-            }, {
-              label: "Contacto",
-              href: "#contacto"
-            }].map(link => <li key={link.href}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={e => {
-                e.preventDefault();
-                document.querySelector(link.href)?.scrollIntoView({
-                  behavior: "smooth"
-                });
-              }}>
+              {[
+                {
+                  label: "Tableros",
+                  href: "#tableros",
+                },
+                {
+                  label: "Automatización",
+                  href: "#automatizacion",
+                },
+                {
+                  label: "Consultorías",
+                  href: "#consultorias",
+                },
+                {
+                  label: "Casos de Éxito",
+                  href: "#casos",
+                },
+                {
+                  label: "Nosotros",
+                  href: "#nosotros",
+                },
+                {
+                  label: "Contacto",
+                  href: "#contacto",
+                },
+              ].map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector(link.href)?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                    }}
+                  >
                     {link.label}
                   </a>
-                </li>)}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -57,18 +71,27 @@ export const Footer = () => {
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <div className="flex flex-col gap-1">
-                  <a href="mailto:contacto@datapro.com.co" className="hover:text-primary transition-colors">gerencia@datapro.com.co</a>                  
+                  <a href="mailto:contacto@datapro.com.co" className="hover:text-primary transition-colors">
+                    gerencia@datapro.com.co
+                  </a>
                 </div>
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <div className="flex flex-col gap-1">                  
-                  <a href="tel:+573174307397" className="hover:text-primary transition-colors">+57 317 430 7397</a>
+                <div className="flex flex-col gap-1">
+                  <a href="tel:+573174307397" className="hover:text-primary transition-colors">
+                    +57 317 430 7397
+                  </a>
                 </div>
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <a href="https://maps.app.goo.gl/NuFfgWu9qRK5CV6NA" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                <a
+                  href="https://maps.app.goo.gl/NuFfgWu9qRK5CV6NA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
                   Centro Empresarial Natura
                   <br />
                   Torre 1 · Oficina 206
@@ -77,16 +100,40 @@ export const Footer = () => {
                 </a>
               </li>
               <li className="flex items-center space-x-2 mt-6">
-                <a href="https://www.linkedin.com/company/datapro" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all" aria-label="LinkedIn">
+                <a
+                  href="https://www.linkedin.com/company/datapro-anal%C3%ADtica/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all"
+                  aria-label="LinkedIn"
+                >
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="https://www.facebook.com/datapro" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Facebook">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61583333571257"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all"
+                  aria-label="Facebook"
+                >
                   <Facebook className="h-5 w-5" />
                 </a>
-                <a href="https://twitter.com/datapro" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all" aria-label="X (Twitter)">
+                <a
+                  href="https://twitter.com/datapro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all"
+                  aria-label="X (Twitter)"
+                >
                   <Twitter className="h-5 w-5" />
                 </a>
-                <a href="https://www.instagram.com/datapro" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all" aria-label="Instagram">
+                <a
+                  href="https://www.instagram.com/dataproanalitica/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all"
+                  aria-label="Instagram"
+                >
                   <Instagram className="h-5 w-5" />
                 </a>
               </li>
@@ -99,9 +146,9 @@ export const Footer = () => {
           <p className="text-sm text-muted-foreground mb-1">
             © {currentYear} DataPro Analítica. Todos los derechos reservados.
           </p>
-          <a 
-            href="https://github.com/desarrollo-01-arar/data-pro-redesign-23581" 
-            target="_blank" 
+          <a
+            href="https://github.com/desarrollo-01-arar/data-pro-redesign-23581"
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-xs text-muted-foreground/70 hover:text-primary transition-colors group"
           >
@@ -110,5 +157,6 @@ export const Footer = () => {
           </a>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
