@@ -198,12 +198,8 @@ El formulario de contacto está conectado a un backend PHP ubicado en:
 
 **Destinatarios de correos:**
 - GerenteTIC@inversionesarar.com
-- automatizacion@inversionesarar.com
-- Analistadatos@inversionesarar.com
-- mesadeayuda01@inversionesarar.com
-- directorinfraestructura@inversionesarar.com
 
-**Nota:** Las credenciales SMTP están configuradas para usar Outlook con el correo `desarrollo01@inversionesarar.com.co`
+**Nota:** Las credenciales SMTP están configuradas para usar Outlook con el correo `redessociales@inversionesarar.com.co`
 
 ---
 
@@ -238,8 +234,8 @@ Si encuentras problemas o tienes preguntas:
 
 ## 📄 Licencia
 
-© 2024 DataPro Analítica. Todos los derechos reservados.
+© 2025 DataPro Analítica. Todos los derechos reservados.
 
 ---
 
-**Última actualización:** Octubre 2024
+**Última actualización:** Noviembre 2025
