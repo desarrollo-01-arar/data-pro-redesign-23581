@@ -68,7 +68,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <a href="https://maps.google.com/?q=Bogotá,Colombia" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                <a href="https://maps.app.goo.gl/NuFfgWu9qRK5CV6NA" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                   Centro Empresarial Natura
                   <br />
                   Torre 1 · Oficina 206
