@@ -105,14 +105,14 @@ export const Header = () => {
               src={logoDark}
               alt="DataPro Analítica"
               className={`w-auto dark:hidden transition-all duration-300 group-hover:scale-105 ${
-                isScrolled ? "h-10" : "h-20"
+                isScrolled ? "h-10" : "h-12"
               }`}
             />
             <img
               src={logoLight}
               alt="DataPro Analítica"
               className={`w-auto hidden dark:block transition-all duration-300 group-hover:scale-105 ${
-                isScrolled ? "h-10" : "h-20 relative"
+                isScrolled ? "h-10" : "h-12 relative"
               }`}
             />
           </a>
