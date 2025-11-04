@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 
-const dynamicWords = ["datos", "decisiones", "resultados"];
+const dynamicWords = ["ventajas competitivas", "resultados inteligentes", "nuevas estrategias"];
 const typingText = "información clara";
 
 export const Hero = () => {
@@ -59,25 +59,37 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto text-center space-y-8"
+          className="max-w-4xl mx-auto text-center space-y-4"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight px-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight px-4 text-slate-800 dark:text-slate-100">
             Decisiones inteligentes con{" "}
-            <span className="text-primary dark:text-primary-glow relative inline-block">
+            <motion.span 
+              className="relative inline-block bg-gradient-to-r from-[hsl(210,100%,30%)] via-[hsl(200,100%,55%)] to-[hsl(210,100%,30%)] dark:from-[hsl(195,100%,35%)] dark:via-[hsl(195,100%,60%)] dark:to-[hsl(195,100%,35%)] bg-clip-text text-transparent"
+              style={{ backgroundSize: "200% 100%" }}
+              animate={{ 
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
               {displayedText}
               {!isTypingComplete && (
                 <motion.span
                   animate={{ opacity: [1, 0] }}
                   transition={{ duration: 0.8, repeat: Infinity }}
-                  className="inline-block w-0.5 h-[0.9em] bg-primary dark:bg-primary-glow ml-1 align-middle"
+                  className="inline-block w-0.5 h-[0.9em] ml-1 align-middle"
+                  style={{background: 'linear-gradient(to bottom, hsl(210 100% 30%), hsl(200 100% 55%))'}}
                 />
               )}
-            </span>
+            </motion.span>
           </h1>
 
           <div className="h-auto min-h-[100px] sm:min-h-[120px] flex items-center justify-center px-4">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground flex max-sm:flex-col items-center justify-center gap-2 sm:gap-3 font-bold">
-              <span>Transforma tus</span>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground flex flex-col items-center justify-center gap-2 sm:gap-3 font-bold">
+              <span>Transforma tus datos en</span>
               <span className="relative inline-flex items-center justify-center min-w-[180px] sm:min-w-[200px] md:min-w-[240px] px-4 sm:px-6 py-1 rounded-xl bg-gradient-to-r from-primary/10 via-primary/20 to-accent/20 overflow-hidden backdrop-blur-sm border border-primary/20">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -111,7 +123,7 @@ export const Hero = () => {
             </p>
           </div>
 
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto font-bold px-4">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-4xl !mt-8 mx-auto font-semibold px-4">
             Especialistas en analítica de datos, automatización de procesos y consultoría Siesa EE
           </p>
 
@@ -151,7 +163,7 @@ export const Hero = () => {
               size="lg"
               variant="outline"
               onClick={() =>
-                document.querySelector("#casos-exito")?.scrollIntoView({
+                document.querySelector("#casos")?.scrollIntoView({
                   behavior: "smooth",
                 })
               }

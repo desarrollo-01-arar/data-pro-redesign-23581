@@ -1,18 +1,17 @@
 import { motion } from "framer-motion";
-import { BarChart3, DollarSign, Users, TrendingUp, CheckCircle2, Crown } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { CheckCircle2, Crown, Calendar, FileText } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import comercialesImg from "@/assets/dashboards/comerciales.png";
 import financierosImg from "@/assets/dashboards/financieros.png";
 import hcmImg from "@/assets/dashboards/hcm.png";
 import seguimientoComercialImg from "@/assets/dashboards/seguimiento-comercial.png";
 import ventasImg from "@/assets/dashboards/ventas.png";
+import operativosImg from "@/assets/dashboards/operativos.png";
 
 const dashboards = [
   {
-    title: "Indicadores Comerciales",
-    icon: BarChart3,
+    title: "Indicadores Comerciales",    
     image: comercialesImg,
     description: "Está diseñado para ofrecer una visión integral y dinámica del desempeño de ventas.",
     features: [
@@ -21,7 +20,6 @@ const dashboards = [
       "Ingresos por Cliente",
       "Desglose de Productos",
       "KPIs de Efectividad",
-      "Rentabilidad",
     ],
     allFeatures: [
       "Ventas Totales",
@@ -38,8 +36,7 @@ const dashboards = [
     ],
   },
   {
-    title: "Indicadores Financieros",
-    icon: DollarSign,
+    title: "Indicadores Financieros",    
     image: financierosImg,
     description: "Proporciona una perspectiva completa y actualizada del desempeño financiero.",
     features: [
@@ -65,8 +62,7 @@ const dashboards = [
     ],
   },
   {
-    title: "Administración de Talento Humano",
-    icon: Users,
+    title: "Administración de Talento Humano",    
     image: hcmImg,
     description: "Ofrece una visión general de la administración del talento humano.",
     features: [
@@ -90,8 +86,7 @@ const dashboards = [
     ],
   },
   {
-    title: "Indicadores Seguimiento Comercial",
-    icon: TrendingUp,
+    title: "Indicadores Seguimiento Comercial",    
     image: seguimientoComercialImg,
     description: "Análisis detallado de todos los factores que influyen en el proceso comercial.",
     features: [
@@ -115,8 +110,7 @@ const dashboards = [
     ],
   },
   {
-    title: "Indicadores de Planta de Producción",
-    icon: TrendingUp,
+    title: "Indicadores de Planta de Producción",    
     image: ventasImg,
     description: "Análisis del detalle de cada factor en los procesos del área de producción.",
     features: [
@@ -139,6 +133,33 @@ const dashboards = [
       "Indicadores Clave de Rendimiento (KPIs)",
     ],
   },
+  {
+    title: "Indicadores Operativos",    
+    image: operativosImg,
+    description: "Mide la eficiencia de los procesos internos y el rendimiento operativo en tiempo real.",
+    features: [
+      "Productividad",
+      "Eficiencia Operativa",
+      "Cumplimiento de Metas",
+      "Desempeño por Área",
+      "Indicadores de Calidad",
+    ],
+    allFeatures: [
+      "Productividad General",
+      "Eficiencia Operativa",
+      "Cumplimiento de Indicadores Clave (KPIs)",
+      "Tiempos de Respuesta y Ciclo",
+      "Indicadores de Calidad y Errores",
+      "Capacidad Operativa",
+      "Análisis de Procesos",
+      "Desempeño por Departamento",
+      "Alertas de Desviación",
+      "Comparativo entre Periodos",
+      "Análisis Predictivo de Desempeño",
+      "Optimización de Recursos",
+    ],
+  },
+
 ];
 
 export const Dashboards = () => {
@@ -149,14 +170,14 @@ export const Dashboards = () => {
         <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-gradient-breathing animate-breathing opacity-30" />
         <div className="absolute bottom-[10%] left-[15%] w-[450px] h-[450px] bg-gradient-wave-2 animate-breathing-slow opacity-25" />
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4">
             Tableros de <span className="text-primary dark:text-primary-glow">Control</span>
@@ -164,6 +185,45 @@ export const Dashboards = () => {
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Descubre los indicadores esenciales que tu compañía necesita para optimizar la producción y superar las expectativas del mercado
           </p>
+        </motion.div>
+
+
+        {/* Pricing info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-3xl mx-auto mb-14"
+        >
+          <Card className="border-2 border-accent/30 bg-card/30 backdrop-blur-sm">
+            <CardContent className="p-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-center sm:text-left">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 rounded-lg bg-accent/20">
+                    <Calendar className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-accent">Mensualidades</p>
+                    <p className="text-xs text-muted-foreground">Pago flexible mensual</p>
+                  </div>
+                </div>
+                <div className="hidden sm:block h-12 w-px bg-border" />
+                <div className="flex items-center gap-3">
+                  <div className="p-3 rounded-lg bg-primary/20">
+                    <FileText className="h-6 w-6 text-primary dark:text-primary-glow" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-primary dark:text-primary-glow">Por Proyecto</p>
+                    <p className="text-xs text-muted-foreground">Cotización personalizada</p>
+                  </div>
+                </div>
+              </div>
+              <p className="text-center text-xs text-muted-foreground mt-4">
+                Los precios se adaptan según las necesidades específicas de tu negocio
+              </p>
+            </CardContent>
+          </Card>
         </motion.div>
 
         {/* Dashboards Carousel - Mobile & Tablet */}
@@ -193,7 +253,7 @@ export const Dashboards = () => {
                             <img src={dashboard.image} alt={dashboard.title} loading="lazy" className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-500" />
                             {/* Professional gradient overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-primary/15 to-transparent dark:from-black/60 dark:via-black/15 dark:to-transparent pointer-events-none" />
-                            
+
                             {/* Crown and Stars in bottom left corner */}
                             <div className="absolute bottom-3 left-3 flex items-center gap-2">
                               {/* Crown */}
@@ -214,9 +274,9 @@ export const Dashboards = () => {
                       <CardContent>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {dashboard.features.map((feature, idx) => <div key={idx} className="flex items-start text-sm text-foreground/80 items-center gap-2">
-                              <CheckCircle2 className="h-5 w-5 text-primary dark:text-accent flex-shrink-0 mt-0.5" />
-                              <span className="leading-4">{feature}</span>
-                            </div>)}
+                            <CheckCircle2 className="h-5 w-5 text-primary dark:text-accent flex-shrink-0 mt-0.5" />
+                            <span className="leading-4">{feature}</span>
+                          </div>)}
                         </div>
                       </CardContent>
                     </Card>
@@ -247,7 +307,7 @@ export const Dashboards = () => {
                       <img src={dashboard.image} alt={dashboard.title} loading="lazy" className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-500" />
                       {/* Professional gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-primary/15 to-transparent dark:from-black/60 dark:via-black/15 dark:to-transparent pointer-events-none" />
-                      
+
                       {/* Crown and Stars in bottom left corner */}
                       <div className="absolute bottom-3 left-3 flex items-center gap-2">
                         {/* Crown */}
@@ -268,9 +328,9 @@ export const Dashboards = () => {
                 <CardContent>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {dashboard.allFeatures.map((feature, idx) => <div key={idx} className="flex items-start text-sm text-foreground/80 items-center gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-primary dark:text-accent flex-shrink-0 mt-0.5" />
-                        <span className="leading-4">{feature}</span>
-                      </div>)}
+                      <CheckCircle2 className="h-5 w-5 text-primary dark:text-accent flex-shrink-0 mt-0.5" />
+                      <span className="leading-4">{feature}</span>
+                    </div>)}
                   </div>
                 </CardContent>
               </Card>

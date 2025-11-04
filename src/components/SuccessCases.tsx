@@ -94,126 +94,14 @@ export const SuccessCases = () => {
         </p>
       </motion.div>
 
-      {/* Logos grid */}
-      <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-10 gap-6 max-w-6xl mx-auto">
-        {cases.map((company, index) => <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.05 }}
-          className="group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-8 hover:border-primary/60 hover:shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden"
-        >
-          {/* Success badge - subtle detail */}
-          <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary-glow" strokeWidth={2.5} />
-          </div>
-          {/* Logo container */}
-          <div className="relative w-full aspect-video flex items-center justify-center mb-2 transition-transform duration-500">
-            <img
-              src={company.logo}
-              alt={company.name}
-              loading="lazy"
-              className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
-            />
-          </div>
-          {/* Company name - enhanced typography */}
-          <h3 className="text-center text-base font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight min-h-[2.5rem] flex items-center justify-center tracking-tight">
-            <span className="relative">
-              {company.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary-glow group-hover:w-full transition-all duration-500" />
-            </span>
-          </h3>
-
-          {/* Industry badge - shows on hover with better design */}
-          <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-2">
-            <span className="inline-flex items-center font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 text-primary dark:text-primary-glow border border-primary/30 text-xs whitespace-nowrap backdrop-blur-sm">
-              <Building2 className="h-3.5 w-3.5 mr-2" strokeWidth={2.5} />
-              {company.industry}
-            </span>
-          </div>
-
-          {/* Enhanced glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500 pointer-events-none" />
-        </motion.div>)}
-      </div>
-
-      {/* Automation Examples - Mobile Carousel */}
-      <div className="md:hidden mb-16">
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {cases.map((company, index) => {              
-              return (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-[85%]">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-8 hover:border-primary/60 hover:shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden"
-                  >
-                    {/* Success badge - subtle detail */}
-                    <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                      <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary-glow" strokeWidth={2.5} />
-                    </div>
-                    {/* Logo container */}
-                    <div className="relative w-full aspect-video flex items-center justify-center mb-2 transition-transform duration-500">
-                      <img
-                        src={company.logo}
-                        alt={company.name}
-                        loading="lazy"
-                        className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
-                      />
-                    </div>
-                    {/* Company name - enhanced typography */}
-                    <h3 className="text-center text-base font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight min-h-[2.5rem] flex items-center justify-center tracking-tight">
-                      <span className="relative">
-                        {company.name}
-                        <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary-glow group-hover:w-full transition-all duration-500" />
-                      </span>
-                    </h3>
-
-                    {/* Industry badge - shows on hover with better design */}
-                    <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-2">
-                      <span className="inline-flex items-center font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 text-primary dark:text-primary-glow border border-primary/30 text-xs whitespace-nowrap backdrop-blur-sm">
-                        <Building2 className="h-3.5 w-3.5 mr-2" strokeWidth={2.5} />
-                        {company.industry}
-                      </span>
-                    </div>
-
-                    {/* Enhanced glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500 pointer-events-none" />
-                  </motion.div>
-                </CarouselItem>
-              );
-            })}
-          </CarouselContent>
-        </Carousel>
-      </div>
       {/* Sectors Section */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-5xl mx-auto"
+        className="max-w-5xl mx-auto mb-16"
       >
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold mb-4">
-            Sectores en los que <span className="text-primary dark:text-primary-glow">Trabajamos</span>
-          </h3>
-          <div className="flex items-center justify-center gap-3">
-            <div className="h-0.5 w-16 bg-gradient-primary rounded-full" />
-            <div className="h-1 w-8 bg-gradient-primary rounded-full" />
-            <div className="h-0.5 w-16 bg-gradient-primary rounded-full" />
-          </div>
-        </div>
 
         {/* Desktop Grid */}
         <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-7 gap-4">
@@ -277,8 +165,111 @@ export const SuccessCases = () => {
         </div>
       </motion.div>
 
+      {/* Logos grid */}
+      <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-10 gap-6 max-w-6xl mx-auto">
+        {cases.map((company, index) => <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.05 }}
+          className="group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-8 hover:border-primary/60 hover:shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden"
+        >
+          {/* Success badge - subtle detail */}
+          <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
+            <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary-glow" strokeWidth={2.5} />
+          </div>
+          {/* Logo container */}
+          <div className="relative w-full aspect-video flex items-center justify-center mb-2 transition-transform duration-500">
+            <img
+              src={company.logo}
+              alt={company.name}
+              loading="lazy"
+              className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+            />
+          </div>
+          {/* Company name - enhanced typography */}
+          <h3 className="text-center text-base font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight min-h-[2.5rem] flex items-center justify-center tracking-tight">
+            <span className="relative">
+              {company.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary-glow group-hover:w-full transition-all duration-500" />
+            </span>
+          </h3>
+
+          {/* Industry badge - shows on hover with better design */}
+          <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-2">
+            <span className="inline-flex items-center font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 text-primary dark:text-primary-glow border border-primary/30 text-xs whitespace-nowrap backdrop-blur-sm">
+              <Building2 className="h-3.5 w-3.5 mr-2" strokeWidth={2.5} />
+              {company.industry}
+            </span>
+          </div>
+
+          {/* Enhanced glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500 pointer-events-none" />
+        </motion.div>)}
+      </div>
+
+      {/* Logos - Mobile Carousel */}
+      <div className="md:hidden mb-16">
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {cases.map((company, index) => {              
+              return (
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-[85%]">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-8 hover:border-primary/60 hover:shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden"
+                  >
+                    {/* Success badge - subtle detail */}
+                    <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                      <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary-glow" strokeWidth={2.5} />
+                    </div>
+                    {/* Logo container */}
+                    <div className="relative w-full aspect-video flex items-center justify-center mb-2 transition-transform duration-500">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        loading="lazy"
+                        className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    {/* Company name - enhanced typography */}
+                    <h3 className="text-center text-base font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight min-h-[2.5rem] flex items-center justify-center tracking-tight">
+                      <span className="relative">
+                        {company.name}
+                        <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary-glow group-hover:w-full transition-all duration-500" />
+                      </span>
+                    </h3>
+
+                    {/* Industry badge - shows on hover with better design */}
+                    <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-2">
+                      <span className="inline-flex items-center font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 text-primary dark:text-primary-glow border border-primary/30 text-xs whitespace-nowrap backdrop-blur-sm">
+                        <Building2 className="h-3.5 w-3.5 mr-2" strokeWidth={2.5} />
+                        {company.industry}
+                      </span>
+                    </div>
+
+                    {/* Enhanced glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500 pointer-events-none" />
+                  </motion.div>
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+        </Carousel>
+      </div>
+
       {/* Bottom message */}
-      <div className="text-center mt-16">
+      <div className="text-center">
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Más de <span className="font-bold text-primary dark:text-primary-glow">una década de experiencia</span> transformando datos en decisiones estratégicas
         </p>
