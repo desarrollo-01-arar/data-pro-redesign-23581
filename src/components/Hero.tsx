@@ -12,7 +12,7 @@ const dynamicWords = ["ventajas competitivas", "resultados inteligentes", "nueva
 const typingText = "información clara";
 
 const metrics = [
-  { value: 10, label: "Años de experiencia", suffix: "+" },
+  { value: 200, label: "Dashboard desarrollados este último año", suffix: "+" },
   { value: 20, label: "Proyectos exitosos", suffix: "+" },
   { value: 5, label: "Sectores atendidos", suffix: "+" },
 ];
@@ -43,7 +43,7 @@ const CounterAnimation = ({ value, suffix = "" }: { value: number; suffix?: stri
   }, [isInView, value]);
 
   return (
-    <div ref={ref} className="text-5xl sm:text-6xl font-bold text-primary-glow">
+    <div ref={ref} className="text-5xl font-bold text-primary-glow">
       {count}{suffix}
     </div>
   );
@@ -334,7 +334,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-lg"
+              className="grid grid-cols-3 sm:gap-4 w-full items-center max-w-lg"
             >
               {metrics.map((metric, index) => (
                 <motion.div
@@ -358,7 +358,7 @@ export const Hero = () => {
                     />
                     <div className="space-y-2 relative z-10">
                       <CounterAnimation value={metric.value} suffix={metric.suffix} />
-                      <p className="text-xs sm:text-sm text-muted-foreground font-semibold group-hover:text-foreground transition-colors">
+                      <p className="text-sm text-muted-foreground font-semibold group-hover:text-foreground transition-colors">
                         {metric.label}
                       </p>
                     </div>
