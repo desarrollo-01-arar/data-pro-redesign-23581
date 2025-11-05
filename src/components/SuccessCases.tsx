@@ -90,7 +90,7 @@ export const SuccessCases = () => {
           Casos de <span className="text-primary dark:text-primary-glow">Éxito</span>
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Estas son algunas de las empresas y sectores que han confiado en DataPro Analítica para optimizar sus procesos y tomar decisiones basadas en datos.
+          Nuestra experiencia ha trascendido industrias y fronteras. En DataPro Analítica, empresas de distintos sectores han confiado en nosotros para transformar la complejidad de sus datos en decisiones que impulsan crecimiento y eficiencia.
         </p>
       </motion.div>
 

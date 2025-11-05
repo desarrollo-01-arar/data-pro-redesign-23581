@@ -128,7 +128,7 @@ export const Footer = () => {
                   <Twitter className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://www.instagram.com/dataproanalitica/"
+                  href="https://www.instagram.com/dataproanalitica"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all"
