@@ -2,8 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { Award, Building2, CheckCircle2, ChevronLeft, ChevronRight, Sprout, Factory, ShoppingBag, Car, DollarSign, Shield, Truck } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "./ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "./ui/carousel";
 import asekuraLogo from "@/assets/success-cases/asekura.png";
 import hecarseLogo from "@/assets/success-cases/hecarse.png";
 import ararFinancieraLogo from "@/assets/success-cases/arar-financiera.png";
@@ -108,6 +107,19 @@ const sectors = [
 ];
 
 export const SuccessCases = () => {
+  const [api, setApi] = useState<CarouselApi>();
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!api) return;
+
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 5000); // Cambiar cada 5 segundos
+
+    return () => clearInterval(interval);
+  }, [api]);
+
   return <section id="casos" className="py-20 bg-background relative overflow-hidden">
     {/* Enhanced premium background */}
     <div className="absolute inset-0">
@@ -217,15 +229,11 @@ export const SuccessCases = () => {
       {/* Logos carousel - Desktop */}
       <div className="hidden md:block mb-10 max-w-7xl mx-auto">
         <Carousel
+          setApi={setApi}
           opts={{
             align: "start",
             loop: true,
           }}
-          plugins={[
-            Autoplay({
-              delay: 5000,
-            }),
-          ]}
           className="w-full"
         >
           <CarouselContent>
