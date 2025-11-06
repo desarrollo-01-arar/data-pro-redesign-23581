@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { Award, Building2, CheckCircle2, ChevronLeft, ChevronRight, Sprout, Factory, ShoppingBag, Car, DollarSign, Shield, Truck, TrendingUp, Users, Briefcase } from "lucide-react";
+import { Award, Building2, CheckCircle2, ChevronLeft, ChevronRight, Sprout, Factory, ShoppingBag, Car, DollarSign, Shield, Truck } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "./ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
@@ -106,35 +106,6 @@ const sectors = [
   { name: "Seguros", icon: Shield },
   { name: "Transporte", icon: Truck },
 ];
-
-// Counter animation component
-const CounterAnimation = ({ end, suffix = "" }: { end: number; suffix?: string }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    let startTime: number;
-    const duration = 2000;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-
-      setCount(Math.floor(progress * end));
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }, [isInView, end]);
-
-  return <span ref={ref}>{count}{suffix}</span>;
-};
 
 export const SuccessCases = () => {
   return <section id="casos" className="py-20 bg-background relative overflow-hidden">
@@ -252,7 +223,7 @@ export const SuccessCases = () => {
           }}
           plugins={[
             Autoplay({
-              delay: 3000,
+              delay: 5000,
             }),
           ]}
           className="w-full"
