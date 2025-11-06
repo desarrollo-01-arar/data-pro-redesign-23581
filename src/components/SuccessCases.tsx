@@ -240,25 +240,25 @@ export const SuccessCases = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.05 }}
-                      className="group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-8 hover:border-primary/60 hover:shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden"
+                      className="group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-8 hover:border-primary/60 hover:shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden h-[280px]"
                     >
                       <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
                         <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary-glow" strokeWidth={2.5} />
                       </div>
-                      <div className="relative w-full aspect-video flex items-center justify-center mb-2 transition-transform duration-500">
+                      <div className="relative w-full h-[100px] flex items-center justify-center mb-4 transition-transform duration-500">
                         {company.logoLight ? (
                           <>
                             <img
                               src={company.logo}
                               alt={company.name}
                               loading="lazy"
-                              className="dark:hidden max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                              className="dark:hidden w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
                             />
                             <img
                               src={company.logoLight}
                               alt={company.name}
                               loading="lazy"
-                              className="hidden dark:block max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                              className="hidden dark:block w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
                             />
                           </>
                         ) : (
@@ -266,11 +266,11 @@ export const SuccessCases = () => {
                             src={company.logo}
                             alt={company.name}
                             loading="lazy"
-                            className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                            className="w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
                           />
                         )}
                       </div>
-                      <h3 className="text-center text-base font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight min-h-[2.5rem] flex items-center justify-center tracking-tight">
+                      <h3 className="text-center text-sm font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight h-[3rem] flex items-center justify-center tracking-tight">
                         <span className="relative">
                           {company.name}
                           <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary-glow group-hover:w-full transition-all duration-500" />
@@ -294,25 +294,25 @@ export const SuccessCases = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: (index + 5) * 0.05 }}
-                      className="group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-8 hover:border-primary/60 hover:shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden"
+                      className="group relative bg-gradient-to-br from-card via-card to-card/80 border-2 border-border/50 rounded-2xl p-8 hover:border-primary/60 hover:shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-3 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden h-[280px]"
                     >
                       <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
                         <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary-glow" strokeWidth={2.5} />
                       </div>
-                      <div className="relative w-full aspect-video flex items-center justify-center mb-2 transition-transform duration-500">
+                      <div className="relative w-full h-[100px] flex items-center justify-center mb-4 transition-transform duration-500">
                         {company.logoLight ? (
                           <>
                             <img
                               src={company.logo}
                               alt={company.name}
                               loading="lazy"
-                              className="dark:hidden max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                              className="dark:hidden w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
                             />
                             <img
                               src={company.logoLight}
                               alt={company.name}
                               loading="lazy"
-                              className="hidden dark:block max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                              className="hidden dark:block w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
                             />
                           </>
                         ) : (
@@ -320,11 +320,11 @@ export const SuccessCases = () => {
                             src={company.logo}
                             alt={company.name}
                             loading="lazy"
-                            className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                            className="w-full h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
                           />
                         )}
                       </div>
-                      <h3 className="text-center text-base font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight min-h-[2.5rem] flex items-center justify-center tracking-tight">
+                      <h3 className="text-center text-sm font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight h-[3rem] flex items-center justify-center tracking-tight">
                         <span className="relative">
                           {company.name}
                           <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary-glow group-hover:w-full transition-all duration-500" />
