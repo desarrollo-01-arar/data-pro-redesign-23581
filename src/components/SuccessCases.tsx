@@ -14,7 +14,14 @@ import icbLogo from "@/assets/success-cases/icb.png";
 import promotoresLogo from "@/assets/success-cases/promotores.png";
 import ankalLogo from "@/assets/success-cases/ankal.png";
 import dcnLogo from "@/assets/success-cases/dcn.png";
+import dcnLogoLight from "@/assets/success-cases/dcnLight.png";
 import imporbrakeLogo from "@/assets/success-cases/imporbrake.png";
+import cntLogo from "@/assets/success-cases/cnt.png";
+import evecaLogo from "@/assets/success-cases/Eveca.png";
+import extractoraLogo from "@/assets/success-cases/extractora.png";
+import elnogalLogo from "@/assets/success-cases/elnogal.png";
+import construccionesLogo from "@/assets/success-cases/construcciones.png";
+import construccionesLight from "@/assets/success-cases/construccionesLight.png";
 
 const cases = [{
   name: "Agencia de seguros Asekura",
@@ -56,14 +63,36 @@ const cases = [{
   name: "Representaciones Ankal",
   logo: ankalLogo,
   industry: "Comercial"
-} , {
+}, {
   name: "DCN Autopartes",
   logo: dcnLogo,
+  logoLight: dcnLogoLight,
   industry: "Autopartes"
-} , {
+}, {
   name: "Imporbrake",
   logo: imporbrakeLogo,
   industry: "Autopartes"
+}, {
+  name: "CNT",
+  logo: cntLogo,
+  industry: "Transporte"
+}, {
+  name: "Eveca",
+  logo: evecaLogo,
+  industry: "Agroindustria"
+}, {
+  name: "Extractora Central S.A.",
+  logo: extractoraLogo,
+  industry: "Agroindustria"
+}, {
+  name: "El Nogal",
+  logo: elnogalLogo,
+  industry: "Construcción"
+}, {
+  name: "Construcciones S.A.S",
+  logo: construccionesLogo,
+  logoLight: construccionesLight,
+  industry: "Construcción"
 }
 ];
 
@@ -177,7 +206,7 @@ export const SuccessCases = () => {
       </motion.div>
 
       {/* Logos grid */}
-      <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-10 gap-8 max-w-6xl mx-auto">
+      <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-10 gap-8 max-w-6xl mx-auto">
         {cases.map((company, index) => <motion.div
           key={index}
           initial={{ opacity: 0, y: 30 }}
@@ -192,12 +221,29 @@ export const SuccessCases = () => {
           </div>
           {/* Logo container */}
           <div className="relative w-full aspect-video flex items-center justify-center mb-2 transition-transform duration-500">
-            <img
-              src={company.logo}
-              alt={company.name}
-              loading="lazy"
-              className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
-            />
+            {company.logoLight ? (
+              <>
+                <img
+                  src={company.logo}
+                  alt={company.name}
+                  loading="lazy"
+                  className="dark:hidden max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                />
+                <img
+                  src={company.logoLight}
+                  alt={company.name}
+                  loading="lazy"
+                  className="hidden dark:block max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                />
+              </>
+            ) : (
+              <img
+                src={company.logo}
+                alt={company.name}
+                loading="lazy"
+                className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+              />
+            )}
           </div>
           {/* Company name - enhanced typography */}
           <h3 className="text-center text-base font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight min-h-[2.5rem] flex items-center justify-center tracking-tight">
@@ -230,7 +276,7 @@ export const SuccessCases = () => {
           className="w-full"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {cases.map((company, index) => {              
+            {cases.map((company, index) => {
               return (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-[85%]">
                   <motion.div
@@ -246,12 +292,30 @@ export const SuccessCases = () => {
                     </div>
                     {/* Logo container */}
                     <div className="relative w-full aspect-video flex items-center justify-center mb-2 transition-transform duration-500">
-                      <img
-                        src={company.logo}
-                        alt={company.name}
-                        loading="lazy"
-                        className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
-                      />
+
+                      {company.logoLight ? (
+                        <>
+                          <img
+                            src={company.logo}
+                            alt={company.name}
+                            loading="lazy"
+                            className="dark:hidden max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                          />
+                          <img
+                            src={company.logoLight}
+                            alt={company.name}
+                            loading="lazy"
+                            className="hidden dark:block max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                          />
+                        </>
+                      ) : (
+                        <img
+                          src={company.logo}
+                          alt={company.name}
+                          loading="lazy"
+                          className="max-w-full max-h-full object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                        />
+                      )}
                     </div>
                     {/* Company name - enhanced typography */}
                     <h3 className="text-center text-base font-bold mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary-glow transition-all duration-300 leading-tight min-h-[2.5rem] flex items-center justify-center tracking-tight">
