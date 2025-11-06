@@ -356,6 +356,7 @@ export const Hero = () => {
                       whileHover={{ x: "100%" }}
                       transition={{ duration: 0.5 }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="space-y-2 relative z-10">
                       <CounterAnimation value={metric.value} suffix={metric.suffix} />
                       <p className="text-sm text-muted-foreground font-semibold group-hover:text-foreground transition-colors">

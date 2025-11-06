@@ -114,21 +114,21 @@ const CounterAnimation = ({ end, suffix = "" }: { end: number; suffix?: string }
 
   useEffect(() => {
     if (!isInView) return;
-    
+
     let startTime: number;
     const duration = 2000;
-    
+
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
-      
+
       setCount(Math.floor(progress * end));
-      
+
       if (progress < 1) {
         requestAnimationFrame(animate);
       }
     };
-    
+
     requestAnimationFrame(animate);
   }, [isInView, end]);
 
@@ -154,53 +154,15 @@ export const SuccessCases = () => {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <div className="inline-flex items-center justify-center p-4 bg-gradient-accent rounded-2xl mb-6 animate-pulse-glow shadow-glow">
+        <div className="inline-flex items-center justify-center p-3 bg-gradient-accent rounded-full mb-6 animate-pulse-glow">
           <Award className="h-10 w-10 text-accent-foreground" />
         </div>
-        <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary dark:from-primary-glow dark:via-accent dark:to-primary-glow bg-clip-text text-transparent">
-          Casos de Éxito
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          Casos de <span className="text-primary dark:text-primary-glow">Éxito</span>
         </h2>
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Nuestra experiencia ha trascendido industrias y fronteras. En <span className="font-semibold text-foreground">DataPro Analítica</span>, distintos sectores han confiado en nosotros para transformar datos en decisiones estratégicas.
+        <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+          Nuestra experiencia ha trascendido industrias y fronteras. En <span className="font-semibold text-foreground">DataPro Analítica</span>, distintos sectores han confiado en nosotros para transformar datos en decisiones estratégicas que impulsan el crecimiento y la eficiencia empresarial.
         </p>
-      </motion.div>
-
-      {/* Key Metrics Cards */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16"
-      >
-        {[
-          { icon: TrendingUp, value: 20, suffix: "+", label: "Años de Experiencia", color: "text-primary dark:text-primary-glow" },
-          { icon: Briefcase, value: 100, suffix: "+", label: "Proyectos Exitosos", color: "text-accent" },
-          { icon: Users, value: 10, suffix: "+", label: "Sectores Diversos", color: "text-primary dark:text-primary-glow" }
-        ].map((metric, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <Card className="group hover:shadow-elegant hover:-translate-y-2 transition-all duration-500 border-2 border-border/50 hover:border-primary/50 bg-card/50 backdrop-blur-sm overflow-hidden">
-              <CardContent className="p-6 text-center relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className={`inline-flex items-center justify-center p-3 rounded-xl bg-gradient-accent mb-4 ${metric.color}`}>
-                    <metric.icon className="h-8 w-8" />
-                  </div>
-                  <div className={`text-4xl md:text-5xl font-bold mb-2 ${metric.color}`}>
-                    <CounterAnimation end={metric.value} suffix={metric.suffix} />
-                  </div>
-                  <p className="text-sm font-semibold text-muted-foreground">{metric.label}</p>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
       </motion.div>
 
       {/* Sectors Section with Enhanced Title */}
@@ -209,14 +171,8 @@ export const SuccessCases = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-5xl mx-auto mb-16"
+        className="max-w-5xl mx-auto mb-10"
       >
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-bold mb-3">
-            Presencia en <span className="text-primary dark:text-primary-glow">Múltiples Sectores</span>
-          </h3>
-          <p className="text-muted-foreground">Experiencia comprobada en diversas industrias</p>
-        </div>
 
         {/* Desktop Grid */}
         <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-7 gap-4">
@@ -279,6 +235,12 @@ export const SuccessCases = () => {
           </Carousel>
         </div>
       </motion.div>
+      <div className="text-center mb-8">
+        <h3 className="text-2xl md:text-3xl font-bold mb-3">
+          Presencia en <span className="text-primary dark:text-primary-glow">Múltiples Sectores</span>
+        </h3>
+        <p className="text-muted-foreground">Experiencia comprobada en diversas industrias</p>
+      </div>
 
       {/* Logos grid */}
       <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-10 gap-8 max-w-6xl mx-auto">
@@ -424,38 +386,23 @@ export const SuccessCases = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mt-16"
+        className="mt-16"
       >
-        <Card className="max-w-3xl mx-auto border-2 border-primary/30 bg-gradient-to-br from-card via-card to-primary/5 shadow-elegant overflow-hidden">
-          <CardContent className="p-8 md:p-12 relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-50" />
-            <div className="relative z-10">
-              <div className="inline-flex items-center justify-center p-3 bg-gradient-accent rounded-xl mb-4">
-                <CheckCircle2 className="h-6 w-6 text-accent-foreground" />
-              </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Más de <span className="text-primary dark:text-primary-glow">dos décadas</span> de experiencia
-              </h3>
-              <p className="text-lg text-muted-foreground mb-6">
-                Transformando la complejidad de los datos en decisiones estratégicas que impulsan el crecimiento y la eficiencia empresarial
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
-                  <CheckCircle2 className="h-4 w-4 text-primary dark:text-primary-glow" />
-                  <span className="text-sm font-medium">Soluciones Personalizadas</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30">
-                  <CheckCircle2 className="h-4 w-4 text-accent" />
-                  <span className="text-sm font-medium">Soporte Continuo</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
-                  <CheckCircle2 className="h-4 w-4 text-primary dark:text-primary-glow" />
-                  <span className="text-sm font-medium">Resultados Comprobados</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        
+        <div className="flex flex-wrap justify-center mt-10 gap-4">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
+            <CheckCircle2 className="h-4 w-4 text-primary dark:text-primary-glow" />
+            <span className="text-sm font-medium">Soluciones Personalizadas</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30">
+            <CheckCircle2 className="h-4 w-4 text-accent" />
+            <span className="text-sm font-medium">Soporte Continuo</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
+            <CheckCircle2 className="h-4 w-4 text-primary dark:text-primary-glow" />
+            <span className="text-sm font-medium">Resultados Comprobados</span>
+          </div>
+        </div>
       </motion.div>
     </div>
   </section>;
