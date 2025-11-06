@@ -17,7 +17,7 @@ import dcnLogo from "@/assets/success-cases/dcn.png";
 import dcnLogoLight from "@/assets/success-cases/dcnLight.png";
 import imporbrakeLogo from "@/assets/success-cases/imporbrake.png";
 import cntLogo from "@/assets/success-cases/cnt.png";
-import evecaLogo from "@/assets/success-cases/Eveca.png";
+import evecaLogo from "@/assets/success-cases/eveca.png";
 import extractoraLogo from "@/assets/success-cases/extractora.png";
 import elnogalLogo from "@/assets/success-cases/elnogal.png";
 import construccionesLogo from "@/assets/success-cases/construcciones.png";
@@ -223,7 +223,7 @@ export const SuccessCases = () => {
         <h3 className="text-2xl md:text-3xl font-bold mb-3">
           Empresas que <span className="text-primary dark:text-primary-glow">Confían en Nosotros</span>
         </h3>
-        <p className="text-muted-foreground">Más de 100 proyectos exitosos en diferentes industrias</p>
+        <p className="text-muted-foreground">Más de 20 proyectos exitosos en diferentes industrias</p>
       </div>
 
       {/* Logos carousel - Desktop */}
