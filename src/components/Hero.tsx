@@ -12,9 +12,9 @@ const dynamicWords = ["ventajas competitivas", "resultados inteligentes", "nueva
 const typingText = "información clara";
 
 const metrics = [
-  { value: 200, label: "Dashboard desarrollados este último año", suffix: "+" },
-  { value: 20, label: "Proyectos exitosos", suffix: "+" },
-  { value: 5, label: "Sectores atendidos", suffix: "+" },
+  { value: 200, label: "Dashboard interactivos en Power BI", suffix: "+" },
+  { value: 25, label: "Consultorias en implementaciones de Siesa EE", suffix: "+" },
+  { value: 110, label: "Procesos automatizados exitosos", suffix: "+" },
 ];
 
 const CounterAnimation = ({ value, suffix = "" }: { value: number; suffix?: string }) => {

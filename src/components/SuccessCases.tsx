@@ -13,6 +13,8 @@ import inversionesArarLogo from "@/assets/success-cases/inversiones-arar.png";
 import icbLogo from "@/assets/success-cases/icb.png";
 import promotoresLogo from "@/assets/success-cases/promotores.png";
 import ankalLogo from "@/assets/success-cases/ankal.png";
+import dcnLogo from "@/assets/success-cases/dcn.png";
+import imporbrakeLogo from "@/assets/success-cases/imporbrake.png";
 
 const cases = [{
   name: "Agencia de seguros Asekura",
@@ -54,7 +56,16 @@ const cases = [{
   name: "Representaciones Ankal",
   logo: ankalLogo,
   industry: "Comercial"
-}];
+} , {
+  name: "DCN Autopartes",
+  logo: dcnLogo,
+  industry: "Autopartes"
+} , {
+  name: "Imporbrake",
+  logo: imporbrakeLogo,
+  industry: "Autopartes"
+}
+];
 
 const sectors = [
   { name: "Agricultura", icon: Sprout },
@@ -90,7 +101,7 @@ export const SuccessCases = () => {
           Casos de <span className="text-primary dark:text-primary-glow">Éxito</span>
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Nuestra experiencia ha trascendido industrias y fronteras. En DataPro Analítica, empresas de distintos sectores han confiado en nosotros para transformar la complejidad de sus datos en decisiones que impulsan crecimiento y eficiencia.
+          Nuestra experiencia ha trascendido industrias y fronteras. En DataPro Analítica, distintos sectores y sus empresas han confiado en nosotros para transformar la complejidad de sus datos en decisiones que impulsan crecimiento y eficiencia.
         </p>
       </motion.div>
 
@@ -166,7 +177,7 @@ export const SuccessCases = () => {
       </motion.div>
 
       {/* Logos grid */}
-      <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-10 gap-6 max-w-6xl mx-auto">
+      <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-10 gap-8 max-w-6xl mx-auto">
         {cases.map((company, index) => <motion.div
           key={index}
           initial={{ opacity: 0, y: 30 }}
