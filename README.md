@@ -4,7 +4,7 @@
 
 ## 🌐 Sitio en Producción
 
-**URL**: https://datapro.com.co/main/
+**URL**: https://datapro.com.co/
 
 ---
 
@@ -74,16 +74,14 @@ Esto creará una carpeta `dist/` con todos los archivos optimizados para producc
 
 ### 2. Subir al servidor
 
-**Importante:** El proyecto usa la ruta base `/main/` configurada en `vite.config.ts`
-
 #### Opción A: Via FTP/cPanel
 1. Conecta a tu servidor via FTP o cPanel File Manager
-2. Navega a `/main/`
-3. **Elimina** todo el contenido actual de la carpeta `main/`
+2. Navega a la raíz
+3. **Elimina** todo el contenido actual de la carpeta raiz
 4. **Sube** el contenido de la carpeta `dist/` (los archivos dentro, no la carpeta)
 5. Estructura final:
    ```
-   /main/
+   /
    ├── index.html
    ├── assets/
    │   ├── index-xxx.js
@@ -96,19 +94,19 @@ Esto creará una carpeta `dist/` con todos los archivos optimizados para producc
 # Conectar al servidor
 ssh usuario@datapro.com.co
 
-# Navegar a la carpeta
-cd /main/
+# Navegar a la carpeta raiz
+cd /
 
 # Eliminar contenido anterior
 rm -rf *
 
 # Subir nuevos archivos (desde tu máquina local)
-scp -r dist/* usuario@datapro.com.co:/main/
+scp -r dist/* usuario@datapro.com.co:/
 ```
 
 ### 3. Verificar en producción
 
-Visita `https://datapro.com.co/main/` y verifica que los cambios se hayan aplicado correctamente.
+Visita `https://datapro.com.co/` y verifica que los cambios se hayan aplicado correctamente.
 
 **Nota:** Si ves contenido antiguo, limpia el caché del navegador (Ctrl + Shift + R en Chrome/Firefox).
 
@@ -149,31 +147,6 @@ Este proyecto está construido con tecnologías modernas:
 4. Haz clic en "New codespace"
 5. Edita los archivos en el navegador
 6. Haz commit y push cuando termines
-
----
-
-## 🔧 Configuración Importante
-
-### Configuración de Rutas
-
-El proyecto está configurado para funcionar en la ruta `/main/`:
-
-**vite.config.ts:**
-```typescript
-export default defineConfig({
-  base: '/main/', // Ruta base del proyecto
-  // ...
-});
-```
-
-**React Router:**
-```typescript
-<BrowserRouter basename="/main">
-  {/* Rutas */}
-</BrowserRouter>
-```
-
-Si necesitas cambiar la ruta de despliegue, modifica ambos archivos.
 
 ---
 
