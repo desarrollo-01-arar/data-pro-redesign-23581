@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { ThemeToggle } from "./ThemeToggle";
@@ -6,6 +7,7 @@ import logoLight from "@/assets/logo-light.png";
 import logoDark from "@/assets/logo-dark.png";
 
 export const Header = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -82,10 +84,19 @@ export const Header = () => {
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
+    const section = href.replace("#", "");
+    const element = document.getElementById(section);
+
+    setIsMobileMenuOpen(false);
+
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+    } else if (window.location.pathname !== "/") {
+      navigate(`/?${section}`);
+      setTimeout(() => {
+        document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+        navigate("/");
+      }, 150);
     }
   };
 
@@ -100,7 +111,7 @@ export const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center space-x-2 group">
+          <a href="/" className="flex items-center space-x-2 group">
             <img
               src={logoDark}
               alt="DataPro Analítica"
@@ -145,6 +156,13 @@ export const Header = () => {
                 </Button>
               );
             })}
+            <Button
+              variant="default"
+              className="ml-2 bg-gradient-accent hover:shadow-glow transition-all text-accent-foreground"
+              onClick={() => navigate("/tickets")}
+            >
+              Tickets
+            </Button>
             <Button
               variant="default"
               className="ml-4 bg-gradient-primary hover:shadow-glow transition-all"
@@ -195,6 +213,13 @@ export const Header = () => {
                 </Button>
               );
             })}
+            <Button
+              variant="default"
+              className="w-full bg-gradient-accent mx-2 text-accent-foreground"
+              onClick={() => navigate("/tickets")}
+            >
+              Tickets
+            </Button>
             <Button
               variant="default"
               className="w-full bg-gradient-primary mx-2"
