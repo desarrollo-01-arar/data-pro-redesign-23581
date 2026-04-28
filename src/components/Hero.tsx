@@ -134,7 +134,7 @@ export const Hero = () => {
             </h1>
 
             <div className="min-h-[140px] flex items-center justify-center lg:justify-start">
-              <p className="text-xl sm:text-2xl text-muted-foreground flex flex-col items-center lg:items-start gap-2 font-bold">
+              <div className="text-xl sm:text-2xl text-muted-foreground flex flex-col items-center lg:items-start gap-2 font-bold">
                 <span>Transformando tus datos en</span>
                 <span className="relative inline-flex items-center justify-center min-w-[280px] px-8 py-2 rounded-2xl bg-gradient-to-r from-primary/20 via-accent/30 to-primary/20 overflow-hidden backdrop-blur-md border-2 border-primary/30 shadow-[0_0_30px_rgba(34,211,238,0.2)]">
                   {/* Efecto de brillo de fondo */}
@@ -172,7 +172,7 @@ export const Hero = () => {
                     </motion.span>
                   </AnimatePresence>
                 </span>
-              </p>
+              </div>
             </div>
 
             <p className="text-lg sm:text-xl text-muted-foreground font-semibold max-w-2xl mx-auto lg:mx-0">

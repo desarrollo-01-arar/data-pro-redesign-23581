@@ -156,13 +156,13 @@ export const Header = () => {
                 </Button>
               );
             })}
-            <Button
+            {/* <Button
               variant="default"
               className="ml-2 bg-gradient-accent hover:shadow-glow transition-all text-accent-foreground"
               onClick={() => navigate("/tickets")}
             >
               Tickets
-            </Button>
+            </Button> */}
             <Button
               variant="default"
               className="ml-4 bg-gradient-primary hover:shadow-glow transition-all"
@@ -213,13 +213,13 @@ export const Header = () => {
                 </Button>
               );
             })}
-            <Button
+            {/* <Button
               variant="default"
               className="w-full bg-gradient-accent mx-2 text-accent-foreground"
               onClick={() => navigate("/tickets")}
             >
               Tickets
-            </Button>
+            </Button> */}
             <Button
               variant="default"
               className="w-full bg-gradient-primary mx-2"

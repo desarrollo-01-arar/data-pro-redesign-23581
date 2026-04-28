@@ -312,9 +312,9 @@ export const Automation = () => {
                 },
               }}
             >
-              {[...technologies, ...technologies].map((tool) => (
+              {[...technologies, ...technologies].map((tool, index) => (
                 <div
-                  key={tool.name}
+                  key={`${tool.name}-${index}`}
                   className="group px-6 py-3 rounded-xl bg-card border-2 border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 cursor-default flex items-center space-x-2"
                 >
                   <tool.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />

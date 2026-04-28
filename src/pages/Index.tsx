@@ -8,8 +8,11 @@ import { AboutUs } from "@/components/AboutUs";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import ChatwootWidget from "@/components/ChatwootWidget ";
 
 const Index = () => {
+
+  
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -23,7 +26,8 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
-      <WhatsAppButton />
+      {/* <WhatsAppButton /> */}
+      <ChatwootWidget/>
     </div>
   );
 };
